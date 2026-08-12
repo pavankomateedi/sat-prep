@@ -1,0 +1,404 @@
+{
+  "items": [
+    {
+      "id": "rw-trn-008",
+      "section": "rw",
+      "domain": "expression_of_ideas",
+      "skills": ["transitions"],
+      "itemType": "mcq",
+      "difficulty": "easy",
+      "stimulus": "Octopuses have colour-blind eyes. ______ they perform some of the most elaborate colour matching in the animal kingdom, shifting their skin to match backgrounds they cannot, by conventional measures, see.",
+      "stem": "Which choice completes the text with the most logical transition?",
+      "choices": [
+        { "id": "A", "text": "Consequently," },
+        { "id": "B", "text": "Yet" },
+        { "id": "C", "text": "For example," },
+        { "id": "D", "text": "Likewise," }
+      ],
+      "answer": "B",
+      "rationale": "Colour-blindness and expert colour matching are in tension, and the sentence emphasises that tension. \"Yet\" marks it. (A) would make the matching a result of the blindness, which reverses the logic.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 55,
+      "version": 1
+    },
+    {
+      "id": "rw-trn-009",
+      "section": "rw",
+      "domain": "expression_of_ideas",
+      "skills": ["transitions"],
+      "itemType": "mcq",
+      "difficulty": "easy",
+      "stimulus": "Lithium-ion batteries lose capacity faster when charged to full and drained to empty. ______ many manufacturers now ship devices programmed to stop charging at around 80 percent.",
+      "stem": "Which choice completes the text with the most logical transition?",
+      "choices": [
+        { "id": "A", "text": "Nevertheless," },
+        { "id": "B", "text": "In contrast," },
+        { "id": "C", "text": "Accordingly," },
+        { "id": "D", "text": "Similarly," }
+      ],
+      "answer": "C",
+      "rationale": "The second sentence describes a response to the problem stated in the first — a cause-to-consequence link, which \"Accordingly\" marks. (A) and (B) signal contrast, but nothing is being opposed.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 55,
+      "version": 1
+    },
+    {
+      "id": "rw-trn-010",
+      "section": "rw",
+      "domain": "expression_of_ideas",
+      "skills": ["transitions"],
+      "itemType": "mcq",
+      "difficulty": "easy",
+      "stimulus": "Sourdough starters are colonies of wild yeast and bacteria. Bakers maintain them by discarding part of the culture and adding fresh flour and water. ______ a starter kept in New York and one kept in Cairo will diverge, taking on the microbes of their surroundings.",
+      "stem": "Which choice completes the text with the most logical transition?",
+      "choices": [
+        { "id": "A", "text": "Over time," },
+        { "id": "B", "text": "In conclusion," },
+        { "id": "C", "text": "By contrast," },
+        { "id": "D", "text": "Regardless," }
+      ],
+      "answer": "A",
+      "rationale": "The third sentence describes a gradual process of divergence, and \"Over time\" supplies the temporal frame that makes \"will diverge\" sensible. (B) would signal a summary, but a new fact is being introduced.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 60,
+      "version": 1
+    },
+    {
+      "id": "rw-trn-011",
+      "section": "rw",
+      "domain": "expression_of_ideas",
+      "skills": ["transitions"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stimulus": "For decades the Antikythera mechanism's purpose was debated. X-ray tomography in the 2000s finally resolved the core question, revealing a gear train that models the irregular motion of the moon. ______ several fragments remain unaccounted for, and no one knows what the missing sections computed.",
+      "stem": "Which choice completes the text with the most logical transition?",
+      "choices": [
+        { "id": "A", "text": "As a result," },
+        { "id": "B", "text": "Even so," },
+        { "id": "C", "text": "For instance," },
+        { "id": "D", "text": "In short," }
+      ],
+      "answer": "B",
+      "rationale": "The second sentence reports a resolution; the third reports what remains unresolved despite it. \"Even so\" carries that concessive force. (A) would make the missing fragments a consequence of the imaging, which makes no sense.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 75,
+      "version": 1
+    },
+    {
+      "id": "rw-trn-012",
+      "section": "rw",
+      "domain": "expression_of_ideas",
+      "skills": ["transitions"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stimulus": "Economists distinguish between nominal and real wages. Nominal wages are the figure on the payslip. Real wages ______ measure what that figure actually buys after inflation is accounted for.",
+      "stem": "Which choice completes the text with the most logical transition?",
+      "choices": [
+        { "id": "A", "text": ", in addition," },
+        { "id": "B", "text": ", by comparison," },
+        { "id": "C", "text": ", therefore," },
+        { "id": "D", "text": ", for example," }
+      ],
+      "answer": "B",
+      "rationale": "The passage defines two contrasting terms in turn, so the transition must mark the comparison between them. (A) would treat real wages as an additional item rather than the counterpart, and (C) implies a causal link the definitions do not have.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 70,
+      "version": 1
+    },
+    {
+      "id": "rw-trn-013",
+      "section": "rw",
+      "domain": "expression_of_ideas",
+      "skills": ["transitions"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stimulus": "The vaccine trial reported a 68 percent reduction in symptomatic cases. The result was widely covered. ______ the trial had enrolled only adults under fifty, so nothing in the data speaks to older populations.",
+      "stem": "Which choice completes the text with the most logical transition?",
+      "choices": [
+        { "id": "A", "text": "Moreover," },
+        { "id": "B", "text": "Notably," },
+        { "id": "C", "text": "Hence," },
+        { "id": "D", "text": "Meanwhile," }
+      ],
+      "answer": "B",
+      "rationale": "The third sentence flags a limitation that qualifies the enthusiasm of the second. \"Notably\" introduces a salient caveat. (A) would present it as further good news, and (C) would make the age limit a consequence of the coverage.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 75,
+      "version": 1
+    },
+    {
+      "id": "rw-trn-014",
+      "section": "rw",
+      "domain": "expression_of_ideas",
+      "skills": ["transitions"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stimulus": "Restorers of historic buildings face a choice between materials that match the original and materials that will last. Lime mortar, used in most pre-industrial masonry, is soft and permeable. Portland cement is far stronger. ______ repointing old brick with cement traps moisture in the brick, which then spalls.",
+      "stem": "Which choice completes the text with the most logical transition?",
+      "choices": [
+        { "id": "A", "text": "Accordingly," },
+        { "id": "B", "text": "Paradoxically," },
+        { "id": "C", "text": "Likewise," },
+        { "id": "D", "text": "In other words," }
+      ],
+      "answer": "B",
+      "rationale": "The stronger material produces the worse outcome, which is genuinely counterintuitive given the preceding sentence. \"Paradoxically\" names that. (A) would follow from strength producing durability, which is exactly what does not happen here.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 85,
+      "version": 1
+    },
+    {
+      "id": "rw-trn-015",
+      "section": "rw",
+      "domain": "expression_of_ideas",
+      "skills": ["transitions"],
+      "itemType": "mcq",
+      "difficulty": "hard",
+      "stimulus": "Linguists once treated creole languages as simplified versions of the languages that fed into them. Detailed grammatical description has undermined that view; creoles turn out to have rule systems as intricate as any other language's. The older label has not disappeared from popular writing, ______ and its persistence tells us more about the assumptions of nineteenth-century philology than about the languages themselves.",
+      "stem": "Which choice completes the text with the most logical transition?",
+      "choices": [
+        { "id": "A", "text": "so" },
+        { "id": "B", "text": "however," },
+        { "id": "C", "text": "because" },
+        { "id": "D", "text": "for instance," }
+      ],
+      "answer": "B",
+      "rationale": "The final clause explains the significance of the label's survival, and the survival itself runs counter to the scholarly correction just described. \"However\" marks that persistence-despite-correction. (A) would make the persistence a result of the correction, and (C) inverts the direction of explanation.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 90,
+      "version": 1
+    },
+    {
+      "id": "rw-trn-016",
+      "section": "rw",
+      "domain": "expression_of_ideas",
+      "skills": ["transitions"],
+      "itemType": "mcq",
+      "difficulty": "hard",
+      "stimulus": "A common argument for open-plan offices is that removing walls increases informal collaboration. A study using wearable sensors tracked face-to-face interaction before and after a company removed its partitions. Face-to-face interaction fell by roughly 70 percent, while email and messaging rose. ______ the intervention appears to have produced the opposite of its stated aim.",
+      "stem": "Which choice completes the text with the most logical transition?",
+      "choices": [
+        { "id": "A", "text": "Nonetheless," },
+        { "id": "B", "text": "On balance," },
+        { "id": "C", "text": "Admittedly," },
+        { "id": "D", "text": "Granted," }
+      ],
+      "answer": "B",
+      "rationale": "The final sentence draws a summary judgement from the evidence just presented. \"On balance\" signals that weighing-up. (A), (C), and (D) all set up a concession, but nothing is being conceded — the conclusion follows directly from the data.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 90,
+      "version": 1
+    },
+    {
+      "id": "rw-trn-017",
+      "section": "rw",
+      "domain": "expression_of_ideas",
+      "skills": ["transitions"],
+      "itemType": "mcq",
+      "difficulty": "hard",
+      "stimulus": "Museum conservators generally avoid reversing earlier restorations, on the principle that every intervention is itself part of an object's history. The Ghent Altarpiece presented a hard case: overpainting from the sixteenth century concealed roughly 70 percent of the original surface. ______ the decision to remove it was made only after imaging confirmed the original paint had survived intact beneath.",
+      "stem": "Which choice completes the text with the most logical transition?",
+      "choices": [
+        { "id": "A", "text": "Predictably," },
+        { "id": "B", "text": "Even here," },
+        { "id": "C", "text": "By contrast," },
+        { "id": "D", "text": "In particular," }
+      ],
+      "answer": "B",
+      "rationale": "The altarpiece is offered as the exception that tested the general principle, and the final sentence stresses that even in so extreme a case the removal required strong justification. \"Even here\" carries that. (A) reverses the sense, implying the outcome was obvious.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 95,
+      "version": 1
+    },
+
+    {
+      "id": "rw-rhs-008",
+      "section": "rw",
+      "domain": "expression_of_ideas",
+      "skills": ["rhetorical_synthesis"],
+      "itemType": "mcq",
+      "difficulty": "easy",
+      "stimulus": "While researching a topic, a student has taken the following notes:\n• The Svalbard Global Seed Vault opened in 2008.\n• It is built into a mountain on a Norwegian island.\n• It stores duplicate samples of seeds held in other gene banks.\n• In 2015 it made its first withdrawal, to replace samples lost in Syria.",
+      "stem": "The student wants to explain the vault's purpose. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+      "choices": [
+        { "id": "A", "text": "The Svalbard Global Seed Vault, opened in 2008, is built into a mountain on a Norwegian island." },
+        { "id": "B", "text": "The Svalbard Global Seed Vault stores duplicate seed samples from other gene banks, as a backup — a role demonstrated in 2015 when it replaced samples lost in Syria." },
+        { "id": "C", "text": "In 2015 the Svalbard Global Seed Vault made its first withdrawal." },
+        { "id": "D", "text": "The Svalbard Global Seed Vault opened in 2008 on a Norwegian island." }
+      ],
+      "answer": "B",
+      "rationale": "Purpose means what the vault is for. (B) states the backup function and supports it with the case where the backup was used. (A) and (D) give location and date, and (C) reports an event without saying what it demonstrates.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 75,
+      "version": 1
+    },
+    {
+      "id": "rw-rhs-009",
+      "section": "rw",
+      "domain": "expression_of_ideas",
+      "skills": ["rhetorical_synthesis"],
+      "itemType": "mcq",
+      "difficulty": "easy",
+      "stimulus": "While researching a topic, a student has taken the following notes:\n• Mangrove forests grow in salt water along tropical coasts.\n• Their roots trap sediment and slow wave energy.\n• A 2019 study estimated they prevent about \\$65 billion in flood damage annually.\n• Roughly a third of the world's mangroves have been cleared since 1980.",
+      "stem": "The student wants to emphasise the economic value of mangroves. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+      "choices": [
+        { "id": "A", "text": "Mangrove forests grow in salt water along tropical coasts, where their roots trap sediment." },
+        { "id": "B", "text": "About a third of the world's mangroves have been cleared since 1980." },
+        { "id": "C", "text": "By slowing waves and trapping sediment, mangroves prevent an estimated \\$65 billion in flood damage each year." },
+        { "id": "D", "text": "The roots of mangrove trees slow wave energy along tropical coasts." }
+      ],
+      "answer": "C",
+      "rationale": "Economic value requires a figure in money. Only (C) supplies the \\$65 billion estimate, and it links the mechanism to the value. (B) concerns loss rather than value, and (A) and (D) describe ecology without any economic claim.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 75,
+      "version": 1
+    },
+    {
+      "id": "rw-rhs-010",
+      "section": "rw",
+      "domain": "expression_of_ideas",
+      "skills": ["rhetorical_synthesis"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stimulus": "While researching a topic, a student has taken the following notes:\n• Bioluminescent fungi glow at night in some forests.\n• The glow comes from a reaction involving the compound luciferin.\n• One hypothesis is that the glow attracts insects that spread spores.\n• A field experiment with artificial glowing models attracted more insects than dark models.",
+      "stem": "The student wants to present a hypothesis and the evidence supporting it. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+      "choices": [
+        { "id": "A", "text": "Some fungi glow at night because of a reaction involving luciferin." },
+        { "id": "B", "text": "Researchers hypothesise that fungal glow attracts spore-spreading insects; in a field experiment, artificial glowing models drew more insects than dark ones." },
+        { "id": "C", "text": "In a field experiment, artificial glowing models attracted more insects than dark models did." },
+        { "id": "D", "text": "Bioluminescent fungi are found in some forests, where they glow at night." }
+      ],
+      "answer": "B",
+      "rationale": "The goal has two parts, so the answer must contain both. (B) states the hypothesis and then the supporting experiment. (C) gives the evidence with no hypothesis to attach it to, and (A) explains the chemistry rather than the function.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 85,
+      "version": 1
+    },
+    {
+      "id": "rw-rhs-011",
+      "section": "rw",
+      "domain": "expression_of_ideas",
+      "skills": ["rhetorical_synthesis"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stimulus": "While researching a topic, a student has taken the following notes:\n• The Antonine Wall ran across central Scotland.\n• It was built of turf on a stone foundation, unlike Hadrian's Wall, which was largely stone.\n• It was occupied for roughly 20 years before being abandoned.\n• Hadrian's Wall was occupied for nearly 300 years.",
+      "stem": "The student wants to contrast the two walls. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+      "choices": [
+        { "id": "A", "text": "The Antonine Wall ran across central Scotland and was built of turf on a stone foundation." },
+        { "id": "B", "text": "Hadrian's Wall was occupied for nearly 300 years." },
+        { "id": "C", "text": "The Antonine Wall, built largely of turf, was held for about 20 years, while the stone-built Hadrian's Wall was occupied for nearly 300." },
+        { "id": "D", "text": "The Antonine Wall was abandoned after roughly 20 years of occupation." }
+      ],
+      "answer": "C",
+      "rationale": "A contrast needs both sides on both dimensions. (C) sets material against material and duration against duration in one sentence. (A), (B), and (D) each describe only one wall.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 85,
+      "version": 1
+    },
+    {
+      "id": "rw-rhs-012",
+      "section": "rw",
+      "domain": "expression_of_ideas",
+      "skills": ["rhetorical_synthesis"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stimulus": "While researching a topic, a student has taken the following notes:\n• Zora Neale Hurston trained as an anthropologist under Franz Boas.\n• She collected folklore across the American South in the 1920s and 1930s.\n• Her novel Their Eyes Were Watching God was published in 1937.\n• Critics at the time faulted the novel for its use of dialect.",
+      "stem": "The student wants to explain how Hurston's training shaped her fiction. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+      "choices": [
+        { "id": "A", "text": "Hurston published Their Eyes Were Watching God in 1937, and critics faulted its use of dialect." },
+        { "id": "B", "text": "Hurston, trained as an anthropologist and experienced in collecting Southern folklore, brought that ear for spoken language into the dialect of her 1937 novel." },
+        { "id": "C", "text": "Hurston studied anthropology under Franz Boas." },
+        { "id": "D", "text": "In the 1920s and 1930s, Hurston collected folklore across the American South." }
+      ],
+      "answer": "B",
+      "rationale": "The goal asks for a causal link between training and fiction. Only (B) connects them, tying the folklore collecting to the novel's language. (C) and (D) supply one side each and (A) neither.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 85,
+      "version": 1
+    },
+    {
+      "id": "rw-rhs-013",
+      "section": "rw",
+      "domain": "expression_of_ideas",
+      "skills": ["rhetorical_synthesis"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stimulus": "While researching a topic, a student has taken the following notes:\n• Concrete production accounts for roughly 8% of global carbon emissions.\n• Most of that comes from calcining limestone to make cement clinker.\n• Some newer cements replace part of the clinker with volcanic ash or slag.\n• These blends can cut the emissions of a batch by 30-50%.",
+      "stem": "The student wants to identify the main source of concrete's emissions and one way of reducing them. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+      "choices": [
+        { "id": "A", "text": "Concrete production accounts for roughly 8% of global carbon emissions." },
+        { "id": "B", "text": "Most of concrete's emissions come from calcining limestone for clinker; replacing some clinker with volcanic ash or slag can cut a batch's emissions by 30-50%." },
+        { "id": "C", "text": "Newer cements can cut emissions by 30-50% compared with conventional blends." },
+        { "id": "D", "text": "Cement clinker is made by calcining limestone, a process used in concrete production." }
+      ],
+      "answer": "B",
+      "rationale": "Both halves of the goal must appear. (B) names calcination as the source and the substitute blends as the remedy, with the size of the reduction. (C) gives only the remedy and (D) only the source; (A) addresses neither.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 90,
+      "version": 1
+    },
+    {
+      "id": "rw-rhs-014",
+      "section": "rw",
+      "domain": "expression_of_ideas",
+      "skills": ["rhetorical_synthesis"],
+      "itemType": "mcq",
+      "difficulty": "hard",
+      "stimulus": "While researching a topic, a student has taken the following notes:\n• The Dancing Plague of 1518 saw hundreds in Strasbourg dance for days.\n• Contemporary accounts describe dancers collapsing from exhaustion.\n• Historian John Waller attributes it to mass psychogenic illness under famine stress.\n• Other researchers have proposed ergot poisoning from contaminated rye.\n• Ergot causes convulsions but not sustained, coordinated movement.",
+      "stem": "The student wants to present the competing explanations and indicate which the evidence favours. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+      "choices": [
+        { "id": "A", "text": "The Dancing Plague of 1518 has been attributed to both mass psychogenic illness and ergot poisoning from contaminated rye." },
+        { "id": "B", "text": "Ergot poisoning has been proposed as an explanation for the Dancing Plague of 1518." },
+        { "id": "C", "text": "Explanations of the 1518 Dancing Plague include ergot poisoning and mass psychogenic illness; the ergot account sits poorly with the evidence, since ergot causes convulsions rather than the sustained, coordinated movement observed." },
+        { "id": "D", "text": "Hundreds of people in Strasbourg danced for days in 1518, some collapsing from exhaustion." }
+      ],
+      "answer": "C",
+      "rationale": "The goal has two parts: name the rival explanations, and indicate which the evidence favours. Only (C) does both, using the convulsions-versus-coordinated-movement detail to discriminate. (A) names both but adjudicates neither.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 100,
+      "version": 1
+    },
+    {
+      "id": "rw-rhs-015",
+      "section": "rw",
+      "domain": "expression_of_ideas",
+      "skills": ["rhetorical_synthesis"],
+      "itemType": "mcq",
+      "difficulty": "hard",
+      "stimulus": "While researching a topic, a student has taken the following notes:\n• Rats were long believed unable to feel regret.\n• A 2014 study gave rats a series of timed food options along a \"restaurant row\".\n• When a rat skipped a good option and hit a worse one, it looked back at the missed option.\n• The same rats then accepted worse deals than usual immediately afterwards.\n• Researchers noted that looking back alone would not distinguish regret from simple disappointment.",
+      "stem": "The student wants to explain why the behavioural pattern, taken as a whole, was treated as evidence of regret. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+      "choices": [
+        { "id": "A", "text": "Rats in a 2014 study looked back at food options they had skipped." },
+        { "id": "B", "text": "Because looking back alone could indicate mere disappointment, the case rested on the combination: rats both looked back at the skipped option and then changed their subsequent choices." },
+        { "id": "C", "text": "A 2014 study placed rats along a \"restaurant row\" of timed food options." },
+        { "id": "D", "text": "Rats were long believed to be incapable of feeling regret." }
+      ],
+      "answer": "B",
+      "rationale": "The goal asks why the pattern *as a whole* counted as evidence, which requires the stated insufficiency of looking back plus the second behaviour that supplements it. Only (B) has both, joined causally. (A) gives one component and calls it the finding.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 100,
+      "version": 1
+    },
+    {
+      "id": "rw-rhs-016",
+      "section": "rw",
+      "domain": "expression_of_ideas",
+      "skills": ["rhetorical_synthesis"],
+      "itemType": "mcq",
+      "difficulty": "hard",
+      "stimulus": "While researching a topic, a student has taken the following notes:\n• The Pantheon's dome has been the largest unreinforced concrete dome for nearly 1,900 years.\n• Roman builders varied the aggregate, using heavy basalt at the base and light pumice near the top.\n• The dome thins from about 6 metres at its base to 1.2 metres at the oculus.\n• Modern unreinforced concrete of comparable span has not been attempted.",
+      "stem": "The student wants to explain how the dome's design accounts for its endurance. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+      "choices": [
+        { "id": "A", "text": "The Pantheon's dome has remained the largest unreinforced concrete dome for nearly 1,900 years." },
+        { "id": "B", "text": "The dome thins from roughly 6 metres at the base to 1.2 metres at the oculus." },
+        { "id": "C", "text": "Roman builders reduced the load on the dome as it rose, thinning it from about 6 metres to 1.2 metres and shifting from heavy basalt aggregate to light pumice — a design that has held for nearly 1,900 years." },
+        { "id": "D", "text": "Modern builders have not attempted an unreinforced concrete dome of comparable span." }
+      ],
+      "answer": "C",
+      "rationale": "Explaining endurance requires the design features and the principle uniting them — reducing weight with height. (C) supplies both the thinning and the aggregate change and names what they achieve. (B) gives one feature without the principle, and (A) and (D) state the outcome and a comparison rather than a cause.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 100,
+      "version": 1
+    }
+  ]
+}

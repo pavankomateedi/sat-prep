@@ -1,0 +1,299 @@
+{
+  "items": [
+    {
+      "id": "rw-trn-001",
+      "section": "rw",
+      "domain": "expression_of_ideas",
+      "skills": ["transitions"],
+      "itemType": "mcq",
+      "difficulty": "easy",
+      "stimulus": "Honeybees can be trained to associate a scent with a sugar reward, and researchers have used this to test their memory. ______ bees trained on one scent will extend their tongues when they smell it days later, even with no reward present.",
+      "stem": "Which choice completes the text with the most logical transition?",
+      "choices": [
+        { "id": "A", "text": "For example," },
+        { "id": "B", "text": "Nevertheless," },
+        { "id": "C", "text": "In contrast," },
+        { "id": "D", "text": "Consequently," }
+      ],
+      "answer": "A",
+      "rationale": "The second sentence gives a specific instance of the memory testing announced in the first. \"For example\" signals that relationship. (B) and (C) mark contrast, but nothing is being opposed, and (D) claims a cause-effect link the sentences do not have.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 55,
+      "version": 1
+    },
+    {
+      "id": "rw-trn-002",
+      "section": "rw",
+      "domain": "expression_of_ideas",
+      "skills": ["transitions"],
+      "itemType": "mcq",
+      "difficulty": "easy",
+      "stimulus": "Solar panels generate the most electricity in the middle of the day. Household demand, ______ tends to peak in the early evening, after most people return home.",
+      "stem": "Which choice completes the text with the most logical transition?",
+      "choices": [
+        { "id": "A", "text": "likewise," },
+        { "id": "B", "text": "however," },
+        { "id": "C", "text": "therefore," },
+        { "id": "D", "text": "in addition," }
+      ],
+      "answer": "B",
+      "rationale": "Supply peaks midday while demand peaks in the evening — a mismatch. \"However\" marks that contrast. (A) and (D) signal similarity or addition, which would require the two peaks to align, and (C) would make the evening peak a result of the midday one.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 55,
+      "version": 1
+    },
+    {
+      "id": "rw-trn-003",
+      "section": "rw",
+      "domain": "expression_of_ideas",
+      "skills": ["transitions"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stimulus": "Restoring a wetland requires more than reflooding the land. The original seed bank is often gone, and invasive species colonise open water quickly. ______ most successful projects combine reflooding with several years of active replanting and weed control.",
+      "stem": "Which choice completes the text with the most logical transition?",
+      "choices": [
+        { "id": "A", "text": "Nonetheless," },
+        { "id": "B", "text": "For instance," },
+        { "id": "C", "text": "For this reason," },
+        { "id": "D", "text": "Similarly," }
+      ],
+      "answer": "C",
+      "rationale": "The second sentence states obstacles, and the third describes what projects therefore do about them — a cause-to-consequence link. (A) would set the third sentence against the second, but it follows from it. (B) would make replanting an example of the obstacles rather than a response to them.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 65,
+      "version": 1
+    },
+    {
+      "id": "rw-trn-004",
+      "section": "rw",
+      "domain": "expression_of_ideas",
+      "skills": ["transitions"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stimulus": "Critics of the study noted that its participants were all recruited from a single university, limiting how far the findings generalise. The authors have acknowledged the limitation. ______ they maintain that the effect they measured was large enough to warrant replication in broader samples.",
+      "stem": "Which choice completes the text with the most logical transition?",
+      "choices": [
+        { "id": "A", "text": "Still," },
+        { "id": "B", "text": "As a result," },
+        { "id": "C", "text": "Likewise," },
+        { "id": "D", "text": "In other words," }
+      ],
+      "answer": "A",
+      "rationale": "The authors concede the criticism and then push back — a concession-then-counter move that \"Still\" marks. (B) would make their defence a consequence of the limitation, which reverses the logic. (D) would signal restatement, but the third sentence adds a new claim rather than rephrasing the second.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 70,
+      "version": 1
+    },
+    {
+      "id": "rw-trn-005",
+      "section": "rw",
+      "domain": "expression_of_ideas",
+      "skills": ["transitions"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stimulus": "The archive holds 40,000 glass plate negatives, but only about 3,000 have been catalogued. Digitisation has been slow because each plate must be cleaned by hand before scanning. ______ the collection remains largely unavailable to researchers.",
+      "stem": "Which choice completes the text with the most logical transition?",
+      "choices": [
+        { "id": "A", "text": "By contrast," },
+        { "id": "B", "text": "Meanwhile," },
+        { "id": "C", "text": "In the meantime," },
+        { "id": "D", "text": "Admittedly," }
+      ],
+      "answer": "C",
+      "rationale": "The third sentence describes the state of affairs during the slow digitisation described in the second — a temporal \"while this continues\" relationship, which \"In the meantime\" expresses. (B) is close, but \"Meanwhile\" signals a simultaneous but separate event, whereas the unavailability follows directly from the ongoing delay.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 75,
+      "version": 1
+    },
+    {
+      "id": "rw-trn-006",
+      "section": "rw",
+      "domain": "expression_of_ideas",
+      "skills": ["transitions"],
+      "itemType": "mcq",
+      "difficulty": "hard",
+      "stimulus": "Economists have generally assumed that raising a minimum wage reduces employment among low-wage workers. A series of studies comparing adjacent counties across state lines found little such effect. ______ the assumption has not been abandoned so much as narrowed: most economists now hold that moderate increases have small effects while large ones may not.",
+      "stem": "Which choice completes the text with the most logical transition?",
+      "choices": [
+        { "id": "A", "text": "Consequently," },
+        { "id": "B", "text": "Even so," },
+        { "id": "C", "text": "For example," },
+        { "id": "D", "text": "Previously," }
+      ],
+      "answer": "B",
+      "rationale": "The evidence in the second sentence pushes against the assumption, yet the third reports the assumption survived in modified form. \"Even so\" carries that \"despite this\" force. (A) would say the narrowing follows straightforwardly from the studies, but the sentence stresses that the assumption persisted rather than collapsed.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 85,
+      "version": 1
+    },
+    {
+      "id": "rw-trn-007",
+      "section": "rw",
+      "domain": "expression_of_ideas",
+      "skills": ["transitions"],
+      "itemType": "mcq",
+      "difficulty": "hard",
+      "stimulus": "The manuscript's parchment was radiocarbon dated to the early ninth century, which appeared to settle the question of its age. The ink, ______ contains a pigment not manufactured until the twelfth, suggesting the text was written on much older material.",
+      "stem": "Which choice completes the text with the most logical transition?",
+      "choices": [
+        { "id": "A", "text": "moreover," },
+        { "id": "B", "text": "for instance," },
+        { "id": "C", "text": "though," },
+        { "id": "D", "text": "accordingly," }
+      ],
+      "answer": "C",
+      "rationale": "The ink evidence cuts against the conclusion the parchment date seemed to establish, so a contrastive transition is needed. (A) and (B) would present the ink as further support for the ninth-century date, and (D) would make it a consequence — all three reverse the logic of \"suggesting the text was written on much older material.\"",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 85,
+      "version": 1
+    },
+
+    {
+      "id": "rw-rhs-001",
+      "section": "rw",
+      "domain": "expression_of_ideas",
+      "skills": ["rhetorical_synthesis"],
+      "itemType": "mcq",
+      "difficulty": "easy",
+      "stimulus": "While researching a presentation, a student has taken the following notes:\n• The Wollemi pine was known only from fossils until 1994.\n• In 1994, a park ranger found about 100 living trees in a gorge in Australia.\n• The exact location is kept secret to protect the trees.\n• Seedlings are now sold in nurseries worldwide.",
+      "stem": "The student wants to emphasise the surprising nature of the 1994 discovery. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+      "choices": [
+        { "id": "A", "text": "The Wollemi pine, known only from fossils, turned out to be alive: in 1994 a park ranger found about 100 of the trees in an Australian gorge." },
+        { "id": "B", "text": "Seedlings of the Wollemi pine are now sold in nurseries worldwide." },
+        { "id": "C", "text": "The location of the Wollemi pines is kept secret in order to protect them." },
+        { "id": "D", "text": "A park ranger visited a gorge in Australia in 1994." }
+      ],
+      "answer": "A",
+      "rationale": "The goal is to convey surprise, which requires the contrast between \"known only from fossils\" and \"turned out to be alive.\" Only (A) contains both halves. (B), (C), and (D) each report a true detail but none of them creates the contrast the goal depends on.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 70,
+      "version": 1
+    },
+    {
+      "id": "rw-rhs-002",
+      "section": "rw",
+      "domain": "expression_of_ideas",
+      "skills": ["rhetorical_synthesis"],
+      "itemType": "mcq",
+      "difficulty": "easy",
+      "stimulus": "While researching a topic, a student has taken the following notes:\n• Bioluminescence is light produced by a living organism.\n• It occurs in fireflies, some fungi, and many deep-sea animals.\n• About 76% of ocean animals surveyed in one study were bioluminescent.\n• On land, bioluminescence is comparatively rare.",
+      "stem": "The student wants to compare the prevalence of bioluminescence in the ocean with its prevalence on land. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+      "choices": [
+        { "id": "A", "text": "Bioluminescence, which is light produced by a living organism, occurs in fireflies as well as in some fungi." },
+        { "id": "B", "text": "While about 76% of ocean animals in one survey were bioluminescent, the ability is comparatively rare on land." },
+        { "id": "C", "text": "Bioluminescence occurs in fireflies, some fungi, and many deep-sea animals." },
+        { "id": "D", "text": "One study surveyed ocean animals and found that about 76% were bioluminescent." }
+      ],
+      "answer": "B",
+      "rationale": "A comparison needs both sides. (B) pairs the ocean figure with the land observation and joins them with \"while.\" (D) supplies only the ocean side; (A) and (C) list examples without addressing prevalence anywhere.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 70,
+      "version": 1
+    },
+    {
+      "id": "rw-rhs-003",
+      "section": "rw",
+      "domain": "expression_of_ideas",
+      "skills": ["rhetorical_synthesis"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stimulus": "While researching a topic, a student has taken the following notes:\n• Tardigrades are microscopic animals under 1 mm long.\n• They can enter a dehydrated state called a tun.\n• In the tun state they have survived vacuum, extreme cold, and high radiation.\n• They are not, however, unusually resistant in their normal active state.",
+      "stem": "The student wants to make a generalisation about tardigrade resilience while noting an important qualification. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+      "choices": [
+        { "id": "A", "text": "Tardigrades have survived vacuum, extreme cold, and high radiation — but only in a dehydrated state called a tun, not while active." },
+        { "id": "B", "text": "Tardigrades are microscopic animals that measure less than a millimetre in length." },
+        { "id": "C", "text": "Tardigrades can enter a dehydrated state that researchers call a tun." },
+        { "id": "D", "text": "In the tun state, tardigrades have survived vacuum, extreme cold, and high radiation." }
+      ],
+      "answer": "A",
+      "rationale": "The goal has two parts: the general claim about resilience and the qualification limiting it. (A) states the survival feats and then restricts them with \"but only... not while active.\" (D) gives the generalisation without the qualification; (B) and (C) address neither.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 80,
+      "version": 1
+    },
+    {
+      "id": "rw-rhs-004",
+      "section": "rw",
+      "domain": "expression_of_ideas",
+      "skills": ["rhetorical_synthesis"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stimulus": "While researching a topic, a student has taken the following notes:\n• Composer Florence Price was the first Black woman whose symphony was played by a major American orchestra.\n• The Chicago Symphony premiered her Symphony No. 1 in 1933.\n• Much of her music was lost for decades.\n• In 2009, a large cache of her manuscripts was found in an abandoned house.",
+      "stem": "The student wants to introduce Florence Price to an audience unfamiliar with her. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+      "choices": [
+        { "id": "A", "text": "In 2009, a large cache of Florence Price's manuscripts was found in an abandoned house." },
+        { "id": "B", "text": "Much of Florence Price's music was lost for decades before being recovered." },
+        { "id": "C", "text": "Florence Price was the first Black woman to have a symphony performed by a major American orchestra, when the Chicago Symphony premiered her Symphony No. 1 in 1933." },
+        { "id": "D", "text": "The Chicago Symphony premiered a symphony in 1933." }
+      ],
+      "answer": "C",
+      "rationale": "An introduction should establish who the subject is and why she matters. (C) names her, states her historical significance, and anchors it to a concrete event. (A) and (B) presume the reader already knows who she is, and (D) omits her entirely.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 80,
+      "version": 1
+    },
+    {
+      "id": "rw-rhs-005",
+      "section": "rw",
+      "domain": "expression_of_ideas",
+      "skills": ["rhetorical_synthesis"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stimulus": "While researching a topic, a student has taken the following notes:\n• Green roofs are roofs covered with vegetation and a growing medium.\n• A study measured summer surface temperatures on adjacent roofs.\n• The conventional roof reached 66 °C; the green roof reached 32 °C.\n• Green roofs also retain rainwater, reducing storm runoff.",
+      "stem": "The student wants to present the temperature findings of the study. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+      "choices": [
+        { "id": "A", "text": "Green roofs, which are covered with vegetation and a growing medium, also retain rainwater." },
+        { "id": "B", "text": "In a study of adjacent roofs, the conventional roof reached a summer surface temperature of 66 °C while the green roof reached 32 °C." },
+        { "id": "C", "text": "A study measured summer surface temperatures on two roofs that were adjacent to each other." },
+        { "id": "D", "text": "Green roofs reduce storm runoff because they retain rainwater." }
+      ],
+      "answer": "B",
+      "rationale": "The stated goal is the temperature findings, so the answer must report the measurements. (B) gives both figures and identifies which roof produced each. (C) describes the study design without any result, and (A) and (D) address runoff, a different finding.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 80,
+      "version": 1
+    },
+    {
+      "id": "rw-rhs-006",
+      "section": "rw",
+      "domain": "expression_of_ideas",
+      "skills": ["rhetorical_synthesis"],
+      "itemType": "mcq",
+      "difficulty": "hard",
+      "stimulus": "While researching a topic, a student has taken the following notes:\n• Ötzi is a naturally mummified man found in the Alps in 1991.\n• Radiocarbon dating places his death around 3300 BCE.\n• An arrowhead was found lodged in his left shoulder in 2001, ten years after the discovery.\n• The arrowhead was visible only on a CT scan, not on the original X-rays.",
+      "stem": "The student wants to explain why the cause of Ötzi's death was not established immediately. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+      "choices": [
+        { "id": "A", "text": "Ötzi, found in the Alps in 1991, died around 3300 BCE according to radiocarbon dating." },
+        { "id": "B", "text": "An arrowhead was found lodged in Ötzi's left shoulder in 2001." },
+        { "id": "C", "text": "The arrowhead in Ötzi's shoulder was visible only on a CT scan, so it went undetected on the original X-rays for a decade after his discovery in 1991." },
+        { "id": "D", "text": "Ötzi is a naturally mummified man who was found in the Alps in 1991." }
+      ],
+      "answer": "C",
+      "rationale": "The goal asks specifically for an explanation of the delay, which requires the imaging limitation as a cause. Only (C) links the CT-versus-X-ray detail to the ten-year gap with \"so.\" (B) reports the discovery date without explaining the delay, and (A) and (D) concern dating and identification.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 90,
+      "version": 1
+    },
+    {
+      "id": "rw-rhs-007",
+      "section": "rw",
+      "domain": "expression_of_ideas",
+      "skills": ["rhetorical_synthesis"],
+      "itemType": "mcq",
+      "difficulty": "hard",
+      "stimulus": "While researching a topic, a student has taken the following notes:\n• A common claim is that goldfish have a three-second memory.\n• In one experiment, goldfish learned to press a lever for food.\n• The lever worked only during a one-hour window each day.\n• After some weeks, the fish gathered at the lever near the start of that window.",
+      "stem": "The student wants to use the experiment to challenge the common claim. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
+      "choices": [
+        { "id": "A", "text": "Goldfish in one experiment learned to press a lever in order to obtain food." },
+        { "id": "B", "text": "Although goldfish are said to have a three-second memory, those in one experiment learned to gather at a food lever near the one hour each day when it worked." },
+        { "id": "C", "text": "A lever used in one goldfish experiment operated only during a single one-hour window each day." },
+        { "id": "D", "text": "It is commonly claimed that goldfish have a memory lasting only about three seconds." }
+      ],
+      "answer": "B",
+      "rationale": "Challenging the claim requires stating it and then setting evidence against it. (B) does both, and the evidence it selects — timing behaviour across a daily window — is incompatible with a three-second memory in a way that lever-pressing alone (A) is not. (C) and (D) supply one half each and challenge nothing.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 90,
+      "version": 1
+    }
+  ]
+}

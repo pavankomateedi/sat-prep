@@ -1,0 +1,638 @@
+{
+  "items": [
+    {
+      "id": "rw-cid-001",
+      "section": "rw",
+      "domain": "information_and_ideas",
+      "skills": ["central_ideas_and_details"],
+      "itemType": "mcq",
+      "difficulty": "easy",
+      "stimulus": "The axolotl, a salamander native to a single lake system in Mexico, keeps its larval features for life: it never loses its feathery external gills and never leaves the water. Most salamanders undergo metamorphosis into a land-dwelling adult form. The axolotl simply grows larger, and reaches reproductive maturity while still looking, to most eyes, like a juvenile.",
+      "stem": "Which choice best states the main idea of the text?",
+      "choices": [
+        { "id": "A", "text": "The axolotl reaches adulthood while retaining features other salamanders lose." },
+        { "id": "B", "text": "The axolotl is endangered because its habitat is confined to one lake system." },
+        { "id": "C", "text": "Metamorphosis is a rare process among amphibians generally." },
+        { "id": "D", "text": "The axolotl's external gills make it a poor swimmer." }
+      ],
+      "answer": "A",
+      "rationale": "Every sentence develops the contrast between the axolotl's retained larval traits and the metamorphosis \"most salamanders\" undergo, ending with maturity reached in juvenile form. (B) draws on a detail (one lake system) the text never links to endangerment, and (C) reverses the text's claim that metamorphosis is the norm.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 60,
+      "version": 1
+    },
+    {
+      "id": "rw-cid-002",
+      "section": "rw",
+      "domain": "information_and_ideas",
+      "skills": ["central_ideas_and_details"],
+      "itemType": "mcq",
+      "difficulty": "easy",
+      "stimulus": "When the printing press reached the Ottoman Empire in the fifteenth century, it was used almost exclusively by Jewish, Armenian, and Greek communities for books in their own languages. Printing in Arabic script did not become widespread for nearly three centuries. Historians attribute the delay less to any single prohibition than to the strength of an existing manuscript economy: a large, skilled, and well-paid scribal profession had little reason to welcome a competitor.",
+      "stem": "According to the text, what primarily explains the long delay in Arabic-script printing?",
+      "choices": [
+        { "id": "A", "text": "A ban imposed on the technology by imperial authorities" },
+        { "id": "B", "text": "The entrenched interests of an established manuscript industry" },
+        { "id": "C", "text": "The technical difficulty of casting Arabic type" },
+        { "id": "D", "text": "A shortage of readers literate in Arabic script" }
+      ],
+      "answer": "B",
+      "rationale": "The final sentence attributes the delay \"less to any single prohibition than to the strength of an existing manuscript economy\" and describes a scribal profession with no reason to welcome competition. (A) is the option the text explicitly downgrades; (C) and (D) are never mentioned.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 70,
+      "version": 1
+    },
+    {
+      "id": "rw-cid-003",
+      "section": "rw",
+      "domain": "information_and_ideas",
+      "skills": ["central_ideas_and_details"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stimulus": "Ecologist Suzanne Simard's work on forest fungal networks is often summarised as showing that trees \"talk\" to one another. Simard's own claims are narrower. She has demonstrated that carbon moves between trees through fungal connections and that the direction of flow correlates with shading. Whether the transfer benefits the recipient tree, and whether the fungus is a conduit or an agent pursuing its own interest, remain open.",
+      "stem": "Which choice best states the main idea of the text?",
+      "choices": [
+        { "id": "A", "text": "Simard has proven that trees communicate deliberately through fungal networks." },
+        { "id": "B", "text": "Simard's demonstrated findings are more limited than their popular summary suggests." },
+        { "id": "C", "text": "Fungal networks harm the trees they connect." },
+        { "id": "D", "text": "Carbon transfer between trees occurs only in heavily shaded forests." }
+      ],
+      "answer": "B",
+      "rationale": "The text contrasts the popular \"trees talk\" summary with \"Simard's own claims are narrower,\" then lists what is established and what \"remain[s] open.\" (A) states the popular version the text is correcting; (C) asserts harm the text says is undetermined.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 80,
+      "version": 1
+    },
+    {
+      "id": "rw-cid-004",
+      "section": "rw",
+      "domain": "information_and_ideas",
+      "skills": ["central_ideas_and_details"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stimulus": "The following text is adapted from a discussion of language documentation.\n\nWhen a language is described as having \"no written form,\" the phrase usually means no community-adopted orthography, not that the language has never been written down. Many such languages have been transcribed extensively — by missionaries, by linguists, by colonial administrators — in systems designed by outsiders for outsiders' purposes. A community deciding to adopt a writing system today is therefore rarely starting from nothing. It is more often choosing among, or against, transcriptions that already exist and that carry the history of whoever made them.",
+      "stem": "Which choice best states the main idea of the text?",
+      "choices": [
+        { "id": "A", "text": "Communities adopting a writing system usually confront existing outsider transcriptions rather than a blank slate." },
+        { "id": "B", "text": "Missionaries produced the most accurate transcriptions of undocumented languages." },
+        { "id": "C", "text": "Languages without an orthography are more likely to disappear." },
+        { "id": "D", "text": "Linguists should design orthographies on behalf of the communities that use them." }
+      ],
+      "answer": "A",
+      "rationale": "The text corrects a misreading of \"no written form,\" notes extensive outsider transcription, and concludes that a community is \"rarely starting from nothing\" but \"choosing among, or against\" what exists. (D) inverts the text's implied caution about outsider-designed systems.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 85,
+      "version": 1
+    },
+    {
+      "id": "rw-cid-005",
+      "section": "rw",
+      "domain": "information_and_ideas",
+      "skills": ["central_ideas_and_details"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stimulus": "Materials scientists have long known that some metals become stronger, not weaker, as they are deformed — a property called work hardening. A recent study of a nickel-cobalt alloy found the effect persisted to an unusual degree at cryogenic temperatures, where most alloys turn brittle. The researchers traced the behaviour to the way deformation generated internal boundaries faster than cracks could propagate through them.",
+      "stem": "According to the text, what made the nickel-cobalt alloy's behaviour notable?",
+      "choices": [
+        { "id": "A", "text": "It was the first alloy in which work hardening was observed." },
+        { "id": "B", "text": "It continued to work-harden under conditions that usually cause brittleness." },
+        { "id": "C", "text": "It became weaker rather than stronger when deformed." },
+        { "id": "D", "text": "It generated cracks faster than internal boundaries could form." }
+      ],
+      "answer": "B",
+      "rationale": "The text says the effect \"persisted to an unusual degree at cryogenic temperatures, where most alloys turn brittle.\" (A) is contradicted by \"long known\"; (C) reverses the definition of work hardening; (D) reverses the mechanism the researchers identified.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 80,
+      "version": 1
+    },
+    {
+      "id": "rw-cid-006",
+      "section": "rw",
+      "domain": "information_and_ideas",
+      "skills": ["central_ideas_and_details"],
+      "itemType": "mcq",
+      "difficulty": "hard",
+      "stimulus": "The following text is adapted from an essay on translation.\n\nA translator's fidelity is usually imagined as fidelity to meaning, with style a decorative surplus that may be sacrificed under pressure. But in texts where the manner of saying carries the argument — a satire, a legal parody, a poem built on a pun — meaning stripped of style is not a reduced version of the text. It is a different text that happens to share its subject matter. The translator who preserves the paraphrasable content of such a work while flattening its voice has not translated conservatively. She has translated inaccurately, and the inaccuracy is invisible precisely because it leaves the summary intact.",
+      "stem": "Which choice best states the main idea of the text?",
+      "choices": [
+        { "id": "A", "text": "For some texts, preserving style is a requirement of accuracy rather than an optional refinement." },
+        { "id": "B", "text": "Poems are inherently more difficult to translate than legal documents." },
+        { "id": "C", "text": "Translators should prioritise readability over fidelity to the original." },
+        { "id": "D", "text": "Summaries of translated works are usually more accurate than the translations themselves." }
+      ],
+      "answer": "A",
+      "rationale": "The text argues that where \"the manner of saying carries the argument,\" dropping style produces \"a different text,\" so such a translation is not conservative but \"inaccurate.\" That makes style part of accuracy. (D) misreads the final clause, which says the summary staying intact is what hides the error, not that summaries are accurate.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 95,
+      "version": 1
+    },
+    {
+      "id": "rw-cid-007",
+      "section": "rw",
+      "domain": "information_and_ideas",
+      "skills": ["central_ideas_and_details"],
+      "itemType": "mcq",
+      "difficulty": "hard",
+      "stimulus": "Astronomers describe the period between roughly 400,000 and 150 million years after the Big Bang as the cosmic dark ages. The name is precise rather than poetic: the universe had cooled enough for neutral hydrogen to form, and neutral hydrogen absorbs the wavelengths that would otherwise let us see through it. The era is dark not because nothing was happening but because the medium through which we would have to look was opaque.",
+      "stem": "Which choice best states the main idea of the text?",
+      "choices": [
+        { "id": "A", "text": "The cosmic dark ages are so named because of an observational obstacle, not an absence of events." },
+        { "id": "B", "text": "No stars or galaxies existed during the cosmic dark ages." },
+        { "id": "C", "text": "Neutral hydrogen formed later than astronomers had predicted." },
+        { "id": "D", "text": "The cosmic dark ages lasted approximately 400,000 years." }
+      ],
+      "answer": "A",
+      "rationale": "The final sentence states the point directly: \"dark not because nothing was happening but because the medium... was opaque.\" (B) is exactly the misconception the text corrects. (D) misreads the range, which runs from 400,000 to 150 million years.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 90,
+      "version": 1
+    },
+
+    {
+      "id": "rw-coet-001",
+      "section": "rw",
+      "domain": "information_and_ideas",
+      "skills": ["command_of_evidence_textual"],
+      "itemType": "mcq",
+      "difficulty": "easy",
+      "stimulus": "Biologists studying the Portia jumping spider have argued that it plans routes in advance rather than reacting moment to moment. A student wants to test the claim that Portia commits to a route before beginning to move.",
+      "stem": "Which finding, if true, would most directly support the student's claim?",
+      "choices": [
+        { "id": "A", "text": "Portia individuals that could not see the prey before setting out still reached it eventually." },
+        { "id": "B", "text": "Portia individuals continued along a chosen detour even after the prey was removed from view." },
+        { "id": "C", "text": "Portia individuals moved more slowly on rough surfaces than on smooth ones." },
+        { "id": "D", "text": "Portia individuals were more likely to hunt at dawn than at midday." }
+      ],
+      "answer": "B",
+      "rationale": "Continuing a detour after the prey is no longer visible shows the spider is following a route decided beforehand rather than responding to what it currently sees — exactly the claim at issue. (A) shows arrival without prior sight, which argues against advance planning; (C) and (D) concern locomotion and timing, not route commitment.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 70,
+      "version": 1
+    },
+    {
+      "id": "rw-coet-002",
+      "section": "rw",
+      "domain": "information_and_ideas",
+      "skills": ["command_of_evidence_textual"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stimulus": "In her study of nineteenth-century women's diaries, historian Leah Brandt argues that the diaries' repetitive weather entries were not filler but a form of household record-keeping: weather governed when preserving, laundering, and planting could be done, so recording it was recording the work week.",
+      "stem": "Which quotation from a diary would best support Brandt's argument?",
+      "choices": [
+        { "id": "A", "text": "\"Rain again. I begin to despair of the sun, and of my own spirits with it.\"" },
+        { "id": "B", "text": "\"Clear and dry. Put up the last of the beans; could not have done it Tuesday for the damp.\"" },
+        { "id": "C", "text": "\"A fine morning. Walked to the ridge with Susan and admired the view.\"" },
+        { "id": "D", "text": "\"Snow before dawn, the earliest I have recorded in nine winters here.\"" }
+      ],
+      "answer": "B",
+      "rationale": "Brandt's claim is that weather entries track the work that weather permits. (B) ties the day's weather directly to a household task and to a task the previous weather prevented, which is precisely the link she describes. (A) uses weather to report mood, (C) reports leisure, and (D) records weather as weather — none connects it to household labour.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 85,
+      "version": 1
+    },
+    {
+      "id": "rw-coet-003",
+      "section": "rw",
+      "domain": "information_and_ideas",
+      "skills": ["command_of_evidence_textual"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stimulus": "Researchers hypothesise that a bird species' willingness to nest near roads depends on the pitch of its song rather than on the loudness of traffic: species whose songs fall in the same frequency band as engine noise should avoid roadsides, because their calls would be masked.",
+      "stem": "Which finding, if true, would most strongly support the researchers' hypothesis?",
+      "choices": [
+        { "id": "A", "text": "Roadside nesting declined for all species as traffic volume increased." },
+        { "id": "B", "text": "Low-pitched species avoided roadsides even where traffic was light, while high-pitched species nested near heavy traffic." },
+        { "id": "C", "text": "Species with the loudest songs nested closest to roads regardless of pitch." },
+        { "id": "D", "text": "Birds of all species sang more frequently at dawn, before traffic began." }
+      ],
+      "answer": "B",
+      "rationale": "The hypothesis predicts that frequency overlap, not noise level, drives avoidance. (B) is the decisive pattern: pitch tracks avoidance even when volume runs the other way. (A) supports a loudness explanation, which is the rival hypothesis; (C) points to amplitude rather than pitch.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 90,
+      "version": 1
+    },
+    {
+      "id": "rw-coet-004",
+      "section": "rw",
+      "domain": "information_and_ideas",
+      "skills": ["command_of_evidence_textual"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stimulus": "In a novel, the narrator insists throughout that she is indifferent to her sister's opinion of her. A critic argues that the narration quietly undercuts this insistence.",
+      "stem": "Which quotation from the novel would best support the critic's argument?",
+      "choices": [
+        { "id": "A", "text": "\"I told her plainly that her approval was nothing to me, and she said nothing at all.\"" },
+        { "id": "B", "text": "\"I did not care what she thought. I had rehearsed the sentence for a week and delivered it perfectly.\"" },
+        { "id": "C", "text": "\"We had not spoken in some months, and the house was quieter for it.\"" },
+        { "id": "D", "text": "\"My sister was three years older and had always been the taller of us.\"" }
+      ],
+      "answer": "B",
+      "rationale": "The critic claims the narration undermines the stated indifference. In (B) the narrator asserts indifference and, in the next breath, reveals a week of rehearsal — effort that only matters if the opinion matters. The contradiction is inside the narration itself. (A) reports the claim without undercutting it; (C) and (D) are neutral detail.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 90,
+      "version": 1
+    },
+    {
+      "id": "rw-coet-005",
+      "section": "rw",
+      "domain": "information_and_ideas",
+      "skills": ["command_of_evidence_textual"],
+      "itemType": "mcq",
+      "difficulty": "hard",
+      "stimulus": "Economic historians disagree about why a particular medieval port declined. One school holds that the harbour silted up, making it unusable for larger vessels. Another holds that the port's decline preceded the silting and was caused by a shift in trade routes, with the silting a consequence of reduced dredging once traffic had already fallen.",
+      "stem": "Which finding, if true, would most strongly support the second school's position?",
+      "choices": [
+        { "id": "A", "text": "Sediment cores show the harbour was substantially silted by 1340." },
+        { "id": "B", "text": "Customs records show shipping volumes fell sharply from 1290, while sediment cores show little silting before 1330." },
+        { "id": "C", "text": "Larger vessels became common in the region during the fourteenth century." },
+        { "id": "D", "text": "Neighbouring ports also silted during the same period." }
+      ],
+      "answer": "B",
+      "rationale": "The second school's distinctive claim is about ordering: decline first, silting after. (B) supplies exactly that sequence, with traffic collapsing forty years before meaningful silting. (A) establishes silting without establishing when the decline began, so it cannot separate the two accounts; (C) would strengthen the first school.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 100,
+      "version": 1
+    },
+    {
+      "id": "rw-coet-006",
+      "section": "rw",
+      "domain": "information_and_ideas",
+      "skills": ["command_of_evidence_textual"],
+      "itemType": "mcq",
+      "difficulty": "hard",
+      "stimulus": "A team proposes that a species of desert ant navigates home by counting steps rather than by using visual landmarks. Critics note that step-counting and landmark use would predict the same behaviour on a normal return journey, so ordinary observation cannot distinguish them.",
+      "stem": "Which experimental result would most directly resolve the disagreement in the team's favour?",
+      "choices": [
+        { "id": "A", "text": "Ants returned accurately along routes they had travelled many times before." },
+        { "id": "B", "text": "Ants whose legs were experimentally lengthened after the outbound trip overshot the nest by a proportional distance." },
+        { "id": "C", "text": "Ants took longer to return when the sun was obscured by cloud." },
+        { "id": "D", "text": "Ants that were displaced sideways still oriented toward the nest." }
+      ],
+      "answer": "B",
+      "rationale": "The critics' point is that the two hypotheses make identical predictions under normal conditions, so the evidence must break that tie. Lengthening the legs changes stride length without changing the landmarks, and a proportional overshoot is what step-counting predicts and landmark use does not. (A) is exactly the ordinary observation the critics say is uninformative.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 100,
+      "version": 1
+    },
+    {
+      "id": "rw-coet-007",
+      "section": "rw",
+      "domain": "information_and_ideas",
+      "skills": ["command_of_evidence_textual"],
+      "itemType": "mcq",
+      "difficulty": "easy",
+      "stimulus": "A city council claims that its new bike-lane network has made cycling safer. A researcher wants to evaluate that claim rigorously.",
+      "stem": "Which finding would most directly support the council's claim?",
+      "choices": [
+        { "id": "A", "text": "The number of people cycling in the city has risen since the lanes opened." },
+        { "id": "B", "text": "The number of cyclist injuries per kilometre cycled has fallen since the lanes opened." },
+        { "id": "C", "text": "The total number of cyclist injuries has risen since the lanes opened." },
+        { "id": "D", "text": "Residents surveyed report that they feel safer cycling than before." }
+      ],
+      "answer": "B",
+      "rationale": "Safety is a rate, not a count. (B) divides injuries by exposure, which is what \"safer\" means. (A) measures popularity, not safety. (C) is compatible with improved safety if far more people are now cycling. (D) measures perception, which can diverge from risk.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 75,
+      "version": 1
+    },
+
+    {
+      "id": "rw-coeq-001",
+      "section": "rw",
+      "domain": "information_and_ideas",
+      "skills": ["command_of_evidence_quantitative"],
+      "itemType": "mcq",
+      "difficulty": "easy",
+      "stimulus": "A researcher measured the germination rate of four wildflower species after seeds were stored for one year at two temperatures. She concluded that cold storage improved germination for every species tested.",
+      "figure": {
+        "kind": "table",
+        "caption": "Germination rate after one year of storage (percent)",
+        "columns": ["Species", "Stored at 20 °C", "Stored at 4 °C"],
+        "rows": [
+          ["Blue flax", "31", "58"],
+          ["Prairie clover", "44", "49"],
+          ["Wild bergamot", "22", "60"],
+          ["Black-eyed Susan", "55", "71"]
+        ]
+      },
+      "stem": "Which choice best describes data from the table that support the researcher's conclusion?",
+      "choices": [
+        { "id": "A", "text": "For each species, the germination rate at 4 °C was higher than at 20 °C." },
+        { "id": "B", "text": "Wild bergamot had the largest increase, from 22% to 60%." },
+        { "id": "C", "text": "Black-eyed Susan had the highest germination rate at both temperatures." },
+        { "id": "D", "text": "Prairie clover germinated at 49% after cold storage." }
+      ],
+      "answer": "A",
+      "rationale": "The conclusion is about every species, so the support must cover all four. (A) states the pattern that holds across the whole table. (B), (C), and (D) are accurate readings of individual cells but each covers only part of the claim.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 70,
+      "version": 1
+    },
+    {
+      "id": "rw-coeq-002",
+      "section": "rw",
+      "domain": "information_and_ideas",
+      "skills": ["command_of_evidence_quantitative"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stimulus": "A transit agency added evening service on four routes and tracked ridership before and after. An analyst argued that the added service mattered most on routes that had previously had the least evening coverage.",
+      "figure": {
+        "kind": "table",
+        "caption": "Average weekday evening riders, before and after service expansion",
+        "columns": ["Route", "Prior evening trips per day", "Riders before", "Riders after"],
+        "rows": [
+          ["Route 3", "2", "140", "410"],
+          ["Route 8", "4", "260", "480"],
+          ["Route 11", "9", "520", "610"],
+          ["Route 14", "12", "700", "740"]
+        ]
+      },
+      "stem": "Which choice best describes data from the table that support the analyst's argument?",
+      "choices": [
+        { "id": "A", "text": "Route 14 carried the most riders after the expansion, at 740 per day." },
+        { "id": "B", "text": "Route 3, which had the fewest prior evening trips, nearly tripled its ridership, while Route 14, which had the most, gained under 6%." },
+        { "id": "C", "text": "Every route gained riders after the expansion." },
+        { "id": "D", "text": "Route 11 had 520 riders before the expansion and 610 after." }
+      ],
+      "answer": "B",
+      "rationale": "The argument is about which routes benefited most, so the support must compare the size of the gain against prior coverage. (B) contrasts the two extremes and expresses each as a relative change. (A) and (D) report levels rather than gains, and (C) is true but says nothing about which routes gained most.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 90,
+      "version": 1
+    },
+    {
+      "id": "rw-coeq-003",
+      "section": "rw",
+      "domain": "information_and_ideas",
+      "skills": ["command_of_evidence_quantitative"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stimulus": "Students measured how far a model glider travelled when launched at four wing angles. Their write-up claims that increasing the wing angle improves distance only up to a point, after which further increases hurt performance.",
+      "figure": {
+        "kind": "table",
+        "caption": "Mean glide distance by wing angle (10 trials each)",
+        "columns": ["Wing angle (degrees)", "Mean distance (m)"],
+        "rows": [
+          ["4", "6.2"],
+          ["8", "9.8"],
+          ["12", "10.1"],
+          ["16", "7.4"]
+        ]
+      },
+      "stem": "Which choice most effectively uses data from the table to support the students' claim?",
+      "choices": [
+        { "id": "A", "text": "Distance rose from 6.2 m at 4° to 10.1 m at 12°, then fell to 7.4 m at 16°." },
+        { "id": "B", "text": "The greatest mean distance recorded was 10.1 m." },
+        { "id": "C", "text": "Distance at 16° was still greater than distance at 4°." },
+        { "id": "D", "text": "Each wing angle was tested in 10 trials." }
+      ],
+      "answer": "A",
+      "rationale": "The claim has two parts — improvement, then decline — so the evidence must show both. (A) traces the rise to a peak at 12° and the fall at 16°. (B) identifies the peak without showing the decline; (C) and (D) are true but address neither part of the claim.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 85,
+      "version": 1
+    },
+    {
+      "id": "rw-coeq-004",
+      "section": "rw",
+      "domain": "information_and_ideas",
+      "skills": ["command_of_evidence_quantitative"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stimulus": "A librarian compared circulation of print and e-book copies of the same twelve titles. She concluded that format preference depends on genre: readers reached for print with illustrated books and for e-books with long novels.",
+      "figure": {
+        "kind": "table",
+        "caption": "Share of total checkouts that were e-books, by genre",
+        "columns": ["Genre", "E-book share of checkouts (%)"],
+        "rows": [
+          ["Illustrated cookbooks", "18"],
+          ["Graphic novels", "24"],
+          ["Long literary novels", "67"],
+          ["Long genre novels", "71"]
+        ]
+      },
+      "stem": "Which choice best describes data from the table that support the librarian's conclusion?",
+      "choices": [
+        { "id": "A", "text": "E-book share exceeded 60% for both categories of long novel but stayed below 25% for both illustrated categories." },
+        { "id": "B", "text": "Long genre novels had the highest e-book share, at 71%." },
+        { "id": "C", "text": "Illustrated cookbooks had the lowest e-book share, at 18%." },
+        { "id": "D", "text": "Twelve titles were compared across the two formats." }
+      ],
+      "answer": "A",
+      "rationale": "The conclusion contrasts two genre groups, so the support must span both. (A) gives the range for each group and shows the gap between them. (B) and (C) each report a single extreme, which cannot establish a group-level pattern.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 85,
+      "version": 1
+    },
+    {
+      "id": "rw-coeq-005",
+      "section": "rw",
+      "domain": "information_and_ideas",
+      "skills": ["command_of_evidence_quantitative"],
+      "itemType": "mcq",
+      "difficulty": "hard",
+      "stimulus": "A soil scientist tested whether a cover crop reduced nitrogen runoff. She reported that the cover crop reduced runoff substantially in wet years but made little difference in dry years, and cautioned that the average across all years understates the effect where it matters.",
+      "figure": {
+        "kind": "table",
+        "caption": "Nitrogen runoff (kg per hectare) by year type",
+        "columns": ["Year type", "No cover crop", "With cover crop"],
+        "rows": [
+          ["Wet (n = 4)", "28.4", "12.1"],
+          ["Dry (n = 5)", "6.9", "6.2"],
+          ["All years (n = 9)", "16.4", "8.8"]
+        ]
+      },
+      "stem": "Which choice most effectively uses data from the table to support the scientist's caution about the all-years average?",
+      "choices": [
+        { "id": "A", "text": "In wet years runoff fell by 16.3 kg per hectare, more than double the 7.6 kg per hectare reduction shown by the all-years average." },
+        { "id": "B", "text": "In dry years runoff fell by only 0.7 kg per hectare." },
+        { "id": "C", "text": "Across all years, runoff fell from 16.4 to 8.8 kg per hectare." },
+        { "id": "D", "text": "There were five dry years and four wet years in the study." }
+      ],
+      "answer": "A",
+      "rationale": "The caution is that the pooled average understates the wet-year effect, so the evidence must set the two figures side by side. (A) does exactly that: 16.3 versus 7.6. (B) and (D) supply pieces of the explanation but never make the comparison, and (C) reports the very average being criticised.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 105,
+      "version": 1
+    },
+    {
+      "id": "rw-coeq-006",
+      "section": "rw",
+      "domain": "information_and_ideas",
+      "skills": ["command_of_evidence_quantitative"],
+      "itemType": "mcq",
+      "difficulty": "hard",
+      "stimulus": "A team studied whether a reminder message increased clinic attendance. They found the message raised attendance for patients booked more than three weeks ahead but had no measurable effect on patients booked within a week, and argued the message works by counteracting forgetting rather than by increasing motivation.",
+      "figure": {
+        "kind": "table",
+        "caption": "Attendance rate (percent) by booking lead time",
+        "columns": ["Lead time", "No reminder", "Reminder"],
+        "rows": [
+          ["0-7 days", "88", "89"],
+          ["8-21 days", "79", "85"],
+          ["More than 21 days", "62", "80"]
+        ]
+      },
+      "stem": "Which choice most effectively uses data from the table to support the team's argument?",
+      "choices": [
+        { "id": "A", "text": "The reminder raised attendance by 18 percentage points at lead times over 21 days but by only 1 point at 0-7 days, the interval where forgetting is least likely." },
+        { "id": "B", "text": "Attendance without a reminder was highest at short lead times, at 88%." },
+        { "id": "C", "text": "With a reminder, attendance was 80% at lead times over 21 days." },
+        { "id": "D", "text": "Attendance rose in every lead-time category when a reminder was sent." }
+      ],
+      "answer": "A",
+      "rationale": "The argument is mechanistic: the reminder should help only where forgetting is plausible. (A) pairs the largest effect with the longest gap and the negligible effect with the shortest, which is the pattern forgetting predicts and a general motivation boost does not. (D) is technically true but flattens the contrast the argument depends on.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 110,
+      "version": 1
+    },
+
+    {
+      "id": "rw-inf-001",
+      "section": "rw",
+      "domain": "information_and_ideas",
+      "skills": ["inferences"],
+      "itemType": "mcq",
+      "difficulty": "easy",
+      "stimulus": "Emperor penguins huddle in tightly packed groups during Antarctic winter storms. Birds on the windward edge lose heat fastest, and researchers have observed that the huddle moves in slow waves as edge birds work their way inward and others take their place. No individual holds the sheltered centre for long, and the huddle as a whole survives the storm intact. This suggests that ______",
+      "stem": "Which choice most logically completes the text?",
+      "choices": [
+        { "id": "A", "text": "the cost of exposure is shared across the group rather than borne by a fixed few." },
+        { "id": "B", "text": "penguins on the windward edge are larger than those at the centre." },
+        { "id": "C", "text": "huddling is more effective in mild weather than in storms." },
+        { "id": "D", "text": "individual penguins could survive the storm equally well alone." }
+      ],
+      "answer": "A",
+      "rationale": "The rotation described — edge birds moving inward, no one holding the centre for long — distributes the exposure cost over time across all members. (D) contradicts the point of huddling; (B) and (C) introduce claims about body size and mild weather that the text never supports.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 70,
+      "version": 1
+    },
+    {
+      "id": "rw-inf-002",
+      "section": "rw",
+      "domain": "information_and_ideas",
+      "skills": ["inferences"],
+      "itemType": "mcq",
+      "difficulty": "easy",
+      "stimulus": "A museum acquired a painting long attributed to a well-known workshop. Infrared imaging revealed an underdrawing in a style the workshop never used, executed with a tool it did not stock. The museum has not reassigned the painting to another artist, noting that workshops sometimes employed outside specialists for preparatory work. Still, the imaging means that ______",
+      "stem": "Which choice most logically completes the text?",
+      "choices": [
+        { "id": "A", "text": "the painting is definitely the work of a different artist." },
+        { "id": "B", "text": "the attribution can no longer rest on stylistic consistency alone." },
+        { "id": "C", "text": "infrared imaging is unreliable for studying underdrawings." },
+        { "id": "D", "text": "the workshop produced fewer paintings than previously thought." }
+      ],
+      "answer": "B",
+      "rationale": "The text reports evidence of an inconsistent hand while explicitly declining to reassign the work, so the warranted conclusion is limited: consistency can no longer carry the attribution by itself. (A) overreaches past the museum's own caution about outside specialists.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 75,
+      "version": 1
+    },
+    {
+      "id": "rw-inf-003",
+      "section": "rw",
+      "domain": "information_and_ideas",
+      "skills": ["inferences"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stimulus": "Certain fig species are pollinated by a single wasp species, and that wasp reproduces only inside that fig. Where the fig has been introduced without its wasp, the trees grow vigorously for decades but set no viable seed. Horticulturists in such regions therefore propagate the trees from cuttings. It can reasonably be inferred that in these regions ______",
+      "stem": "Which choice most logically completes the text?",
+      "choices": [
+        { "id": "A", "text": "the fig trees are unlikely to spread beyond where people plant them." },
+        { "id": "B", "text": "the fig trees grow more slowly than in their native range." },
+        { "id": "C", "text": "the pollinating wasp has begun to arrive on its own." },
+        { "id": "D", "text": "cuttings produce trees genetically different from their parents." }
+      ],
+      "answer": "A",
+      "rationale": "No viable seed means no natural reproduction, and propagation depends entirely on people taking cuttings; so the trees can only appear where they are deliberately planted. (B) contradicts \"grow vigorously\"; (D) reverses the biology of cuttings, which are clones.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 85,
+      "version": 1
+    },
+    {
+      "id": "rw-inf-004",
+      "section": "rw",
+      "domain": "information_and_ideas",
+      "skills": ["inferences"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stimulus": "In a study of memory for faces, participants who were told beforehand that they would be tested performed no better than participants who were not told. However, when the same materials were used and participants were instead asked, during viewing, to judge how trustworthy each face looked, later recognition improved sharply. The researchers concluded that ______",
+      "stem": "Which choice most logically completes the text?",
+      "choices": [
+        { "id": "A", "text": "the intention to remember matters less than the kind of processing the task requires." },
+        { "id": "B", "text": "participants who expect a test deliberately withhold effort." },
+        { "id": "C", "text": "trustworthy-looking faces are inherently easier to recognise." },
+        { "id": "D", "text": "recognition memory for faces cannot be improved by any intervention." }
+      ],
+      "answer": "A",
+      "rationale": "Warning participants (which manipulates intention) did nothing; changing what they did while viewing (which manipulates processing) helped a lot. The contrast points to processing rather than intent. (C) misreads the manipulation — every face was judged, not only trustworthy ones — and (D) is contradicted by the improvement observed.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 90,
+      "version": 1
+    },
+    {
+      "id": "rw-inf-005",
+      "section": "rw",
+      "domain": "information_and_ideas",
+      "skills": ["inferences"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stimulus": "Tree rings in a temperate forest record annual growth, with wide rings in favourable years. Dendrochronologists cross-date samples by matching ring-width patterns across many trees, which lets them assign an exact calendar year to each ring even in dead wood. The method depends on the fact that trees in one region share a common growth signal. In a region where each tree's growth is governed mainly by its own local conditions, ______",
+      "stem": "Which choice most logically completes the text?",
+      "choices": [
+        { "id": "A", "text": "cross-dating would be unreliable because the shared pattern needed for matching would be weak." },
+        { "id": "B", "text": "tree rings would no longer form on an annual cycle." },
+        { "id": "C", "text": "dead wood would decay before it could be sampled." },
+        { "id": "D", "text": "growth rings would be uniformly wide across all years." }
+      ],
+      "answer": "A",
+      "rationale": "The passage states the method \"depends on\" a common regional growth signal. Remove that shared signal and the matching step has nothing to match on. (B) and (D) alter ring formation itself, which the premise does not change — only the source of year-to-year variation does.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 90,
+      "version": 1
+    },
+    {
+      "id": "rw-inf-006",
+      "section": "rw",
+      "domain": "information_and_ideas",
+      "skills": ["inferences"],
+      "itemType": "mcq",
+      "difficulty": "hard",
+      "stimulus": "A common defence of standardised admissions tests is that they identify capable students from under-resourced schools whose grades understate their preparation. A recent analysis found that the tests do identify such students, but also that the students so identified are, on average, those whose schools offered test preparation. Where no preparation was available, the test and the grades agreed closely. This suggests that the test's much-cited ability to surface overlooked talent ______",
+      "stem": "Which choice most logically completes the text?",
+      "choices": [
+        { "id": "A", "text": "operates mainly where a resource the defence assumes is absent is in fact present." },
+        { "id": "B", "text": "has been overstated because the test measures nothing beyond grades." },
+        { "id": "C", "text": "applies equally to students at well-resourced and under-resourced schools." },
+        { "id": "D", "text": "depends on students taking the test more than once." }
+      ],
+      "answer": "A",
+      "rationale": "The defence assumes under-resourced schools; the finding is that the effect appears only where those schools nonetheless supplied test preparation, and vanishes where they did not. So the mechanism runs on a resource the defence had assumed was missing. (B) overstates: the test did diverge from grades, just conditionally.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 105,
+      "version": 1
+    },
+    {
+      "id": "rw-inf-007",
+      "section": "rw",
+      "domain": "information_and_ideas",
+      "skills": ["inferences"],
+      "itemType": "mcq",
+      "difficulty": "hard",
+      "stimulus": "Metal-poor stars formed early in the universe's history, before generations of supernovae enriched the interstellar medium with heavier elements. Astronomers therefore treat low metal content as a marker of great age. A complication arises in dwarf galaxies with very low star-formation rates: enrichment there proceeds so slowly that stars forming even recently may still be metal-poor. It follows that in such galaxies ______",
+      "stem": "Which choice most logically completes the text?",
+      "choices": [
+        { "id": "A", "text": "metal content is a less reliable indicator of a star's age than it is elsewhere." },
+        { "id": "B", "text": "no stars formed during the universe's earliest epochs." },
+        { "id": "C", "text": "supernovae fail to produce heavy elements at all." },
+        { "id": "D", "text": "the oldest stars will contain more metal than the youngest." }
+      ],
+      "answer": "A",
+      "rationale": "The inference is about the marker, not the stars: if recently formed stars can also be metal-poor, low metal content no longer distinguishes old from young there. (C) overstates — enrichment is slow, not absent — and (D) reverses the relationship without warrant.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 105,
+      "version": 1
+    }
+  ]
+}

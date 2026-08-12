@@ -1,0 +1,677 @@
+{
+  "items": [
+    {
+      "id": "rw-bnd-009",
+      "section": "rw",
+      "domain": "standard_english_conventions",
+      "skills": ["boundaries"],
+      "itemType": "mcq",
+      "difficulty": "easy",
+      "stimulus": "The lyrebird can imitate almost any sound it hears in the forest, including chainsaws and camera ______ ability that has made recordings of the species notoriously difficult to interpret.",
+      "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      "choices": [
+        { "id": "A", "text": "shutters, an" },
+        { "id": "B", "text": "shutters an" },
+        { "id": "C", "text": "shutters. An" },
+        { "id": "D", "text": "shutters; an" }
+      ],
+      "answer": "A",
+      "rationale": "\"An ability that has made recordings...\" is an appositive phrase, not an independent clause, so a comma attaches it. (C) and (D) both require a complete sentence after them, and this fragment is not one.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 55,
+      "version": 1
+    },
+    {
+      "id": "rw-bnd-010",
+      "section": "rw",
+      "domain": "standard_english_conventions",
+      "skills": ["boundaries"],
+      "itemType": "mcq",
+      "difficulty": "easy",
+      "stimulus": "Glaciologists drill ice cores to read past climate. Each layer traps a sample of ancient ______ deeper the layer, the older the air.",
+      "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      "choices": [
+        { "id": "A", "text": "atmosphere, the" },
+        { "id": "B", "text": "atmosphere the" },
+        { "id": "C", "text": "atmosphere: the" },
+        { "id": "D", "text": "atmosphere, and the" }
+      ],
+      "answer": "C",
+      "rationale": "The first clause is complete and the second explains what it means in practice, which is a colon's job. (A) creates a comma splice, and (D) reads as a mere addition rather than the explanation the sentence is making.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 60,
+      "version": 1
+    },
+    {
+      "id": "rw-bnd-011",
+      "section": "rw",
+      "domain": "standard_english_conventions",
+      "skills": ["boundaries"],
+      "itemType": "mcq",
+      "difficulty": "easy",
+      "stimulus": "Hedy Lamarr is remembered chiefly as a film ______ she also co-invented a frequency-hopping system that anticipated modern wireless communication.",
+      "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      "choices": [
+        { "id": "A", "text": "actor, but" },
+        { "id": "B", "text": "actor but" },
+        { "id": "C", "text": "actor, however" },
+        { "id": "D", "text": "actor," }
+      ],
+      "answer": "A",
+      "rationale": "Two independent clauses joined by the coordinating conjunction \"but\" take a comma before it. (C) uses a conjunctive adverb, which cannot join clauses with only a comma, and (D) is a bare comma splice.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 55,
+      "version": 1
+    },
+    {
+      "id": "rw-bnd-012",
+      "section": "rw",
+      "domain": "standard_english_conventions",
+      "skills": ["boundaries"],
+      "itemType": "mcq",
+      "difficulty": "easy",
+      "stimulus": "The stepwells of Gujarat descend as deep as nine ______ their carved galleries stay cool even in the hottest months.",
+      "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      "choices": [
+        { "id": "A", "text": "storeys," },
+        { "id": "B", "text": "storeys" },
+        { "id": "C", "text": "storeys, so" },
+        { "id": "D", "text": "storeys, which" }
+      ],
+      "answer": "C",
+      "rationale": "Both halves are independent clauses, so joining them needs a comma plus a coordinating conjunction — and \"so\" also captures the causal relationship. (A) is a comma splice and (B) a run-on. (D) would work only if the second half were not already a complete clause with its own subject.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 60,
+      "version": 1
+    },
+    {
+      "id": "rw-bnd-013",
+      "section": "rw",
+      "domain": "standard_english_conventions",
+      "skills": ["boundaries"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stimulus": "Mathematician Katherine Johnson calculated trajectories for the first American orbital ______ John Glenn reportedly refused to fly until she had verified the electronic computer's figures by hand.",
+      "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      "choices": [
+        { "id": "A", "text": "flight, indeed" },
+        { "id": "B", "text": "flight; indeed," },
+        { "id": "C", "text": "flight indeed," },
+        { "id": "D", "text": "flight, indeed," }
+      ],
+      "answer": "B",
+      "rationale": "\"Indeed\" is a conjunctive adverb introducing a second independent clause, so it needs a semicolon before it and a comma after. (A) and (D) leave a comma splice; (C) omits the boundary altogether.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 70,
+      "version": 1
+    },
+    {
+      "id": "rw-bnd-014",
+      "section": "rw",
+      "domain": "standard_english_conventions",
+      "skills": ["boundaries"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stimulus": "The novel's narrator, a retired ______ describes the town's history with the precision of someone who has catalogued it.",
+      "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      "choices": [
+        { "id": "A", "text": "archivist" },
+        { "id": "B", "text": "archivist," },
+        { "id": "C", "text": "archivist;" },
+        { "id": "D", "text": "archivist:" }
+      ],
+      "answer": "B",
+      "rationale": "\"A retired archivist\" is a nonessential appositive interrupting the subject and verb, so it needs a closing comma to match the opening one. (C) and (D) would sever the subject from its verb, which no punctuation may do.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 65,
+      "version": 1
+    },
+    {
+      "id": "rw-bnd-015",
+      "section": "rw",
+      "domain": "standard_english_conventions",
+      "skills": ["boundaries"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stimulus": "Because the reef's corals bleach at temperatures only slightly above their usual ______ even a brief marine heatwave can cause damage that takes a decade to reverse.",
+      "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      "choices": [
+        { "id": "A", "text": "maximum;" },
+        { "id": "B", "text": "maximum" },
+        { "id": "C", "text": "maximum," },
+        { "id": "D", "text": "maximum:" }
+      ],
+      "answer": "C",
+      "rationale": "\"Because...\" opens a subordinate clause, and a comma separates it from the main clause that follows. (A) and (D) both require an independent clause before them, and a \"Because\" clause is not one.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 70,
+      "version": 1
+    },
+    {
+      "id": "rw-bnd-016",
+      "section": "rw",
+      "domain": "standard_english_conventions",
+      "skills": ["boundaries"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stimulus": "The exhibition brings together objects from three ______ a Benin bronze, a Nok terracotta head, and an Igbo-Ukwu vessel.",
+      "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      "choices": [
+        { "id": "A", "text": "traditions;" },
+        { "id": "B", "text": "traditions:" },
+        { "id": "C", "text": "traditions," },
+        { "id": "D", "text": "traditions" }
+      ],
+      "answer": "B",
+      "rationale": "The clause before the blank is complete and announces a set of three items; a colon then delivers the list. (A) is wrong because a semicolon requires an independent clause after it, and this is a list fragment.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 65,
+      "version": 1
+    },
+    {
+      "id": "rw-bnd-017",
+      "section": "rw",
+      "domain": "standard_english_conventions",
+      "skills": ["boundaries"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stimulus": "Ecologist Robin Wall Kimmerer writes about sweetgrass from two ______ as a botanist trained in Western science and as a member of the Citizen Potawatomi Nation.",
+      "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      "choices": [
+        { "id": "A", "text": "perspectives," },
+        { "id": "B", "text": "perspectives;" },
+        { "id": "C", "text": "perspectives:" },
+        { "id": "D", "text": "perspectives" }
+      ],
+      "answer": "C",
+      "rationale": "A complete clause precedes the blank, and what follows specifies the \"two perspectives\" it names — an explanatory expansion, which the colon marks. (B) fails because the material after it is not an independent clause.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 70,
+      "version": 1
+    },
+    {
+      "id": "rw-bnd-018",
+      "section": "rw",
+      "domain": "standard_english_conventions",
+      "skills": ["boundaries"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stimulus": "Astronomers have catalogued more than five thousand planets outside the solar ______ nearly all of them detected indirectly, by the dimming or wobble they cause in their star.",
+      "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      "choices": [
+        { "id": "A", "text": "system;" },
+        { "id": "B", "text": "system," },
+        { "id": "C", "text": "system. And" },
+        { "id": "D", "text": "system and" }
+      ],
+      "answer": "B",
+      "rationale": "\"Nearly all of them detected indirectly\" has no finite verb — \"detected\" is a participle — so it is a modifying phrase, not a clause, and a comma attaches it. (A) and (C) both demand an independent clause that is not there.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 75,
+      "version": 1
+    },
+    {
+      "id": "rw-bnd-019",
+      "section": "rw",
+      "domain": "standard_english_conventions",
+      "skills": ["boundaries"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stimulus": "The 1943 penny was struck in zinc-coated steel to conserve copper for the war ______ a handful of copper blanks left in the presses produced the rarest American coin of the century.",
+      "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      "choices": [
+        { "id": "A", "text": "effort, yet" },
+        { "id": "B", "text": "effort yet" },
+        { "id": "C", "text": "effort, yet," },
+        { "id": "D", "text": "effort; yet" }
+      ],
+      "answer": "A",
+      "rationale": "\"Yet\" is a coordinating conjunction here, joining two independent clauses, so it takes a comma before and none after. (C) strands the conjunction with a comma on each side, and (D) over-punctuates by adding a semicolon to a construction that already has a conjunction.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 70,
+      "version": 1
+    },
+    {
+      "id": "rw-bnd-020",
+      "section": "rw",
+      "domain": "standard_english_conventions",
+      "skills": ["boundaries"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stimulus": "Although researchers had predicted that the fungus would spread along root ______ the infection instead travelled through the soil itself.",
+      "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      "choices": [
+        { "id": "A", "text": "networks;" },
+        { "id": "B", "text": "networks" },
+        { "id": "C", "text": "networks:" },
+        { "id": "D", "text": "networks," }
+      ],
+      "answer": "D",
+      "rationale": "The sentence opens with a subordinate \"Although\" clause, which a comma separates from the main clause. Neither a semicolon (A) nor a colon (C) may follow a dependent clause.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 70,
+      "version": 1
+    },
+    {
+      "id": "rw-bnd-021",
+      "section": "rw",
+      "domain": "standard_english_conventions",
+      "skills": ["boundaries"],
+      "itemType": "mcq",
+      "difficulty": "hard",
+      "stimulus": "The manuscript was catalogued in 1908 by a librarian who noted only its ______ its contents went undescribed for another eighty years.",
+      "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      "choices": [
+        { "id": "A", "text": "binding," },
+        { "id": "B", "text": "binding;" },
+        { "id": "C", "text": "binding and" },
+        { "id": "D", "text": "binding" }
+      ],
+      "answer": "B",
+      "rationale": "Both halves are independent clauses, so a semicolon (or a period) is required. (A) is a comma splice. (C) is tempting but would need a comma before \"and\", and the two statements are contrasting rather than simply additive.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 80,
+      "version": 1
+    },
+    {
+      "id": "rw-bnd-022",
+      "section": "rw",
+      "domain": "standard_english_conventions",
+      "skills": ["boundaries"],
+      "itemType": "mcq",
+      "difficulty": "hard",
+      "stimulus": "What the survey team found beneath the plaza floor was not the burial chamber they had been ______ a drainage system a thousand years older than the plaza above it.",
+      "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      "choices": [
+        { "id": "A", "text": "seeking; but" },
+        { "id": "B", "text": "seeking, but" },
+        { "id": "C", "text": "seeking but" },
+        { "id": "D", "text": "seeking. But" }
+      ],
+      "answer": "B",
+      "rationale": "This is a \"not X but Y\" construction, and the material after \"but\" is a noun phrase rather than a clause, so a comma is the correct boundary. (A) and (D) both require an independent clause after them, and \"a drainage system...\" is not one.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 85,
+      "version": 1
+    },
+    {
+      "id": "rw-bnd-023",
+      "section": "rw",
+      "domain": "standard_english_conventions",
+      "skills": ["boundaries"],
+      "itemType": "mcq",
+      "difficulty": "hard",
+      "stimulus": "Composer Florence Price's Symphony No. 1, premiered by the Chicago Symphony in ______ was the first work by a Black woman performed by a major American orchestra.",
+      "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      "choices": [
+        { "id": "A", "text": "1933," },
+        { "id": "B", "text": "1933" },
+        { "id": "C", "text": "1933;" },
+        { "id": "D", "text": "1933:" }
+      ],
+      "answer": "A",
+      "rationale": "\"Premiered by the Chicago Symphony in 1933\" is a nonessential participial phrase set off by commas; the opening comma appears before \"premiered\", so a closing comma is required. Dropping it (B) leaves the pair unbalanced.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 80,
+      "version": 1
+    },
+    {
+      "id": "rw-bnd-024",
+      "section": "rw",
+      "domain": "standard_english_conventions",
+      "skills": ["boundaries"],
+      "itemType": "mcq",
+      "difficulty": "hard",
+      "stimulus": "The team's conclusion rested on a single ______ that the sediment layers had never been disturbed.",
+      "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      "choices": [
+        { "id": "A", "text": "assumption," },
+        { "id": "B", "text": "assumption;" },
+        { "id": "C", "text": "assumption:" },
+        { "id": "D", "text": "assumption" }
+      ],
+      "answer": "C",
+      "rationale": "A complete clause precedes the blank, and what follows names the assumption it refers to — an explanatory expansion, which a colon introduces. (B) fails because \"that the sediment layers had never been disturbed\" is a noun clause, not an independent one.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 80,
+      "version": 1
+    },
+
+    {
+      "id": "rw-fss-009",
+      "section": "rw",
+      "domain": "standard_english_conventions",
+      "skills": ["form_structure_and_sense"],
+      "itemType": "mcq",
+      "difficulty": "easy",
+      "stimulus": "The array of sensors mounted along the bridge's span ______ vibration data every two seconds.",
+      "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      "choices": [
+        { "id": "A", "text": "transmit" },
+        { "id": "B", "text": "transmits" },
+        { "id": "C", "text": "have transmitted" },
+        { "id": "D", "text": "transmitting" }
+      ],
+      "answer": "B",
+      "rationale": "The subject is the singular \"array\", not the plural \"sensors\" inside the prepositional phrase, so the verb is \"transmits\". (D) is a participle and would leave the sentence without a main verb.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 50,
+      "version": 1
+    },
+    {
+      "id": "rw-fss-010",
+      "section": "rw",
+      "domain": "standard_english_conventions",
+      "skills": ["form_structure_and_sense"],
+      "itemType": "mcq",
+      "difficulty": "easy",
+      "stimulus": "Neither of the two proposed routes ______ the wetland that the council voted to protect.",
+      "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      "choices": [
+        { "id": "A", "text": "avoid" },
+        { "id": "B", "text": "avoids" },
+        { "id": "C", "text": "have avoided" },
+        { "id": "D", "text": "are avoiding" }
+      ],
+      "answer": "B",
+      "rationale": "\"Neither\" used as a pronoun is singular, so it takes \"avoids\". The plural \"routes\" sits inside the prepositional phrase \"of the two proposed routes\" and cannot govern the verb.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 55,
+      "version": 1
+    },
+    {
+      "id": "rw-fss-011",
+      "section": "rw",
+      "domain": "standard_english_conventions",
+      "skills": ["form_structure_and_sense"],
+      "itemType": "mcq",
+      "difficulty": "easy",
+      "stimulus": "The curator explained that the pigment ______ from a mineral mined in only one valley in Afghanistan.",
+      "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      "choices": [
+        { "id": "A", "text": "deriving" },
+        { "id": "B", "text": "to derive" },
+        { "id": "C", "text": "derives" },
+        { "id": "D", "text": "having derived" }
+      ],
+      "answer": "C",
+      "rationale": "The clause introduced by \"that\" needs a finite verb, and only \"derives\" supplies one. The other options are non-finite forms that leave the clause incomplete.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 50,
+      "version": 1
+    },
+    {
+      "id": "rw-fss-012",
+      "section": "rw",
+      "domain": "standard_english_conventions",
+      "skills": ["form_structure_and_sense"],
+      "itemType": "mcq",
+      "difficulty": "easy",
+      "stimulus": "Every one of the recovered tablets ______ a different scribe's hand.",
+      "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      "choices": [
+        { "id": "A", "text": "show" },
+        { "id": "B", "text": "shows" },
+        { "id": "C", "text": "are showing" },
+        { "id": "D", "text": "have shown" }
+      ],
+      "answer": "B",
+      "rationale": "\"Every one\" is singular regardless of the plural noun that follows, so the verb is \"shows\".",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 50,
+      "version": 1
+    },
+    {
+      "id": "rw-fss-013",
+      "section": "rw",
+      "domain": "standard_english_conventions",
+      "skills": ["form_structure_and_sense"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stimulus": "Written in a shorthand no living reader could decode, ______",
+      "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      "choices": [
+        { "id": "A", "text": "researchers set the diaries aside for decades." },
+        { "id": "B", "text": "the diaries sat unread for decades." },
+        { "id": "C", "text": "it was decades before anyone read the diaries." },
+        { "id": "D", "text": "decades passed before the diaries were read." }
+      ],
+      "answer": "B",
+      "rationale": "The opening participial phrase must modify whatever the main clause makes its subject. Only the diaries were written in shorthand, so \"the diaries\" must come first. (A) says the researchers were written in shorthand; (C) and (D) attach the phrase to \"it\" and \"decades\".",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 70,
+      "version": 1
+    },
+    {
+      "id": "rw-fss-014",
+      "section": "rw",
+      "domain": "standard_english_conventions",
+      "skills": ["form_structure_and_sense"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stimulus": "By the time the restoration was announced, the fresco ______ behind scaffolding for six years.",
+      "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      "choices": [
+        { "id": "A", "text": "has been hidden" },
+        { "id": "B", "text": "had been hidden" },
+        { "id": "C", "text": "is hidden" },
+        { "id": "D", "text": "will have been hidden" }
+      ],
+      "answer": "B",
+      "rationale": "\"By the time the restoration was announced\" fixes a point in the past, and the hiding began before that point — the past perfect. (A) relates a past action to the present, and (D) points to the future.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 65,
+      "version": 1
+    },
+    {
+      "id": "rw-fss-015",
+      "section": "rw",
+      "domain": "standard_english_conventions",
+      "skills": ["form_structure_and_sense"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stimulus": "The grant will fund three activities: surveying the remaining stands of old-growth forest, training local volunteers in identification, and ______ the results in an open database.",
+      "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      "choices": [
+        { "id": "A", "text": "to publish" },
+        { "id": "B", "text": "publication of" },
+        { "id": "C", "text": "publishing" },
+        { "id": "D", "text": "they will publish" }
+      ],
+      "answer": "C",
+      "rationale": "The list is three parallel gerund phrases: \"surveying\", \"training\", and \"publishing\". Only (C) matches. (A) shifts to an infinitive and (B) to a noun phrase, breaking the series.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 70,
+      "version": 1
+    },
+    {
+      "id": "rw-fss-016",
+      "section": "rw",
+      "domain": "standard_english_conventions",
+      "skills": ["form_structure_and_sense"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stimulus": "The editor returned the manuscript to my co-author and ______ with a note asking for a shorter introduction.",
+      "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      "choices": [
+        { "id": "A", "text": "I" },
+        { "id": "B", "text": "me" },
+        { "id": "C", "text": "myself" },
+        { "id": "D", "text": "mine" }
+      ],
+      "answer": "B",
+      "rationale": "The pronoun is part of the compound object of the preposition \"to\", so it takes the objective case. Removing the other object makes it audible: \"returned the manuscript to me\". (C) is reflexive and requires the same person as the subject.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 65,
+      "version": 1
+    },
+    {
+      "id": "rw-fss-017",
+      "section": "rw",
+      "domain": "standard_english_conventions",
+      "skills": ["form_structure_and_sense"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stimulus": "Sea otters keep kelp forests intact by eating the urchins that would otherwise graze them ______ a role ecologists describe as disproportionate to the animal's size.",
+      "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      "choices": [
+        { "id": "A", "text": "bare, playing" },
+        { "id": "B", "text": "bare, they play" },
+        { "id": "C", "text": "bare and playing" },
+        { "id": "D", "text": "bare. Playing" }
+      ],
+      "answer": "A",
+      "rationale": "A participial phrase attaches cleanly to the main clause with a comma and correctly modifies the otters. (B) creates a comma splice, and (D) leaves \"Playing a role...\" as a fragment with no main verb.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 75,
+      "version": 1
+    },
+    {
+      "id": "rw-fss-018",
+      "section": "rw",
+      "domain": "standard_english_conventions",
+      "skills": ["form_structure_and_sense"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stimulus": "The committee, along with the two external reviewers, ______ recommended that the trial be extended by a year.",
+      "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      "choices": [
+        { "id": "A", "text": "have" },
+        { "id": "B", "text": "has" },
+        { "id": "C", "text": "are" },
+        { "id": "D", "text": "were" }
+      ],
+      "answer": "B",
+      "rationale": "\"Along with the two external reviewers\" is a parenthetical phrase, not part of the subject — unlike \"and\", it does not create a compound subject. The subject remains the singular \"committee\", so the auxiliary is \"has\".",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 75,
+      "version": 1
+    },
+    {
+      "id": "rw-fss-019",
+      "section": "rw",
+      "domain": "standard_english_conventions",
+      "skills": ["form_structure_and_sense"],
+      "itemType": "mcq",
+      "difficulty": "hard",
+      "stimulus": "Not only ______ the new alloy lighter than aluminium, but it also resists corrosion better than stainless steel.",
+      "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      "choices": [
+        { "id": "A", "text": "the new alloy is" },
+        { "id": "B", "text": "is" },
+        { "id": "C", "text": "being" },
+        { "id": "D", "text": "it is" }
+      ],
+      "answer": "B",
+      "rationale": "\"Not only\" at the start of a clause triggers subject-verb inversion: the verb comes before the subject, giving \"Not only is the new alloy lighter...\". (A) keeps normal order, and (D) duplicates the subject, which appears again after the blank.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 85,
+      "version": 1
+    },
+    {
+      "id": "rw-fss-020",
+      "section": "rw",
+      "domain": "standard_english_conventions",
+      "skills": ["form_structure_and_sense"],
+      "itemType": "mcq",
+      "difficulty": "hard",
+      "stimulus": "The report criticised the model's projections, ______ assumptions about rainfall had not been updated since 1998.",
+      "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      "choices": [
+        { "id": "A", "text": "which" },
+        { "id": "B", "text": "whose" },
+        { "id": "C", "text": "of which the" },
+        { "id": "D", "text": "that" }
+      ],
+      "answer": "B",
+      "rationale": "The assumptions belong to the projections, so a possessive relative pronoun is needed, and \"whose\" serves that role for things as well as people. (A) and (D) are not possessive, leaving \"assumptions\" without a link to what it belongs to.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 85,
+      "version": 1
+    },
+    {
+      "id": "rw-fss-021",
+      "section": "rw",
+      "domain": "standard_english_conventions",
+      "skills": ["form_structure_and_sense"],
+      "itemType": "mcq",
+      "difficulty": "hard",
+      "stimulus": "Neither the archived recordings nor the surviving transcript ______ any mention of the clause the parties later disputed.",
+      "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      "choices": [
+        { "id": "A", "text": "contain" },
+        { "id": "B", "text": "contains" },
+        { "id": "C", "text": "have contained" },
+        { "id": "D", "text": "were containing" }
+      ],
+      "answer": "B",
+      "rationale": "With \"neither... nor\", the verb agrees with the nearer subject — here the singular \"transcript\" — so \"contains\" is correct. The plural \"recordings\" is the further subject and does not govern the verb.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 85,
+      "version": 1
+    },
+    {
+      "id": "rw-fss-022",
+      "section": "rw",
+      "domain": "standard_english_conventions",
+      "skills": ["form_structure_and_sense"],
+      "itemType": "mcq",
+      "difficulty": "hard",
+      "stimulus": "Having spent two seasons excavating the lower terrace, ______",
+      "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      "choices": [
+        { "id": "A", "text": "the pottery fragments were finally dated by the team." },
+        { "id": "B", "text": "it became possible to date the pottery fragments." },
+        { "id": "C", "text": "the team was finally able to date the pottery fragments." },
+        { "id": "D", "text": "dating the pottery fragments was finally possible." }
+      ],
+      "answer": "C",
+      "rationale": "The opening phrase describes who did the excavating, so the main clause's subject must be the excavator. Only (C) makes \"the team\" the subject. (A) claims the pottery fragments spent two seasons excavating, and (B) and (D) attach the phrase to \"it\" and \"dating\".",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 85,
+      "version": 1
+    },
+    {
+      "id": "rw-fss-023",
+      "section": "rw",
+      "domain": "standard_english_conventions",
+      "skills": ["form_structure_and_sense"],
+      "itemType": "mcq",
+      "difficulty": "hard",
+      "stimulus": "If the samples ______ stored at a constant temperature, the enzyme activity would not have declined so sharply.",
+      "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      "choices": [
+        { "id": "A", "text": "were" },
+        { "id": "B", "text": "had been" },
+        { "id": "C", "text": "would be" },
+        { "id": "D", "text": "are" }
+      ],
+      "answer": "B",
+      "rationale": "The main clause uses \"would not have declined\", which marks a past counterfactual, so the \"if\" clause takes the past perfect \"had been\". (A) would pair with \"would not decline\" for a present hypothetical, and (C) puts a conditional in the wrong half of the sentence.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 90,
+      "version": 1
+    },
+    {
+      "id": "rw-fss-024",
+      "section": "rw",
+      "domain": "standard_english_conventions",
+      "skills": ["form_structure_and_sense"],
+      "itemType": "mcq",
+      "difficulty": "hard",
+      "stimulus": "The advantage of the new sequencing method over the older protocols ______ in the speed with which it handles degraded samples.",
+      "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      "choices": [
+        { "id": "A", "text": "lie" },
+        { "id": "B", "text": "lies" },
+        { "id": "C", "text": "are lying" },
+        { "id": "D", "text": "have lain" }
+      ],
+      "answer": "B",
+      "rationale": "The subject is the singular \"advantage\"; \"of the new sequencing method\" and \"over the older protocols\" are both prepositional phrases, and the plural \"protocols\" sitting next to the verb is the trap. The verb is \"lies\".",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 85,
+      "version": 1
+    }
+  ]
+}

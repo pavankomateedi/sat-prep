@@ -5,6 +5,7 @@ node_modules/
 
 # Expo
 .expo/
+.expo-export/
 dist/
 web-build/
 expo-env.d.ts
@@ -30,8 +31,15 @@ yarn-error.*
 .DS_Store
 *.pem
 
-# local env files
+# local env files — these hold the Supabase keys
+.env
 .env*.local
+
+# Expo access token, if you keep it in a file rather than an env var
+.expo-token
+
+# Generated QR page for the dev server
+qr.html
 
 # typescript
 *.tsbuildinfo

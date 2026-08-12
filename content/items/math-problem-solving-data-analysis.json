@@ -1,0 +1,817 @@
+{
+  "items": [
+    {
+      "id": "m-rat-001",
+      "section": "math",
+      "domain": "problem_solving_data_analysis",
+      "skills": ["ratios_rates_proportions_units"],
+      "itemType": "spr",
+      "difficulty": "easy",
+      "stem": "A recipe uses flour and sugar in a ratio of 3 to 2. If a baker uses 12 cups of flour, how many cups of sugar are needed?",
+      "answer": ["8"],
+      "rationale": "Set up the proportion $\\frac{3}{2} = \\frac{12}{s}$. Cross-multiplying gives $3s = 24$, so $s = 8$. Equivalently, 12 cups is 4 batches of the 3-cup portion, so sugar is $4 \\times 2 = 8$ cups.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 55,
+      "version": 1
+    },
+    {
+      "id": "m-rat-002",
+      "section": "math",
+      "domain": "problem_solving_data_analysis",
+      "skills": ["ratios_rates_proportions_units"],
+      "itemType": "mcq",
+      "difficulty": "easy",
+      "stem": "A car travels 240 miles in 4 hours at a constant speed. What is its speed, in miles per hour?",
+      "choices": [
+        { "id": "A", "text": "$40$" },
+        { "id": "B", "text": "$60$" },
+        { "id": "C", "text": "$80$" },
+        { "id": "D", "text": "$960$" }
+      ],
+      "answer": "B",
+      "rationale": "Speed is distance divided by time: $\\frac{240}{4} = 60$ miles per hour. Choice (D) multiplies instead of dividing.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 45,
+      "version": 1
+    },
+    {
+      "id": "m-rat-003",
+      "section": "math",
+      "domain": "problem_solving_data_analysis",
+      "skills": ["ratios_rates_proportions_units"],
+      "itemType": "spr",
+      "difficulty": "medium",
+      "stem": "A train travels at a constant speed of 90 kilometres per hour. What is this speed in metres per second?",
+      "answer": ["25"],
+      "rationale": "There are 1,000 metres in a kilometre and 3,600 seconds in an hour: $90 \\times \\frac{1000}{3600} = \\frac{90000}{3600} = 25$ metres per second. A useful shortcut is that dividing km/h by 3.6 gives m/s.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 85,
+      "version": 1
+    },
+    {
+      "id": "m-rat-004",
+      "section": "math",
+      "domain": "problem_solving_data_analysis",
+      "skills": ["ratios_rates_proportions_units"],
+      "itemType": "spr",
+      "difficulty": "medium",
+      "stem": "On a map, 1 centimetre represents 25 kilometres. Two towns are 7.5 centimetres apart on the map. What is the actual distance between them, in kilometres?",
+      "answer": ["187.5"],
+      "rationale": "Multiply the map distance by the scale: $7.5 \\times 25 = 187.5$ kilometres.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 70,
+      "version": 1
+    },
+    {
+      "id": "m-rat-005",
+      "section": "math",
+      "domain": "problem_solving_data_analysis",
+      "skills": ["ratios_rates_proportions_units"],
+      "itemType": "mcq",
+      "difficulty": "hard",
+      "stem": "Three identical machines working together produce 450 parts in 5 hours. At the same rate, how many parts would 5 of these machines produce in 8 hours?",
+      "choices": [
+        { "id": "A", "text": "$720$" },
+        { "id": "B", "text": "$1{,}080$" },
+        { "id": "C", "text": "$1{,}200$" },
+        { "id": "D", "text": "$1{,}800$" }
+      ],
+      "answer": "C",
+      "rationale": "Find the rate for one machine for one hour: $\\frac{450}{3 \\times 5} = 30$ parts. Then 5 machines for 8 hours produce $30 \\times 5 \\times 8 = 1{,}200$ parts. Choice (A) scales only the time, and (B) only the number of machines.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 115,
+      "version": 1
+    },
+    {
+      "id": "m-rat-006",
+      "section": "math",
+      "domain": "problem_solving_data_analysis",
+      "skills": ["ratios_rates_proportions_units"],
+      "itemType": "spr",
+      "difficulty": "hard",
+      "stem": "The quantity $y$ is directly proportional to $x$. When $x = 4$, $y = 18$. What is the value of $y$ when $x = 10$?",
+      "answer": ["45"],
+      "rationale": "Direct proportion means $y = kx$. From $18 = 4k$, the constant is $k = 4.5$. Then $y = 4.5 \\times 10 = 45$. Equivalently, $\\frac{18}{4} = \\frac{y}{10}$ gives $4y = 180$.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 90,
+      "version": 1
+    },
+
+    {
+      "id": "m-pct-001",
+      "section": "math",
+      "domain": "problem_solving_data_analysis",
+      "skills": ["percentages"],
+      "itemType": "spr",
+      "difficulty": "easy",
+      "stem": "What is 15% of 240?",
+      "answer": ["36"],
+      "rationale": "Convert to a decimal and multiply: $0.15 \\times 240 = 36$.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 45,
+      "version": 1
+    },
+    {
+      "id": "m-pct-002",
+      "section": "math",
+      "domain": "problem_solving_data_analysis",
+      "skills": ["percentages"],
+      "itemType": "mcq",
+      "difficulty": "easy",
+      "stem": "The price of a jacket was reduced from \\$80 to \\$68. By what percent was the price reduced?",
+      "choices": [
+        { "id": "A", "text": "$12\\%$" },
+        { "id": "B", "text": "$15\\%$" },
+        { "id": "C", "text": "$18\\%$" },
+        { "id": "D", "text": "$20\\%$" }
+      ],
+      "answer": "B",
+      "rationale": "The decrease is $80 - 68 = 12$ dollars. Percent change divides by the original amount: $\\frac{12}{80} = 0.15 = 15\\%$. Choice (A) reports the dollar decrease as a percentage, and (C) divides by the new price instead of the original.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 70,
+      "version": 1
+    },
+    {
+      "id": "m-pct-003",
+      "section": "math",
+      "domain": "problem_solving_data_analysis",
+      "skills": ["percentages"],
+      "itemType": "spr",
+      "difficulty": "medium",
+      "stem": "After a 20% discount, a bicycle costs \\$96. What was the price, in dollars, before the discount?",
+      "answer": ["120"],
+      "rationale": "A 20% discount means the sale price is 80% of the original: $0.8p = 96$, so $p = \\frac{96}{0.8} = 120$. Adding 20% to 96 gives 115.20, which is wrong because the percentage applies to the original price, not the discounted one.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 90,
+      "version": 1
+    },
+    {
+      "id": "m-pct-004",
+      "section": "math",
+      "domain": "problem_solving_data_analysis",
+      "skills": ["percentages"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stem": "A town's population increased by 10% in one year and then decreased by 10% the following year. Compared with its original size, the population after the two years is",
+      "choices": [
+        { "id": "A", "text": "1% smaller." },
+        { "id": "B", "text": "the same." },
+        { "id": "C", "text": "1% larger." },
+        { "id": "D", "text": "10% smaller." }
+      ],
+      "answer": "A",
+      "rationale": "Take a starting population of 100. After the increase it is 110; the 10% decrease is then 10% of 110, or 11, leaving 99. That is 1% below the original. The percentages are not symmetric because they are taken of different bases.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 90,
+      "version": 1
+    },
+    {
+      "id": "m-pct-005",
+      "section": "math",
+      "domain": "problem_solving_data_analysis",
+      "skills": ["percentages"],
+      "itemType": "spr",
+      "difficulty": "hard",
+      "stem": "A quantity is increased by 25%, and the result is then increased by 20%. By what percent has the original quantity increased overall?",
+      "answer": ["50"],
+      "rationale": "Successive percent changes multiply: $1.25 \\times 1.20 = 1.50$, so the final amount is 150% of the original — an increase of 50%. Adding 25 and 20 to get 45 ignores that the second increase applies to the already-larger amount.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 105,
+      "version": 1
+    },
+    {
+      "id": "m-pct-006",
+      "section": "math",
+      "domain": "problem_solving_data_analysis",
+      "skills": ["percentages"],
+      "itemType": "spr",
+      "difficulty": "hard",
+      "stem": "At a school, 40% of students take Spanish. Of the students who take Spanish, 25% also take French. What percent of all students at the school take both Spanish and French?",
+      "answer": ["10"],
+      "rationale": "The 25% is a percentage of the Spanish takers, not of the whole school, so multiply: $0.40 \\times 0.25 = 0.10$, or 10% of all students.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 100,
+      "version": 1
+    },
+
+    {
+      "id": "m-1var-001",
+      "section": "math",
+      "domain": "problem_solving_data_analysis",
+      "skills": ["one_variable_data"],
+      "itemType": "spr",
+      "difficulty": "easy",
+      "stem": "What is the median of the data set $3, 7, 7, 10, 15$?",
+      "answer": ["7"],
+      "rationale": "The values are already in order and there are five of them, so the median is the third value, 7.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 45,
+      "version": 1
+    },
+    {
+      "id": "m-1var-002",
+      "section": "math",
+      "domain": "problem_solving_data_analysis",
+      "skills": ["one_variable_data"],
+      "itemType": "spr",
+      "difficulty": "easy",
+      "stem": "What is the mean of the data set $4, 8, 10, 14$?",
+      "answer": ["9"],
+      "rationale": "The sum is $4 + 8 + 10 + 14 = 36$, and there are 4 values, so the mean is $\\frac{36}{4} = 9$.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 45,
+      "version": 1
+    },
+    {
+      "id": "m-1var-003",
+      "section": "math",
+      "domain": "problem_solving_data_analysis",
+      "skills": ["one_variable_data"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stem": "For the data set $2, 4, 4, 5, 20$, which statement is true?",
+      "choices": [
+        { "id": "A", "text": "The mean is greater than the median." },
+        { "id": "B", "text": "The mean is less than the median." },
+        { "id": "C", "text": "The mean equals the median." },
+        { "id": "D", "text": "The median equals the range." }
+      ],
+      "answer": "A",
+      "rationale": "The mean is $\\frac{2+4+4+5+20}{5} = \\frac{35}{5} = 7$, and the median is the middle value, 4. So the mean exceeds the median — the usual effect of a single large outlier, which pulls the mean but not the median.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 80,
+      "version": 1
+    },
+    {
+      "id": "m-1var-004",
+      "section": "math",
+      "domain": "problem_solving_data_analysis",
+      "skills": ["one_variable_data"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stem": "A data set has a mean of 50. A new value equal to 50 is added to the data set. Which statement about the new data set must be true?",
+      "choices": [
+        { "id": "A", "text": "The mean is greater than 50." },
+        { "id": "B", "text": "The mean is still 50 and the standard deviation has not increased." },
+        { "id": "C", "text": "The mean is still 50 and the standard deviation has increased." },
+        { "id": "D", "text": "The median is now 50." }
+      ],
+      "answer": "B",
+      "rationale": "Adding a value equal to the mean leaves the mean unchanged. Because that value sits exactly at the centre, it contributes zero to the sum of squared deviations while increasing the count, so the standard deviation cannot increase. (D) is not guaranteed — the median depends on the whole ordering.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 100,
+      "version": 1
+    },
+    {
+      "id": "m-1var-005",
+      "section": "math",
+      "domain": "problem_solving_data_analysis",
+      "skills": ["one_variable_data"],
+      "itemType": "mcq",
+      "difficulty": "hard",
+      "stem": "Data set P is $10, 20, 30, 40, 50$ and data set Q is $28, 29, 30, 31, 32$. Which statement correctly compares them?",
+      "choices": [
+        { "id": "A", "text": "P and Q have the same mean, and P has the larger standard deviation." },
+        { "id": "B", "text": "P and Q have the same mean, and Q has the larger standard deviation." },
+        { "id": "C", "text": "P has the larger mean and the larger standard deviation." },
+        { "id": "D", "text": "P and Q have the same mean and the same standard deviation." }
+      ],
+      "answer": "A",
+      "rationale": "Both sets have mean 30 (each is symmetric about 30). Standard deviation measures spread: P's values run from 10 to 50, while Q's are clustered between 28 and 32, so P is far more spread out and has the larger standard deviation.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 110,
+      "version": 1
+    },
+    {
+      "id": "m-1var-006",
+      "section": "math",
+      "domain": "problem_solving_data_analysis",
+      "skills": ["one_variable_data"],
+      "itemType": "spr",
+      "difficulty": "hard",
+      "stem": "The table shows the number of books read last month by the students in a class. What is the median number of books read?",
+      "figure": {
+        "kind": "table",
+        "caption": "Books read last month",
+        "columns": ["Books read", "Number of students"],
+        "rows": [
+          ["0", "3"],
+          ["1", "5"],
+          ["2", "8"],
+          ["3", "4"]
+        ]
+      },
+      "answer": ["2"],
+      "rationale": "There are $3 + 5 + 8 + 4 = 20$ students, so the median is the average of the 10th and 11th values in order. The first 3 students read 0 books, students 4 through 8 read 1 book, and students 9 through 16 read 2 books. Both the 10th and 11th fall in that group, so the median is 2.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 120,
+      "version": 1
+    },
+
+    {
+      "id": "m-2var-001",
+      "section": "math",
+      "domain": "problem_solving_data_analysis",
+      "skills": ["two_variable_data"],
+      "itemType": "spr",
+      "difficulty": "easy",
+      "stem": "The line of best fit for a set of data is given by $y = 2x + 3$. What value does the model predict for $y$ when $x = 6$?",
+      "answer": ["15"],
+      "rationale": "Substitute $x = 6$: $y = 2(6) + 3 = 15$.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 45,
+      "version": 1
+    },
+    {
+      "id": "m-2var-002",
+      "section": "math",
+      "domain": "problem_solving_data_analysis",
+      "skills": ["two_variable_data"],
+      "itemType": "mcq",
+      "difficulty": "easy",
+      "stem": "In a scatterplot, as the values of $x$ increase, the values of $y$ tend to decrease. Which term best describes the association between $x$ and $y$?",
+      "choices": [
+        { "id": "A", "text": "Positive linear association" },
+        { "id": "B", "text": "Negative linear association" },
+        { "id": "C", "text": "No association" },
+        { "id": "D", "text": "Exponential association" }
+      ],
+      "answer": "B",
+      "rationale": "When one variable rises as the other falls, the association is negative. Whether it is linear depends on the points following a roughly straight path, which the phrase \"tend to decrease\" steadily describes.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 50,
+      "version": 1
+    },
+    {
+      "id": "m-2var-003",
+      "section": "math",
+      "domain": "problem_solving_data_analysis",
+      "skills": ["two_variable_data"],
+      "itemType": "spr",
+      "difficulty": "medium",
+      "stem": "A line of best fit predicts a value of 19 for a data point whose actual value is 22. What is the residual for this data point?",
+      "answer": ["3"],
+      "rationale": "Residual equals actual minus predicted: $22 - 19 = 3$. A positive residual means the model underestimated this point.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 65,
+      "version": 1
+    },
+    {
+      "id": "m-2var-004",
+      "section": "math",
+      "domain": "problem_solving_data_analysis",
+      "skills": ["two_variable_data"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stem": "For a group of houses, the line of best fit relating area $a$ (in square metres) to selling price $p$ (in thousands of dollars) is $p = 3.2a + 45$. Which is the best interpretation of 3.2 in this model?",
+      "choices": [
+        { "id": "A", "text": "A house with no area is predicted to sell for \\$3,200." },
+        { "id": "B", "text": "Each additional square metre is associated with a predicted increase of \\$3,200 in price." },
+        { "id": "C", "text": "The average house in the group has an area of 3.2 square metres." },
+        { "id": "D", "text": "Houses sell for 3.2 times the price of the smallest house." }
+      ],
+      "answer": "B",
+      "rationale": "The slope is the predicted change in the response per one-unit change in the predictor. Price is measured in thousands, so 3.2 corresponds to \\$3,200 per additional square metre. (A) describes the intercept, 45.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 85,
+      "version": 1
+    },
+    {
+      "id": "m-2var-005",
+      "section": "math",
+      "domain": "problem_solving_data_analysis",
+      "skills": ["two_variable_data"],
+      "itemType": "mcq",
+      "difficulty": "hard",
+      "stem": "A quantity is measured at equal time intervals and found to be approximately 400, 600, 900, and 1,350. Which type of model best fits these data?",
+      "choices": [
+        { "id": "A", "text": "A linear model, because the values increase by a constant amount." },
+        { "id": "B", "text": "An exponential model, because the values increase by a constant factor." },
+        { "id": "C", "text": "A linear model, because the values increase by a constant factor." },
+        { "id": "D", "text": "No model fits, because the values are irregular." }
+      ],
+      "answer": "B",
+      "rationale": "The differences are 200, 300, and 450 — not constant, so the growth is not linear. The ratios, however, are $\\frac{600}{400} = \\frac{900}{600} = \\frac{1350}{900} = 1.5$, a constant factor, which is the signature of exponential growth.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 110,
+      "version": 1
+    },
+    {
+      "id": "m-2var-006",
+      "section": "math",
+      "domain": "problem_solving_data_analysis",
+      "skills": ["two_variable_data"],
+      "itemType": "mcq",
+      "difficulty": "hard",
+      "stem": "A line of best fit was computed from data on students who studied between 1 and 6 hours per week. A student uses the model to predict the test score of someone who studies 30 hours per week. What is the main problem with this use of the model?",
+      "choices": [
+        { "id": "A", "text": "The model cannot be used to make any predictions." },
+        { "id": "B", "text": "The prediction extrapolates far outside the range of the data used to build the model." },
+        { "id": "C", "text": "Lines of best fit apply only to the exact data points used to construct them." },
+        { "id": "D", "text": "The residuals of the model must all be zero." }
+      ],
+      "answer": "B",
+      "rationale": "A model describes the relationship over the interval the data covered — here 1 to 6 hours. At 30 hours the relationship may flatten, reverse, or break down entirely, and nothing in the data speaks to that. (C) is too strong: interpolating within the observed range is a legitimate use.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 100,
+      "version": 1
+    },
+
+    {
+      "id": "m-prob-001",
+      "section": "math",
+      "domain": "problem_solving_data_analysis",
+      "skills": ["probability_and_conditional_probability"],
+      "itemType": "mcq",
+      "difficulty": "easy",
+      "stem": "A bag contains 5 red marbles and 3 blue marbles. If one marble is selected at random, what is the probability that it is red?",
+      "choices": [
+        { "id": "A", "text": "$\\frac{3}{8}$" },
+        { "id": "B", "text": "$\\frac{5}{8}$" },
+        { "id": "C", "text": "$\\frac{5}{3}$" },
+        { "id": "D", "text": "$\\frac{3}{5}$" }
+      ],
+      "answer": "B",
+      "rationale": "There are $5 + 3 = 8$ marbles in total and 5 are red, so the probability is $\\frac{5}{8}$. Choice (A) gives the probability of blue.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 45,
+      "version": 1
+    },
+    {
+      "id": "m-prob-002",
+      "section": "math",
+      "domain": "problem_solving_data_analysis",
+      "skills": ["probability_and_conditional_probability"],
+      "itemType": "mcq",
+      "difficulty": "easy",
+      "stem": "The probability that it rains tomorrow is 0.35. What is the probability that it does not rain tomorrow?",
+      "choices": [
+        { "id": "A", "text": "$0.35$" },
+        { "id": "B", "text": "$0.55$" },
+        { "id": "C", "text": "$0.65$" },
+        { "id": "D", "text": "$1.35$" }
+      ],
+      "answer": "C",
+      "rationale": "Complementary events sum to 1: $1 - 0.35 = 0.65$.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 40,
+      "version": 1
+    },
+    {
+      "id": "m-prob-003",
+      "section": "math",
+      "domain": "problem_solving_data_analysis",
+      "skills": ["probability_and_conditional_probability"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stem": "The table shows the results of a survey of 200 people. If one person is selected at random from those surveyed, what is the probability that the person is a student?",
+      "figure": {
+        "kind": "table",
+        "caption": "Survey results by group and response",
+        "columns": ["", "Agreed", "Disagreed", "Total"],
+        "rows": [
+          ["Students", "48", "32", "80"],
+          ["Non-students", "66", "54", "120"],
+          ["Total", "114", "86", "200"]
+        ]
+      },
+      "choices": [
+        { "id": "A", "text": "$\\frac{48}{200}$" },
+        { "id": "B", "text": "$\\frac{80}{200}$" },
+        { "id": "C", "text": "$\\frac{80}{114}$" },
+        { "id": "D", "text": "$\\frac{114}{200}$" }
+      ],
+      "answer": "B",
+      "rationale": "There are 80 students out of 200 people surveyed, so the probability is $\\frac{80}{200}$. Choice (A) counts only the students who agreed, and (D) gives the probability of agreeing rather than of being a student.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 70,
+      "version": 1
+    },
+    {
+      "id": "m-prob-004",
+      "section": "math",
+      "domain": "problem_solving_data_analysis",
+      "skills": ["probability_and_conditional_probability"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stem": "Using the table, if a person is selected at random from those who agreed, what is the probability that the person is a student?",
+      "figure": {
+        "kind": "table",
+        "caption": "Survey results by group and response",
+        "columns": ["", "Agreed", "Disagreed", "Total"],
+        "rows": [
+          ["Students", "48", "32", "80"],
+          ["Non-students", "66", "54", "120"],
+          ["Total", "114", "86", "200"]
+        ]
+      },
+      "choices": [
+        { "id": "A", "text": "$\\frac{48}{200}$" },
+        { "id": "B", "text": "$\\frac{48}{80}$" },
+        { "id": "C", "text": "$\\frac{48}{114}$" },
+        { "id": "D", "text": "$\\frac{114}{200}$" }
+      ],
+      "answer": "C",
+      "rationale": "The phrase \"from those who agreed\" restricts the pool to the 114 people who agreed, of whom 48 are students, giving $\\frac{48}{114}$. Choice (B) reverses the condition — it answers \"given that the person is a student, what is the probability they agreed?\"",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 90,
+      "version": 1
+    },
+    {
+      "id": "m-prob-005",
+      "section": "math",
+      "domain": "problem_solving_data_analysis",
+      "skills": ["probability_and_conditional_probability"],
+      "itemType": "mcq",
+      "difficulty": "hard",
+      "stem": "The table shows how 300 patients responded to two treatments. If a patient is selected at random from those who improved, what is the probability that the patient received Treatment B?",
+      "figure": {
+        "kind": "table",
+        "caption": "Patient outcomes by treatment",
+        "columns": ["", "Improved", "Did not improve", "Total"],
+        "rows": [
+          ["Treatment A", "84", "56", "140"],
+          ["Treatment B", "96", "64", "160"],
+          ["Total", "180", "120", "300"]
+        ]
+      },
+      "choices": [
+        { "id": "A", "text": "$\\frac{96}{160}$" },
+        { "id": "B", "text": "$\\frac{96}{180}$" },
+        { "id": "C", "text": "$\\frac{96}{300}$" },
+        { "id": "D", "text": "$\\frac{160}{300}$" }
+      ],
+      "answer": "B",
+      "rationale": "Conditioning on \"improved\" restricts the pool to 180 patients, of whom 96 received Treatment B: $\\frac{96}{180}$. Choice (A) conditions on Treatment B instead, and (C) uses the whole sample as the denominator.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 100,
+      "version": 1
+    },
+    {
+      "id": "m-prob-006",
+      "section": "math",
+      "domain": "problem_solving_data_analysis",
+      "skills": ["probability_and_conditional_probability"],
+      "itemType": "spr",
+      "difficulty": "hard",
+      "stem": "Using the patient table, what is the probability, expressed as a decimal, that a randomly selected patient both received Treatment A and improved?",
+      "figure": {
+        "kind": "table",
+        "caption": "Patient outcomes by treatment",
+        "columns": ["", "Improved", "Did not improve", "Total"],
+        "rows": [
+          ["Treatment A", "84", "56", "140"],
+          ["Treatment B", "96", "64", "160"],
+          ["Total", "180", "120", "300"]
+        ]
+      },
+      "answer": ["0.28", ".28", "7/25"],
+      "rationale": "A joint probability uses the whole sample as the denominator: 84 patients received Treatment A and improved, out of 300 in total, so $\\frac{84}{300} = 0.28$. Note this differs from the conditional probability $\\frac{84}{140} = 0.6$, which restricts to Treatment A patients only.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 105,
+      "version": 1
+    },
+
+    {
+      "id": "m-inf-001",
+      "section": "math",
+      "domain": "problem_solving_data_analysis",
+      "skills": ["inference_from_sample_statistics"],
+      "itemType": "mcq",
+      "difficulty": "easy",
+      "stem": "A researcher randomly selected 400 residents of a city and found that 62% supported a proposed park. To which group can this result be generalised?",
+      "choices": [
+        { "id": "A", "text": "All residents of the city" },
+        { "id": "B", "text": "Only the 400 residents surveyed" },
+        { "id": "C", "text": "All residents of the country" },
+        { "id": "D", "text": "All people who visit city parks" }
+      ],
+      "answer": "A",
+      "rationale": "A random sample supports generalisation to the population it was drawn from — here, city residents. (C) extends beyond that population, and (D) describes a different group entirely.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 60,
+      "version": 1
+    },
+    {
+      "id": "m-inf-002",
+      "section": "math",
+      "domain": "problem_solving_data_analysis",
+      "skills": ["inference_from_sample_statistics"],
+      "itemType": "mcq",
+      "difficulty": "easy",
+      "stem": "A poll reports that 48% of voters favour a measure, with a margin of error of 3 percentage points. Which statement is best supported?",
+      "choices": [
+        { "id": "A", "text": "Exactly 48% of all voters favour the measure." },
+        { "id": "B", "text": "It is plausible that between 45% and 51% of all voters favour the measure." },
+        { "id": "C", "text": "Between 45% and 51% of the voters polled favour the measure." },
+        { "id": "D", "text": "Fewer than 45% of all voters favour the measure." }
+      ],
+      "answer": "B",
+      "rationale": "A margin of error gives a plausible interval for the population value: $48 \\pm 3$, or 45% to 51%. (A) treats the sample figure as exact, and (C) misapplies the interval to the sample, where 48% was measured directly.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 70,
+      "version": 1
+    },
+    {
+      "id": "m-inf-003",
+      "section": "math",
+      "domain": "problem_solving_data_analysis",
+      "skills": ["inference_from_sample_statistics"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stem": "A study using a random sample of 100 people reported a margin of error of 6 percentage points. If the researchers repeat the study with a random sample of 900 people from the same population, what is the most likely effect on the margin of error?",
+      "choices": [
+        { "id": "A", "text": "It will increase." },
+        { "id": "B", "text": "It will decrease." },
+        { "id": "C", "text": "It will stay the same." },
+        { "id": "D", "text": "It cannot be predicted." }
+      ],
+      "answer": "B",
+      "rationale": "Margin of error shrinks as sample size grows, in proportion to $\\frac{1}{\\sqrt{n}}$. Multiplying the sample by 9 divides the margin of error by $\\sqrt{9} = 3$, so roughly 6 points becomes 2.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 85,
+      "version": 1
+    },
+    {
+      "id": "m-inf-004",
+      "section": "math",
+      "domain": "problem_solving_data_analysis",
+      "skills": ["inference_from_sample_statistics"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stem": "A random sample of 250 trees in a forest had a mean height of 14.2 metres, with an associated margin of error of 0.6 metres. Which conclusion is best supported?",
+      "choices": [
+        { "id": "A", "text": "Every tree in the forest is between 13.6 and 14.8 metres tall." },
+        { "id": "B", "text": "The mean height of all trees in the forest is plausibly between 13.6 and 14.8 metres." },
+        { "id": "C", "text": "The mean height of all trees in the forest is exactly 14.2 metres." },
+        { "id": "D", "text": "Most trees in the forest are shorter than 13.6 metres." }
+      ],
+      "answer": "B",
+      "rationale": "The interval estimates the population *mean*, not the height of individual trees. (A) is the classic confusion between a confidence interval for a mean and the spread of the underlying data, which is much wider.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 90,
+      "version": 1
+    },
+    {
+      "id": "m-inf-005",
+      "section": "math",
+      "domain": "problem_solving_data_analysis",
+      "skills": ["inference_from_sample_statistics"],
+      "itemType": "mcq",
+      "difficulty": "hard",
+      "stem": "A researcher surveyed people leaving a gym and found that 78% exercise at least four times a week. Which is the most serious limitation of this study?",
+      "choices": [
+        { "id": "A", "text": "The sample size was not reported." },
+        { "id": "B", "text": "The sample was not randomly selected from the population of interest, so it likely overstates exercise frequency." },
+        { "id": "C", "text": "Percentages cannot be used to describe survey results." },
+        { "id": "D", "text": "The margin of error was not calculated." }
+      ],
+      "answer": "B",
+      "rationale": "People leaving a gym are, by selection, more likely to exercise often than the general population. No sample size or margin of error can repair that bias, which is why (B) outranks (A) and (D) — those are reporting gaps, whereas this is a flaw in what the sample can represent at all.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 100,
+      "version": 1
+    },
+    {
+      "id": "m-inf-006",
+      "section": "math",
+      "domain": "problem_solving_data_analysis",
+      "skills": ["inference_from_sample_statistics"],
+      "itemType": "mcq",
+      "difficulty": "hard",
+      "stem": "Two random samples were drawn from the same population. Sample 1 gave a mean of 52 with a margin of error of 4; Sample 2 gave a mean of 55 with a margin of error of 2. Which conclusion is best supported?",
+      "choices": [
+        { "id": "A", "text": "Sample 2 must contain an error, because its mean differs from Sample 1's." },
+        { "id": "B", "text": "The population mean is exactly 53.5, the average of the two sample means." },
+        { "id": "C", "text": "Both intervals plausibly contain the population mean, and they overlap between 53 and 56." },
+        { "id": "D", "text": "Sample 1 is more reliable because its margin of error is larger." }
+      ],
+      "answer": "C",
+      "rationale": "Sample 1 gives 48 to 56 and Sample 2 gives 53 to 57; the shared region is 53 to 56. Different samples from one population routinely give different means, so (A) is unwarranted. (D) inverts the meaning of margin of error — a smaller one indicates a more precise estimate.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 115,
+      "version": 1
+    },
+
+    {
+      "id": "m-clm-001",
+      "section": "math",
+      "domain": "problem_solving_data_analysis",
+      "skills": ["evaluating_statistical_claims"],
+      "itemType": "mcq",
+      "difficulty": "easy",
+      "stem": "An observational study found that people who drink more coffee report fewer headaches. Which conclusion is best supported?",
+      "choices": [
+        { "id": "A", "text": "Drinking coffee prevents headaches." },
+        { "id": "B", "text": "There is an association between coffee consumption and reported headaches." },
+        { "id": "C", "text": "Headaches cause people to drink less coffee." },
+        { "id": "D", "text": "Coffee should be recommended as a headache treatment." }
+      ],
+      "answer": "B",
+      "rationale": "An observational study can establish that two variables move together but cannot establish which causes which, or whether a third factor drives both. Only (B) stays within what the design supports.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 60,
+      "version": 1
+    },
+    {
+      "id": "m-clm-002",
+      "section": "math",
+      "domain": "problem_solving_data_analysis",
+      "skills": ["evaluating_statistical_claims"],
+      "itemType": "mcq",
+      "difficulty": "easy",
+      "stem": "Researchers randomly assigned 500 volunteers to either a new tutoring programme or a control group, and the tutoring group scored significantly higher afterwards. Which conclusion is best supported?",
+      "choices": [
+        { "id": "A", "text": "The tutoring programme caused the higher scores among these volunteers." },
+        { "id": "B", "text": "Higher-scoring students are more likely to choose tutoring." },
+        { "id": "C", "text": "No conclusion about cause is possible from this design." },
+        { "id": "D", "text": "The programme will raise scores for every student in the country." }
+      ],
+      "answer": "A",
+      "rationale": "Random assignment is what licenses a causal conclusion, because it makes the groups comparable at the outset. (B) describes self-selection, which random assignment eliminates. (D) overgeneralises: volunteers are not a random sample of the country.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 70,
+      "version": 1
+    },
+    {
+      "id": "m-clm-003",
+      "section": "math",
+      "domain": "problem_solving_data_analysis",
+      "skills": ["evaluating_statistical_claims"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stem": "A company emailed a satisfaction survey to all its customers, and 8% responded. Of those, 91% reported being satisfied. What is the main reason this result may not represent all customers?",
+      "choices": [
+        { "id": "A", "text": "The sample size is too small to compute a percentage." },
+        { "id": "B", "text": "Customers who chose to respond may differ systematically from those who did not." },
+        { "id": "C", "text": "Surveys cannot measure satisfaction." },
+        { "id": "D", "text": "The company should have surveyed non-customers as well." }
+      ],
+      "answer": "B",
+      "rationale": "With a voluntary 8% response rate, the respondents are self-selected, and people with strong opinions are likelier to reply. That is nonresponse bias, and it can shift the result in either direction regardless of how many people responded.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 85,
+      "version": 1
+    },
+    {
+      "id": "m-clm-004",
+      "section": "math",
+      "domain": "problem_solving_data_analysis",
+      "skills": ["evaluating_statistical_claims"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stem": "A study of a random sample of 2,000 adults in one province found that those who owned dogs walked more per week than those who did not. Which conclusion is best supported?",
+      "choices": [
+        { "id": "A", "text": "Owning a dog causes adults in the province to walk more." },
+        { "id": "B", "text": "Among adults in the province, dog ownership is associated with more walking." },
+        { "id": "C", "text": "Adults everywhere who own dogs walk more." },
+        { "id": "D", "text": "Adults who walk more should acquire dogs." }
+      ],
+      "answer": "B",
+      "rationale": "The sample is random, so results generalise to adults in that province — but the study is observational, so it supports association only. (A) claims causation the design cannot support; (C) generalises past the sampled population.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 90,
+      "version": 1
+    },
+    {
+      "id": "m-clm-005",
+      "section": "math",
+      "domain": "problem_solving_data_analysis",
+      "skills": ["evaluating_statistical_claims"],
+      "itemType": "mcq",
+      "difficulty": "hard",
+      "stem": "A city reports that neighbourhoods with more streetlights have higher crime rates and concludes that streetlights attract crime. Which consideration most undermines this conclusion?",
+      "choices": [
+        { "id": "A", "text": "Crime rates were measured over a full year." },
+        { "id": "B", "text": "Streetlights are typically installed in busier neighbourhoods, which may have more crime for other reasons." },
+        { "id": "C", "text": "Some neighbourhoods have no streetlights at all." },
+        { "id": "D", "text": "The city measured the number of streetlights accurately." }
+      ],
+      "answer": "B",
+      "rationale": "This identifies a confounding variable: neighbourhood activity level plausibly drives both streetlight installation and crime, producing the association without any causal link between them. (A) and (D) describe measurement quality, which is not the problem here.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 100,
+      "version": 1
+    },
+    {
+      "id": "m-clm-006",
+      "section": "math",
+      "domain": "problem_solving_data_analysis",
+      "skills": ["evaluating_statistical_claims"],
+      "itemType": "mcq",
+      "difficulty": "hard",
+      "stem": "Researchers recruited volunteers from a single university and randomly assigned them to a new sleep intervention or a control. The intervention group showed significantly better outcomes. Which statement most accurately describes what this study supports?",
+      "choices": [
+        { "id": "A", "text": "The intervention caused better outcomes, and this result applies to all adults." },
+        { "id": "B", "text": "The intervention caused better outcomes among the volunteers, but generalising beyond them is not justified." },
+        { "id": "C", "text": "The intervention is associated with better outcomes, but no causal claim is possible." },
+        { "id": "D", "text": "Neither a causal claim nor a generalisation is justified." }
+      ],
+      "answer": "B",
+      "rationale": "Two design features do different jobs. Random *assignment* licenses the causal claim, so (C) and (D) understate the study. Random *sampling* licenses generalisation, and volunteers from one university are not a random sample of adults, so (A) overstates it.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 115,
+      "version": 1
+    }
+  ]
+}

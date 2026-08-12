@@ -1,0 +1,5 @@
+# Generated items awaiting human review. Never committed — unreviewed items
+# must not reach a build. The directory itself is kept, so the generator has
+# somewhere to write on a fresh clone.
+*
+!.gitignore

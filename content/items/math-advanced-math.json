@@ -1,0 +1,376 @@
+{
+  "items": [
+    {
+      "id": "m-eqv-001",
+      "section": "math",
+      "domain": "advanced_math",
+      "skills": ["equivalent_expressions"],
+      "itemType": "mcq",
+      "difficulty": "easy",
+      "stem": "Which expression is equivalent to $(x + 3)(x - 5)$?",
+      "choices": [
+        { "id": "A", "text": "$x^2 - 2x - 15$" },
+        { "id": "B", "text": "$x^2 + 2x - 15$" },
+        { "id": "C", "text": "$x^2 - 15$" },
+        { "id": "D", "text": "$x^2 - 8x - 15$" }
+      ],
+      "answer": "A",
+      "rationale": "Expanding gives $x^2 - 5x + 3x - 15 = x^2 - 2x - 15$. Choice (B) has the sign of the middle term wrong, and (C) omits the middle terms entirely.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 50,
+      "version": 1
+    },
+    {
+      "id": "m-eqv-002",
+      "section": "math",
+      "domain": "advanced_math",
+      "skills": ["equivalent_expressions"],
+      "itemType": "mcq",
+      "difficulty": "easy",
+      "stem": "Which expression is equivalent to $3x(2x - 4)$?",
+      "choices": [
+        { "id": "A", "text": "$6x - 12x$" },
+        { "id": "B", "text": "$6x^2 - 4$" },
+        { "id": "C", "text": "$6x^2 - 12x$" },
+        { "id": "D", "text": "$5x^2 - 12x$" }
+      ],
+      "answer": "C",
+      "rationale": "Distribute $3x$ to each term: $3x \\cdot 2x = 6x^2$ and $3x \\cdot (-4) = -12x$. Choice (B) fails to distribute to the second term.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 50,
+      "version": 1
+    },
+    {
+      "id": "m-eqv-003",
+      "section": "math",
+      "domain": "advanced_math",
+      "skills": ["equivalent_expressions"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stem": "Which expression is equivalent to $x^2 - 9x + 20$?",
+      "choices": [
+        { "id": "A", "text": "$(x - 2)(x - 10)$" },
+        { "id": "B", "text": "$(x - 4)(x - 5)$" },
+        { "id": "C", "text": "$(x + 4)(x + 5)$" },
+        { "id": "D", "text": "$(x - 1)(x - 20)$" }
+      ],
+      "answer": "B",
+      "rationale": "Two numbers must multiply to 20 and add to $-9$: those are $-4$ and $-5$. Choice (A) multiplies to 20 but adds to $-12$; (D) multiplies to 20 but adds to $-21$; (C) adds to $+9$.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 70,
+      "version": 1
+    },
+    {
+      "id": "m-eqv-004",
+      "section": "math",
+      "domain": "advanced_math",
+      "skills": ["equivalent_expressions"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stem": "For $x \\ne -3$, which expression is equivalent to $\\frac{2x^2 + 5x - 3}{x + 3}$?",
+      "choices": [
+        { "id": "A", "text": "$2x - 1$" },
+        { "id": "B", "text": "$2x + 1$" },
+        { "id": "C", "text": "$2x - 3$" },
+        { "id": "D", "text": "$x - 1$" }
+      ],
+      "answer": "A",
+      "rationale": "Factor the numerator: $2x^2 + 5x - 3 = (2x - 1)(x + 3)$. Cancelling the common factor $x + 3$ leaves $2x - 1$. You can verify by expanding: $(2x-1)(x+3) = 2x^2 + 6x - x - 3 = 2x^2 + 5x - 3$.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 90,
+      "version": 1
+    },
+    {
+      "id": "m-eqv-005",
+      "section": "math",
+      "domain": "advanced_math",
+      "skills": ["equivalent_expressions"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stem": "For $x \\ge 0$, which expression is equivalent to $\\sqrt{50x^3}$?",
+      "choices": [
+        { "id": "A", "text": "$5x\\sqrt{2x}$" },
+        { "id": "B", "text": "$25x\\sqrt{2x}$" },
+        { "id": "C", "text": "$5x^2\\sqrt{2}$" },
+        { "id": "D", "text": "$10x\\sqrt{5x}$" }
+      ],
+      "answer": "A",
+      "rationale": "Write $50x^3 = 25x^2 \\cdot 2x$. Since $\\sqrt{25x^2} = 5x$ for $x \\ge 0$, the expression becomes $5x\\sqrt{2x}$. Choice (B) takes 25 out without square-rooting it.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 85,
+      "version": 1
+    },
+    {
+      "id": "m-eqv-006",
+      "section": "math",
+      "domain": "advanced_math",
+      "skills": ["equivalent_expressions"],
+      "itemType": "mcq",
+      "difficulty": "hard",
+      "stem": "Which expression is equivalent to $(3x - 2)^2 - (x + 4)^2$?",
+      "choices": [
+        { "id": "A", "text": "$8x^2 - 20x - 12$" },
+        { "id": "B", "text": "$8x^2 - 4x - 12$" },
+        { "id": "C", "text": "$8x^2 - 20x + 20$" },
+        { "id": "D", "text": "$10x^2 - 20x + 20$" }
+      ],
+      "answer": "A",
+      "rationale": "$(3x-2)^2 = 9x^2 - 12x + 4$ and $(x+4)^2 = x^2 + 8x + 16$. Subtracting: $9x^2 - 12x + 4 - x^2 - 8x - 16 = 8x^2 - 20x - 12$. The frequent error is subtracting only the first term of the second square, which gives (B).",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 110,
+      "version": 1
+    },
+    {
+      "id": "m-eqv-007",
+      "section": "math",
+      "domain": "advanced_math",
+      "skills": ["equivalent_expressions"],
+      "itemType": "mcq",
+      "difficulty": "hard",
+      "stem": "For $x > 0$, which expression is equivalent to $\\frac{1}{x} + \\frac{1}{x + 1}$?",
+      "choices": [
+        { "id": "A", "text": "$\\frac{2}{2x + 1}$" },
+        { "id": "B", "text": "$\\frac{2x + 1}{x(x + 1)}$" },
+        { "id": "C", "text": "$\\frac{1}{x(x+1)}$" },
+        { "id": "D", "text": "$\\frac{2x+1}{x^2}$" }
+      ],
+      "answer": "B",
+      "rationale": "Use the common denominator $x(x+1)$: $\\frac{x+1}{x(x+1)} + \\frac{x}{x(x+1)} = \\frac{2x+1}{x(x+1)}$. Choice (A) is the classic error of adding numerators and denominators separately.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 110,
+      "version": 1
+    },
+
+    {
+      "id": "m-nleq-001",
+      "section": "math",
+      "domain": "advanced_math",
+      "skills": ["nonlinear_equations_and_systems"],
+      "itemType": "mcq",
+      "difficulty": "easy",
+      "stem": "What are all solutions to the equation $x^2 - 49 = 0$?",
+      "choices": [
+        { "id": "A", "text": "$x = 7$ only" },
+        { "id": "B", "text": "$x = -7$ only" },
+        { "id": "C", "text": "$x = 7$ and $x = -7$" },
+        { "id": "D", "text": "$x = 49$ and $x = -49$" }
+      ],
+      "answer": "C",
+      "rationale": "Adding 49 gives $x^2 = 49$, and both $7$ and $-7$ square to 49. Choice (A) is the common omission of the negative root.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 50,
+      "version": 1
+    },
+    {
+      "id": "m-nleq-002",
+      "section": "math",
+      "domain": "advanced_math",
+      "skills": ["nonlinear_equations_and_systems"],
+      "itemType": "mcq",
+      "difficulty": "easy",
+      "stem": "What are the solutions to $x^2 + 5x + 6 = 0$?",
+      "choices": [
+        { "id": "A", "text": "$x = 2$ and $x = 3$" },
+        { "id": "B", "text": "$x = -2$ and $x = -3$" },
+        { "id": "C", "text": "$x = -1$ and $x = -6$" },
+        { "id": "D", "text": "$x = 1$ and $x = 6$" }
+      ],
+      "answer": "B",
+      "rationale": "Factor as $(x + 2)(x + 3) = 0$, so $x = -2$ or $x = -3$. Choice (A) has the correct factors but the wrong signs — setting $x + 2 = 0$ gives $x = -2$, not $2$. Choice (C) multiplies to 6 but adds to $-7$.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 60,
+      "version": 1
+    },
+    {
+      "id": "m-nleq-003",
+      "section": "math",
+      "domain": "advanced_math",
+      "skills": ["nonlinear_equations_and_systems"],
+      "itemType": "spr",
+      "difficulty": "medium",
+      "stem": "The equation $x^2 - 6x + 8 = 0$ has two solutions. What is the positive difference between them?",
+      "answer": ["2"],
+      "rationale": "Factor as $(x - 2)(x - 4) = 0$, giving $x = 2$ and $x = 4$. The positive difference is $4 - 2 = 2$.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 80,
+      "version": 1
+    },
+    {
+      "id": "m-nleq-004",
+      "section": "math",
+      "domain": "advanced_math",
+      "skills": ["nonlinear_equations_and_systems"],
+      "itemType": "spr",
+      "difficulty": "medium",
+      "stem": "If $\\sqrt{2x + 7} = 5$, what is the value of $x$?",
+      "answer": ["9"],
+      "rationale": "Square both sides: $2x + 7 = 25$. Subtract 7: $2x = 18$, so $x = 9$. Checking in the original equation, $\\sqrt{25} = 5$, confirms the solution is not extraneous.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 80,
+      "version": 1
+    },
+    {
+      "id": "m-nleq-005",
+      "section": "math",
+      "domain": "advanced_math",
+      "skills": ["nonlinear_equations_and_systems"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stem": "What are the solutions to $2x^2 + 3x - 5 = 0$?",
+      "choices": [
+        { "id": "A", "text": "$x = 1$ and $x = -\\frac{5}{2}$" },
+        { "id": "B", "text": "$x = -1$ and $x = \\frac{5}{2}$" },
+        { "id": "C", "text": "$x = 5$ and $x = -2$" },
+        { "id": "D", "text": "$x = \\frac{1}{2}$ and $x = -5$" }
+      ],
+      "answer": "A",
+      "rationale": "Factor as $(2x + 5)(x - 1) = 0$. Setting each factor to zero gives $x = -\\frac{5}{2}$ and $x = 1$. Expanding to check: $2x^2 - 2x + 5x - 5 = 2x^2 + 3x - 5$.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 95,
+      "version": 1
+    },
+    {
+      "id": "m-nleq-006",
+      "section": "math",
+      "domain": "advanced_math",
+      "skills": ["nonlinear_equations_and_systems"],
+      "itemType": "spr",
+      "difficulty": "hard",
+      "stem": "The system of equations $y = x^2$ and $y = 4x - 3$ has two solutions. What is the sum of the two $y$-values?",
+      "answer": ["10"],
+      "rationale": "Set the expressions equal: $x^2 = 4x - 3$, so $x^2 - 4x + 3 = 0$ and $(x-1)(x-3) = 0$, giving $x = 1$ and $x = 3$. The corresponding $y$-values are $1^2 = 1$ and $3^2 = 9$, which sum to 10. (Summing the $x$-values instead would give 4.)",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 120,
+      "version": 1
+    },
+    {
+      "id": "m-nleq-007",
+      "section": "math",
+      "domain": "advanced_math",
+      "skills": ["nonlinear_equations_and_systems"],
+      "itemType": "spr",
+      "difficulty": "hard",
+      "stem": "If $3^{x + 1} = 81$, what is the value of $x$?",
+      "answer": ["3"],
+      "rationale": "Write 81 as a power of 3: $81 = 3^4$. Since the bases match, the exponents must be equal: $x + 1 = 4$, so $x = 3$.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 95,
+      "version": 1
+    },
+
+    {
+      "id": "m-nlfn-001",
+      "section": "math",
+      "domain": "advanced_math",
+      "skills": ["nonlinear_functions"],
+      "itemType": "mcq",
+      "difficulty": "easy",
+      "stem": "The function $f$ is defined by $f(x) = x^2 - 4$. What is the value of $f(3)$?",
+      "choices": [
+        { "id": "A", "text": "$2$" },
+        { "id": "B", "text": "$5$" },
+        { "id": "C", "text": "$9$" },
+        { "id": "D", "text": "$13$" }
+      ],
+      "answer": "B",
+      "rationale": "Substitute: $f(3) = 3^2 - 4 = 9 - 4 = 5$. Choice (A) comes from computing $(3 - 4)$ before squaring, and (A)'s cousin error $2 \\times 3 - 4 = 2$ treats $x^2$ as $2x$.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 50,
+      "version": 1
+    },
+    {
+      "id": "m-nlfn-002",
+      "section": "math",
+      "domain": "advanced_math",
+      "skills": ["nonlinear_functions"],
+      "itemType": "mcq",
+      "difficulty": "easy",
+      "stem": "What is the vertex of the graph of $y = (x - 3)^2 + 5$ in the $xy$-plane?",
+      "choices": [
+        { "id": "A", "text": "$(-3, 5)$" },
+        { "id": "B", "text": "$(3, 5)$" },
+        { "id": "C", "text": "$(3, -5)$" },
+        { "id": "D", "text": "$(-3, -5)$" }
+      ],
+      "answer": "B",
+      "rationale": "In vertex form $y = a(x - h)^2 + k$, the vertex is $(h, k)$. Here $h = 3$ because the expression is $(x - 3)$, and $k = 5$. Choice (A) is the standard sign error on $h$.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 60,
+      "version": 1
+    },
+    {
+      "id": "m-nlfn-003",
+      "section": "math",
+      "domain": "advanced_math",
+      "skills": ["nonlinear_functions"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stem": "The graph of $y = x^2 - 6x + 5$ crosses the $x$-axis at two points. What are the $x$-coordinates of those points?",
+      "choices": [
+        { "id": "A", "text": "$-1$ and $-5$" },
+        { "id": "B", "text": "$1$ and $5$" },
+        { "id": "C", "text": "$2$ and $3$" },
+        { "id": "D", "text": "$0$ and $6$" }
+      ],
+      "answer": "B",
+      "rationale": "Set $y = 0$ and factor: $x^2 - 6x + 5 = (x - 1)(x - 5) = 0$, so $x = 1$ and $x = 5$. Choice (A) reverses the signs of the roots.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 80,
+      "version": 1
+    },
+    {
+      "id": "m-nlfn-004",
+      "section": "math",
+      "domain": "advanced_math",
+      "skills": ["nonlinear_functions"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stem": "A population is modelled by $P(t) = 500(1.08)^t$, where $t$ is the number of years since the study began. Which of the following is the best interpretation of 1.08 in this model?",
+      "choices": [
+        { "id": "A", "text": "The population increases by 1.08 individuals each year." },
+        { "id": "B", "text": "The population increases by 8% each year." },
+        { "id": "C", "text": "The population increases by 108 individuals each year." },
+        { "id": "D", "text": "The population began at 1.08 times its previous size." }
+      ],
+      "answer": "B",
+      "rationale": "In $P = P_0(1 + r)^t$, the base is $1 + r$. Here $1.08 = 1 + 0.08$, so $r = 0.08$, an 8% increase per year. (A) and (C) describe constant additive growth, which would be a linear model rather than an exponential one.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 75,
+      "version": 1
+    },
+    {
+      "id": "m-nlfn-005",
+      "section": "math",
+      "domain": "advanced_math",
+      "skills": ["nonlinear_functions"],
+      "itemType": "spr",
+      "difficulty": "hard",
+      "stem": "The function $f$ is defined by $f(x) = a(x - 2)(x + 6)$, where $a$ is a nonzero constant. What is the $x$-coordinate of the vertex of the graph of $f$?",
+      "answer": ["-2"],
+      "rationale": "The zeros are $x = 2$ and $x = -6$. A parabola is symmetric about the vertical line halfway between its zeros, so the vertex lies at $x = \\frac{2 + (-6)}{2} = -2$. The value of $a$ stretches the parabola but does not move the axis of symmetry.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 115,
+      "version": 1
+    },
+    {
+      "id": "m-nlfn-006",
+      "section": "math",
+      "domain": "advanced_math",
+      "skills": ["nonlinear_functions"],
+      "itemType": "mcq",
+      "difficulty": "hard",
+      "stem": "The function $g$ is defined by $g(x) = -2(x - 1)^2 + 8$. What is the maximum value of $g$?",
+      "choices": [
+        { "id": "A", "text": "$-2$" },
+        { "id": "B", "text": "$1$" },
+        { "id": "C", "text": "$8$" },
+        { "id": "D", "text": "The function has no maximum value." }
+      ],
+      "answer": "C",
+      "rationale": "Because $a = -2$ is negative, the parabola opens downward and its vertex is the maximum. In vertex form the vertex is $(1, 8)$, so the greatest output is 8, reached at $x = 1$. Choice (B) gives the input at which the maximum occurs rather than the maximum itself.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 100,
+      "version": 1
+    }
+  ]
+}

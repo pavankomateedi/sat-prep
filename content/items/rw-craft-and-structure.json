@@ -1,0 +1,453 @@
+{
+  "items": [
+    {
+      "id": "rw-wic-001",
+      "section": "rw",
+      "domain": "craft_and_structure",
+      "skills": ["words_in_context"],
+      "itemType": "mcq",
+      "difficulty": "easy",
+      "stimulus": "Marine biologist Kakani Katija studies how tiny swimming animals stir the ocean. Individually, a single millimetre-long creature moves a negligible amount of water. But Katija argues that the sheer number of such animals makes their combined effect on ocean mixing far from ______.",
+      "stem": "Which choice completes the text with the most logical and precise word or phrase?",
+      "choices": [
+        { "id": "A", "text": "trivial" },
+        { "id": "B", "text": "hazardous" },
+        { "id": "C", "text": "deliberate" },
+        { "id": "D", "text": "visible" }
+      ],
+      "answer": "A",
+      "rationale": "The text contrasts one animal's \"negligible\" effect with the combined effect of huge numbers. \"Far from trivial\" restates that contrast: the total effect is significant even though each part is not. (B) and (C) introduce danger and intent, neither of which the text raises. (D) is tempting because the animals are tiny, but the sentence is about the size of the effect, not whether it can be seen.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 60,
+      "version": 1
+    },
+    {
+      "id": "rw-wic-002",
+      "section": "rw",
+      "domain": "craft_and_structure",
+      "skills": ["words_in_context"],
+      "itemType": "mcq",
+      "difficulty": "easy",
+      "stimulus": "When archaeologists uncovered the storage jars at the site, they expected the residue inside to be uniform. Instead, chemical analysis revealed a ______ mixture: grain, honey, and at least three distinct fruits, all in the same vessel.",
+      "stem": "Which choice completes the text with the most logical and precise word or phrase?",
+      "choices": [
+        { "id": "A", "text": "diluted" },
+        { "id": "B", "text": "heterogeneous" },
+        { "id": "C", "text": "synthetic" },
+        { "id": "D", "text": "preserved" }
+      ],
+      "answer": "B",
+      "rationale": "The colon introduces a list of several different substances in one jar, which is the opposite of the \"uniform\" contents the archaeologists expected. \"Heterogeneous\" means made of unlike parts. (A) concerns concentration, (C) implies artificial manufacture, and (D) describes condition rather than variety — none captures the contrast with \"uniform.\"",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 65,
+      "version": 1
+    },
+    {
+      "id": "rw-wic-003",
+      "section": "rw",
+      "domain": "craft_and_structure",
+      "skills": ["words_in_context"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stimulus": "Choreographer Bill T. Jones rarely fixes a dance in its final form during early rehearsals. He prefers to leave sections ______, allowing performers' improvisations to reshape the piece until close to opening night.",
+      "stem": "Which choice completes the text with the most logical and precise word or phrase?",
+      "choices": [
+        { "id": "A", "text": "indecipherable" },
+        { "id": "B", "text": "provisional" },
+        { "id": "C", "text": "redundant" },
+        { "id": "D", "text": "conventional" }
+      ],
+      "answer": "B",
+      "rationale": "The second sentence explains that Jones lets sections keep changing until nearly opening night, so those sections are temporary rather than settled. \"Provisional\" means adopted for the time being. (A) would mean the dancers cannot understand the sections, which the text does not suggest; (C) and (D) describe repetition and tradition, neither of which is at issue.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 70,
+      "version": 1
+    },
+    {
+      "id": "rw-wic-004",
+      "section": "rw",
+      "domain": "craft_and_structure",
+      "skills": ["words_in_context"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stimulus": "Historians once treated the ledger as a straightforward record of a single merchant's trades. Recent work has ______ that reading: the handwriting shifts at least four times, suggesting the book passed among several bookkeepers over decades.",
+      "stem": "Which choice completes the text with the most logical and precise word or phrase?",
+      "choices": [
+        { "id": "A", "text": "corroborated" },
+        { "id": "B", "text": "complicated" },
+        { "id": "C", "text": "transcribed" },
+        { "id": "D", "text": "anticipated" }
+      ],
+      "answer": "B",
+      "rationale": "The evidence after the colon — multiple hands over decades — does not disprove the old reading outright but makes the simple \"single merchant\" story harder to sustain. \"Complicated\" fits that partial challenge. (A) means confirmed, the opposite of what the evidence does. (D) would require the recent work to come first, contradicting \"once\" and \"recent.\"",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 75,
+      "version": 1
+    },
+    {
+      "id": "rw-wic-005",
+      "section": "rw",
+      "domain": "craft_and_structure",
+      "skills": ["words_in_context"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stimulus": "The committee's report has been criticised for its ______ tone. Rather than committing to any recommendation, it lists advantages and disadvantages of every option and closes by calling for further study.",
+      "stem": "Which choice completes the text with the most logical and precise word or phrase?",
+      "choices": [
+        { "id": "A", "text": "noncommittal" },
+        { "id": "B", "text": "belligerent" },
+        { "id": "C", "text": "exhaustive" },
+        { "id": "D", "text": "nostalgic" }
+      ],
+      "answer": "A",
+      "rationale": "The second sentence describes a report that refuses to endorse anything and defers to \"further study,\" which is what \"noncommittal\" names. (C) is the trap: listing every advantage and disadvantage sounds thorough, but the criticism is about the refusal to decide, not about coverage.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 70,
+      "version": 1
+    },
+    {
+      "id": "rw-wic-006",
+      "section": "rw",
+      "domain": "craft_and_structure",
+      "skills": ["words_in_context"],
+      "itemType": "mcq",
+      "difficulty": "hard",
+      "stimulus": "Linguist Nicole Holliday cautions against treating any speech community as static. Features that observers label as departures from a supposed standard are often ______ innovations, systematic and rule-governed in ways that only sustained study reveals.",
+      "stem": "Which choice completes the text with the most logical and precise word or phrase?",
+      "choices": [
+        { "id": "A", "text": "inadvertent" },
+        { "id": "B", "text": "principled" },
+        { "id": "C", "text": "ornamental" },
+        { "id": "D", "text": "obsolete" }
+      ],
+      "answer": "B",
+      "rationale": "The phrase after the comma — \"systematic and rule-governed\" — defines the missing word: the innovations follow principles. (A) means accidental, which directly contradicts \"systematic.\" (C) implies decoration without function, and (D) implies the features are dying out; neither is supported.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 80,
+      "version": 1
+    },
+    {
+      "id": "rw-wic-007",
+      "section": "rw",
+      "domain": "craft_and_structure",
+      "skills": ["words_in_context"],
+      "itemType": "mcq",
+      "difficulty": "hard",
+      "stimulus": "The novelist's early reviewers mistook her restraint for coldness. Later critics recognised that what looked like emotional distance was in fact a deliberate ______: by withholding commentary, she forces readers to supply the judgement she declines to make.",
+      "stem": "Which choice completes the text with the most logical and precise word or phrase?",
+      "choices": [
+        { "id": "A", "text": "concession" },
+        { "id": "B", "text": "strategy" },
+        { "id": "C", "text": "digression" },
+        { "id": "D", "text": "lapse" }
+      ],
+      "answer": "B",
+      "rationale": "The colon explains a purposeful technique with an intended effect on readers, and \"deliberate\" signals intent. \"Strategy\" names that. (D) is the strongest distractor, but a lapse would be a failure, and the sentence is explaining why the restraint succeeds.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 85,
+      "version": 1
+    },
+    {
+      "id": "rw-wic-008",
+      "section": "rw",
+      "domain": "craft_and_structure",
+      "skills": ["words_in_context"],
+      "itemType": "mcq",
+      "difficulty": "hard",
+      "stimulus": "Engineers designing the bridge faced a constraint they could not engineer away. Any material strong enough to span the gorge in a single stretch was too heavy to be supported by the canyon walls, making the original single-span proposal ______ from the outset.",
+      "stem": "Which choice completes the text with the most logical and precise word or phrase?",
+      "choices": [
+        { "id": "A", "text": "untenable" },
+        { "id": "B", "text": "unprecedented" },
+        { "id": "C", "text": "unremarkable" },
+        { "id": "D", "text": "unfinished" }
+      ],
+      "answer": "A",
+      "rationale": "The constraint described is self-defeating: the material that solves one problem creates another, so the proposal could never have worked. \"Untenable\" means impossible to defend or maintain. (B) means never done before, which may be true but is not what the logic establishes — the point is that it could not work, not that it had not been tried.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 85,
+      "version": 1
+    },
+
+    {
+      "id": "rw-tsp-001",
+      "section": "rw",
+      "domain": "craft_and_structure",
+      "skills": ["text_structure_and_purpose"],
+      "itemType": "mcq",
+      "difficulty": "easy",
+      "stimulus": "Most people picture a desert as a sea of sand. In fact, sand covers only about a fifth of the world's deserts. The rest is gravel, bare rock, and salt flat — terrain that is dry, but nothing like the dunes of popular imagination.",
+      "stem": "Which choice best describes the overall structure of the text?",
+      "choices": [
+        { "id": "A", "text": "It presents a common belief and then corrects it with specific detail." },
+        { "id": "B", "text": "It defines a technical term and then traces its history." },
+        { "id": "C", "text": "It describes a problem and then proposes a solution." },
+        { "id": "D", "text": "It compares two deserts and then explains why they differ." }
+      ],
+      "answer": "A",
+      "rationale": "The first sentence states what \"most people picture,\" and \"In fact\" introduces the correction, which the third sentence supports with specifics. No term is defined (B), no problem is solved (C), and no two named deserts are compared (D).",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 65,
+      "version": 1
+    },
+    {
+      "id": "rw-tsp-002",
+      "section": "rw",
+      "domain": "craft_and_structure",
+      "skills": ["text_structure_and_purpose"],
+      "itemType": "mcq",
+      "difficulty": "easy",
+      "stimulus": "In 2019 a team catalogued every tree in a 50-hectare plot of Panamanian rainforest, recording species, height, and position. The census took four years. Its value, though, lies less in the snapshot than in the repetition: the plot has now been recensused six times since 1981, and only the comparison across decades reveals which species are quietly disappearing.",
+      "stem": "What is the main purpose of the text?",
+      "choices": [
+        { "id": "A", "text": "To criticise the slow pace of the 2019 census" },
+        { "id": "B", "text": "To explain why repeating a survey matters more than any single survey" },
+        { "id": "C", "text": "To identify the species most at risk in Panama" },
+        { "id": "D", "text": "To describe the methods used to measure tree height" }
+      ],
+      "answer": "B",
+      "rationale": "The pivot is \"Its value, though, lies less in the snapshot than in the repetition,\" and the final clause explains what repetition reveals. (A) misreads \"four years\" as a complaint. (C) and (D) name details the text mentions but does not develop.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 70,
+      "version": 1
+    },
+    {
+      "id": "rw-tsp-003",
+      "section": "rw",
+      "domain": "craft_and_structure",
+      "skills": ["text_structure_and_purpose"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stimulus": "The following text is adapted from a discussion of urban planning.\n\nPlanners have long assumed that adding a lane to a congested road reduces congestion. The assumption is intuitive and, in the short term, often correct. But traffic engineers have documented a pattern they call induced demand: within a few years, the added capacity attracts trips that previously were not made at all, and congestion returns to roughly its former level. The lane did not fail to work. It worked, and the working is what drew the traffic.",
+      "stem": "What is the main rhetorical effect of the last two sentences of the text?",
+      "choices": [
+        { "id": "A", "text": "They concede a weakness in the evidence for induced demand." },
+        { "id": "B", "text": "They reframe an apparent failure as a consequence of success." },
+        { "id": "C", "text": "They introduce a competing explanation for the same data." },
+        { "id": "D", "text": "They recommend a specific policy for reducing congestion." }
+      ],
+      "answer": "B",
+      "rationale": "\"The lane did not fail to work. It worked, and the working is what drew the traffic\" takes what looks like a failed intervention and recasts it: the lane succeeded, and its success caused the return of congestion. That is a reframing, not a concession (A), a rival explanation (C), or a recommendation (D).",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 80,
+      "version": 1
+    },
+    {
+      "id": "rw-tsp-004",
+      "section": "rw",
+      "domain": "craft_and_structure",
+      "skills": ["text_structure_and_purpose"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stimulus": "Conservator Mariana Ortiz spent eleven months removing a layer of varnish from the seventeenth-century portrait. The varnish, applied in the 1800s to protect the surface, had yellowed so severely that the sitter's blue sleeve read as green. Ortiz is careful to note that the restorers who applied it were not careless; they used the best material available to them, and it did protect the paint for two centuries.",
+      "stem": "What is the main purpose of the final sentence?",
+      "choices": [
+        { "id": "A", "text": "To argue that the varnish should not have been removed" },
+        { "id": "B", "text": "To explain the chemical process by which varnish yellows" },
+        { "id": "C", "text": "To defend the earlier restorers against an implied criticism" },
+        { "id": "D", "text": "To question the accuracy of Ortiz's eleven-month timeline" }
+      ],
+      "answer": "C",
+      "rationale": "Describing damage caused by a past intervention invites the inference that the earlier restorers erred; the final sentence blocks that inference by noting they used the best material available and that it worked for two centuries. It defends them without arguing against the removal (A).",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 80,
+      "version": 1
+    },
+    {
+      "id": "rw-tsp-005",
+      "section": "rw",
+      "domain": "craft_and_structure",
+      "skills": ["text_structure_and_purpose"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stimulus": "Economist Esther Duflo has argued that development policy should be evaluated the way medicine is: by trial. Rather than debating in the abstract whether free textbooks improve test scores, researchers can distribute them to a randomly chosen set of schools and compare outcomes. The approach has limits — a result that holds in one district may not transfer to another — but it converts a question of opinion into a question of measurement.",
+      "stem": "Which choice best describes the function of the underlined portion \"a result that holds in one district may not transfer to another\" in the text as a whole?",
+      "choices": [
+        { "id": "A", "text": "It identifies a limitation of the method the text otherwise endorses." },
+        { "id": "B", "text": "It provides the primary evidence for Duflo's argument." },
+        { "id": "C", "text": "It defines a technical term introduced earlier in the text." },
+        { "id": "D", "text": "It explains why textbooks were chosen as the example." }
+      ],
+      "answer": "A",
+      "rationale": "The phrase sits inside \"The approach has limits — ... — but,\" a concession structure. It names a drawback, and the \"but\" clause then reasserts the method's value. It is therefore a limitation of an endorsed approach, not the argument's main evidence (B).",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 85,
+      "version": 1
+    },
+    {
+      "id": "rw-tsp-006",
+      "section": "rw",
+      "domain": "craft_and_structure",
+      "skills": ["text_structure_and_purpose"],
+      "itemType": "mcq",
+      "difficulty": "hard",
+      "stimulus": "The following text is adapted from a essay on museum practice.\n\nEvery museum label is an argument disguised as a fact. To write \"Bronze figure, c. 1200\" is to assert a date, a material, and a category, each of which some specialist somewhere disputes. Curators know this. The label's flat declarative voice is not a claim to certainty but a practical concession to the visitor, who has perhaps forty seconds and no appetite for a footnote. The honesty lives in the catalogue; the label is a summary that has agreed to sound surer than it is.",
+      "stem": "Which choice best describes the overall structure of the text?",
+      "choices": [
+        { "id": "A", "text": "It makes a provocative claim, then explains why the practice it criticises is nonetheless justified." },
+        { "id": "B", "text": "It traces the historical development of museum labelling conventions." },
+        { "id": "C", "text": "It contrasts two curators' incompatible approaches to the same object." },
+        { "id": "D", "text": "It presents a hypothesis and then reports evidence that disconfirms it." }
+      ],
+      "answer": "A",
+      "rationale": "The opening sentence is deliberately provocative (\"an argument disguised as a fact\"), and the rest explains why curators write this way anyway: the visitor has forty seconds, and the full honesty lives in the catalogue. The text ends up justifying the practice rather than condemning it. No historical sequence (B), no two curators (C), and no disconfirming evidence (D) appears.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 90,
+      "version": 1
+    },
+    {
+      "id": "rw-tsp-007",
+      "section": "rw",
+      "domain": "craft_and_structure",
+      "skills": ["text_structure_and_purpose"],
+      "itemType": "mcq",
+      "difficulty": "hard",
+      "stimulus": "Seismologists can locate an earthquake's epicentre within seconds, but forecasting one remains out of reach. The difficulty is not a shortage of data; networks record millions of tremors a year. It is that the relationship between small tremors and large ruptures appears to be genuinely stochastic. A given foreshock is followed by a major quake often enough to look meaningful and rarely enough to be useless as a warning.",
+      "stem": "What is the main purpose of the text?",
+      "choices": [
+        { "id": "A", "text": "To argue that seismic monitoring networks should be expanded" },
+        { "id": "B", "text": "To explain why a well-instrumented problem nonetheless resists prediction" },
+        { "id": "C", "text": "To describe the method by which epicentres are located" },
+        { "id": "D", "text": "To compare the frequency of foreshocks in different regions" }
+      ],
+      "answer": "B",
+      "rationale": "The text explicitly rules out lack of data as the obstacle (\"not a shortage of data\") and locates the difficulty in the stochastic link between small and large events. (A) inverts the point: more instruments would not help, since data is not the constraint.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 90,
+      "version": 1
+    },
+
+    {
+      "id": "rw-ctc-001",
+      "section": "rw",
+      "domain": "craft_and_structure",
+      "skills": ["cross_text_connections"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stimulus": "Text 1: Urban rooftop farms are often promoted as a way to feed cities locally. Agronomist Priya Raman is sceptical of the scale claims. Even if every suitable roof in a large city were cultivated, she calculates, the yield would supply a small fraction of the city's vegetable consumption, and almost none of its calories, which come overwhelmingly from grains grown on land no rooftop can replicate.",
+      "stimulusB": "Text 2: Rooftop farm operator Devin Marsh does not dispute the arithmetic. He argues that treating yield as the measure is the mistake. His farm's value, he says, lies in what surrounds the growing: the schools that visit, the composting it makes possible, and the summer heat it keeps out of the building below. Judged as agriculture, the farm is negligible; judged as infrastructure, it earns its space.",
+      "stem": "Based on the texts, how would Marsh (Text 2) most likely respond to Raman's calculation in Text 1?",
+      "choices": [
+        { "id": "A", "text": "By accepting the calculation but denying that yield is the right standard of value" },
+        { "id": "B", "text": "By disputing the figures on which the calculation rests" },
+        { "id": "C", "text": "By arguing that rooftop farms will produce more calories as techniques improve" },
+        { "id": "D", "text": "By claiming that Raman has overlooked grain cultivation on rooftops" }
+      ],
+      "answer": "A",
+      "rationale": "Text 2 opens by saying Marsh \"does not dispute the arithmetic,\" which rules out (B) and (D). He then relocates the value to non-agricultural benefits and concludes \"judged as agriculture, the farm is negligible\" — conceding yield while rejecting it as the measure. (C) predicts future improvement he never claims.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 95,
+      "version": 1
+    },
+    {
+      "id": "rw-ctc-002",
+      "section": "rw",
+      "domain": "craft_and_structure",
+      "skills": ["cross_text_connections"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stimulus": "Text 1: For decades, the standard account held that the Polynesian settlement of the remote Pacific proceeded rapidly, with voyagers reaching island after island within a few generations. The account rested largely on radiocarbon dates from charcoal found in early settlement layers.",
+      "stimulusB": "Text 2: A reassessment by archaeologist Janet Wilmshurst and colleagues re-examined those same charcoal dates and found many came from long-lived wood, which can be centuries older than the fire that burned it. Excluding the unreliable samples did not overturn the rapid-settlement picture. It sharpened it: the remaining dates cluster even more tightly than before.",
+      "stem": "Based on the texts, what is the relationship between the reassessment described in Text 2 and the standard account described in Text 1?",
+      "choices": [
+        { "id": "A", "text": "It undermines the standard account by discrediting its central evidence." },
+        { "id": "B", "text": "It strengthens the standard account by refining the evidence it rests on." },
+        { "id": "C", "text": "It leaves the standard account untested because no new data were gathered." },
+        { "id": "D", "text": "It replaces the standard account with an unrelated explanation." }
+      ],
+      "answer": "B",
+      "rationale": "Text 2 explicitly says removing the unreliable dates \"did not overturn the rapid-settlement picture. It sharpened it.\" Discarding bad samples left a tighter cluster, which supports the Text 1 account more strongly. (A) is the trap: finding a flaw in some evidence is not the same as undermining the conclusion.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 95,
+      "version": 1
+    },
+    {
+      "id": "rw-ctc-003",
+      "section": "rw",
+      "domain": "craft_and_structure",
+      "skills": ["cross_text_connections"],
+      "itemType": "mcq",
+      "difficulty": "easy",
+      "stimulus": "Text 1: Composer Aleksandra Vidal writes that a film score should be inaudible. If a viewer leaves the cinema humming the theme, she says, the music has drawn attention to itself and away from the story it was hired to serve.",
+      "stimulusB": "Text 2: Composer Theo Nkemelu takes the opposite view. A score that no one remembers, he argues, has failed twice over: it has not moved the audience during the film, and it has not survived the film. The great scores are the ones that outlive their pictures.",
+      "stem": "Based on the texts, Vidal and Nkemelu would most likely disagree about which of the following?",
+      "choices": [
+        { "id": "A", "text": "Whether a memorable film score indicates success or failure" },
+        { "id": "B", "text": "Whether film scores should be composed before or after filming" },
+        { "id": "C", "text": "Whether orchestras or electronic instruments suit film better" },
+        { "id": "D", "text": "Whether audiences notice film music at all" }
+      ],
+      "answer": "A",
+      "rationale": "Vidal treats a hummable theme as evidence the score failed its job; Nkemelu treats a forgettable score as a double failure and praises scores that \"outlive their pictures.\" The disagreement is precisely about what memorability signifies. Neither text raises composition timing (B) or instrumentation (C).",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 85,
+      "version": 1
+    },
+    {
+      "id": "rw-ctc-004",
+      "section": "rw",
+      "domain": "craft_and_structure",
+      "skills": ["cross_text_connections"],
+      "itemType": "mcq",
+      "difficulty": "hard",
+      "stimulus": "Text 1: Behavioural ecologist Sana Qureshi reports that jays in her study cached food more often when another jay could see them, then returned later to move the caches. She interprets the re-caching as evidence that the birds anticipate theft — that is, that they model what a rival knows.",
+      "stimulusB": "Text 2: Ecologist Martin Oyelaran notes that re-caching also increases when a jay is simply disturbed by noise, with no observer present. He proposes that re-caching may be a general response to any disruption during caching. On this account, the presence of a rival is one disturbance among many, and no modelling of another bird's knowledge need be involved.",
+      "stem": "Based on the texts, Oyelaran's proposal challenges Qureshi's interpretation primarily by",
+      "choices": [
+        { "id": "A", "text": "denying that the jays in Qureshi's study re-cached their food." },
+        { "id": "B", "text": "offering a simpler explanation that accounts for the same behaviour." },
+        { "id": "C", "text": "showing that jays cannot see other jays while caching." },
+        { "id": "D", "text": "arguing that Qureshi's sample of jays was too small." }
+      ],
+      "answer": "B",
+      "rationale": "Oyelaran accepts the behaviour and supplies an alternative cause — general disturbance — that requires no mind-reading, explicitly concluding that \"no modelling of another bird's knowledge need be involved.\" That is a competing, less demanding explanation for the same observation. He never denies the re-caching (A) or raises sample size (D).",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 100,
+      "version": 1
+    },
+    {
+      "id": "rw-ctc-005",
+      "section": "rw",
+      "domain": "craft_and_structure",
+      "skills": ["cross_text_connections"],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stimulus": "Text 1: Legal scholar Dana Whitfield contends that plain-language rewrites of statutes improve public access to the law. When citizens can read the rules that bind them, she argues, compliance rises and the need for costly legal advice falls.",
+      "stimulusB": "Text 2: Drafting specialist Ibrahim Cole agrees that clarity is desirable but warns that plain language and precision can pull apart. Legal terms of art are often awkward because they have been litigated into a settled meaning. Replacing such a term with a friendlier synonym can reopen a question that decades of case law had closed.",
+      "stem": "Based on the texts, Cole's view differs from Whitfield's in that Cole",
+      "choices": [
+        { "id": "A", "text": "rejects the goal of making statutes accessible to the public." },
+        { "id": "B", "text": "identifies a cost of plain-language rewriting that Whitfield does not address." },
+        { "id": "C", "text": "argues that citizens rarely attempt to read statutes at all." },
+        { "id": "D", "text": "claims that legal advice is less expensive than Whitfield suggests." }
+      ],
+      "answer": "B",
+      "rationale": "Cole \"agrees that clarity is desirable,\" so he does not reject the goal (A). His distinctive contribution is the risk he raises: a plain synonym can reopen settled legal meaning — a cost Text 1 never mentions. (C) and (D) attribute claims neither text makes.",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 90,
+      "version": 1
+    },
+    {
+      "id": "rw-ctc-006",
+      "section": "rw",
+      "domain": "craft_and_structure",
+      "skills": ["cross_text_connections"],
+      "itemType": "mcq",
+      "difficulty": "hard",
+      "stimulus": "Text 1: In reviewing the museum's new wing, critic Hana Beaumont praised the architect for refusing to compete with the collection. The galleries are deliberately plain — grey walls, indirect light, no view — so that nothing distracts from the objects on display.",
+      "stimulusB": "Text 2: Architect Yusuf Demir, who designed the wing, resists Beaumont's framing. He did not, he says, subtract character in order to serve the art. The grey is a specific grey, chosen over months; the light is engineered to a tolerance of a few degrees. What reads as absence, he insists, is the most laboured thing in the building.",
+      "stem": "Based on the texts, Demir would most likely argue that Beaumont's review",
+      "choices": [
+        { "id": "A", "text": "mistakes a demanding design achievement for a withholding of design." },
+        { "id": "B", "text": "overstates how much the collection benefits from plain galleries." },
+        { "id": "C", "text": "fails to acknowledge the budget constraints the project faced." },
+        { "id": "D", "text": "wrongly attributes the design decisions to the museum's trustees." }
+      ],
+      "answer": "A",
+      "rationale": "Demir does not dispute that the galleries read as plain; he disputes what that plainness signifies. \"He did not... subtract character\" and \"what reads as absence... is the most laboured thing in the building\" reframe restraint as intensive work, not abstention. He never raises budget (C) or authorship (D), and he does not argue about how much the art benefits (B).",
+      "source": { "kind": "original" },
+      "estimatedSeconds": 100,
+      "version": 1
+    }
+  ]
+}
