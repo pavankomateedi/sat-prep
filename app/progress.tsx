@@ -36,6 +36,17 @@ import { SCORING_DISCLAIMER } from '../src/assessment/scoring';
 import { percentileBand } from '../src/assessment/percentiles';
 import { calibrationReport, type CalibrationReport } from '../src/scheduling/fsrs';
 import { ELO_CONVERGENCE_ATTEMPTS } from '../src/scheduling/elo';
+import { buildAttemptSamples } from '../src/analytics/samples';
+import {
+  accuracyByDifficulty,
+  buildPacingReport,
+  weakestSkills,
+  type AccuracyRow,
+  type PacingReport,
+} from '../src/analytics/pacing';
+import { getSkill } from '../src/domain/taxonomy';
+import { Button } from '../src/ui/components';
+import { useRouter } from 'expo-router';
 
 export default function ProgressScreen() {
   const { loading, student } = useBootstrap();
@@ -44,6 +55,10 @@ export default function ProgressScreen() {
   const [attempts, setAttempts] = useState(0);
   const [calibration, setCalibration] = useState<CalibrationReport | null>(null);
   const [phaseLabel, setPhaseLabel] = useState('');
+  const [pacing, setPacing] = useState<PacingReport | null>(null);
+  const [difficultyRows, setDifficultyRows] = useState<AccuracyRow[]>([]);
+  const [weak, setWeak] = useState<AccuracyRow[]>([]);
+  const router = useRouter();
 
   useEffect(() => {
     if (!student) return;
@@ -63,6 +78,13 @@ export default function ProgressScreen() {
       setAttempts(attemptCount);
       setCalibration(calibrationReport(calibrationInputs));
       setPhaseLabel(`Phase ${refined.phase} · ${budgetFor(refined.phase).label}`);
+
+      const samples = await buildAttemptSamples(student.id);
+      if (samples.length > 0) {
+        setPacing(buildPacingReport(samples));
+        setDifficultyRows(accuracyByDifficulty(samples));
+        setWeak(weakestSkills(samples, (skill) => getSkill(skill).name));
+      }
     })();
   }, [student]);
 
@@ -145,6 +167,96 @@ export default function ProgressScreen() {
         ) : null}
       </Card>
 
+      {/* Pacing is one of the two things that decide a Digital SAT score —
+          you can know the material and still run out of module. The data was
+          being logged since T-05 and never shown. */}
+      <Card>
+        <Heading>Pacing</Heading>
+        {pacing ? (
+          <>
+            <Pill
+              text={
+                {
+                  on_pace: 'On pace',
+                  too_slow: 'Running long',
+                  rushing: 'Rushing',
+                  insufficient_data: 'Not enough data',
+                }[pacing.verdict]
+              }
+              tone={
+                pacing.verdict === 'on_pace'
+                  ? 'good'
+                  : pacing.verdict === 'insufficient_data'
+                    ? 'neutral'
+                    : 'warn'
+              }
+            />
+            <Body muted>{pacing.message}</Body>
+
+            {pacing.bySection.length > 0 ? (
+              <>
+                <Divider />
+                {pacing.bySection.map((bucket) => (
+                  <View key={bucket.label} style={styles.statRow}>
+                    <Text style={styles.statLabel}>{bucket.label}</Text>
+                    <Text style={styles.statValue}>
+                      {bucket.reliable
+                        ? `${bucket.medianSeconds}s / ${bucket.benchmarkSeconds}s`
+                        : '—'}
+                    </Text>
+                  </View>
+                ))}
+                <Caption>Your median time against the seconds the real test allows.</Caption>
+              </>
+            ) : null}
+          </>
+        ) : (
+          <Body muted>No answers recorded yet.</Body>
+        )}
+      </Card>
+
+      <Card>
+        <Heading>Accuracy by difficulty</Heading>
+        {difficultyRows.length > 0 ? (
+          difficultyRows.map((row) => (
+            <View key={row.key} style={styles.statRow}>
+              <Text style={styles.statLabel}>{row.label}</Text>
+              <Text style={styles.statValue}>
+                {row.reliable ? `${Math.round(row.accuracy * 100)}%` : `— (${row.total})`}
+              </Text>
+            </View>
+          ))
+        ) : (
+          <Body muted>No answers recorded yet.</Body>
+        )}
+        <Caption>
+          Accuracy should fall from easy to hard. If it does not, the difficulty labels are
+          probably wrong rather than you being uniformly strong.
+        </Caption>
+      </Card>
+
+      <Card>
+        <Heading>Worth drilling</Heading>
+        {weak.length > 0 ? (
+          <>
+            {weak.map((row) => (
+              <View key={row.key} style={styles.statRow}>
+                <Text style={styles.statLabel}>{row.label}</Text>
+                <Text style={styles.statValue}>
+                  {Math.round(row.accuracy * 100)}% of {row.total}
+                </Text>
+              </View>
+            ))}
+            <Button title="Start a drill" onPress={() => router.push('/drills')} />
+          </>
+        ) : (
+          <Body muted>
+            Nothing stands out yet — a skill only appears here once there are enough attempts to
+            tell weak from unlucky.
+          </Body>
+        )}
+      </Card>
+
       <Card>
         <Heading>How well the scheduler knows you</Heading>
         <Caption>
@@ -208,4 +320,12 @@ const styles = StyleSheet.create({
   },
   domainName: { ...typography.body, color: colors.text, flex: 1 },
   domainValue: { ...typography.label, color: colors.textMuted },
+  statRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'baseline',
+    paddingVertical: 6,
+  },
+  statLabel: { ...typography.body, color: colors.text, flex: 1 },
+  statValue: { ...typography.label, color: colors.textMuted, fontVariant: ['tabular-nums'] },
 });

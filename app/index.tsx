@@ -157,6 +157,7 @@ export default function HomeScreen() {
         </Body>
         <View style={styles.linkRow}>
           <Button title="Progress" variant="quiet" onPress={() => router.push('/progress')} />
+          <Button title="Drills" variant="quiet" onPress={() => router.push('/drills')} />
           <Button
             title="Practice test"
             variant="quiet"

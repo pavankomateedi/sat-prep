@@ -26,6 +26,7 @@ export default function RootLayout() {
         />
         <Stack.Screen name="progress" options={{ title: 'Progress' }} />
         <Stack.Screen name="assessment" options={{ title: 'Practice test' }} />
+        <Stack.Screen name="drills" options={{ title: 'Timed drills' }} />
         <Stack.Screen name="parent" options={{ title: 'Weekly summary' }} />
         <Stack.Screen name="settings" options={{ title: 'Settings' }} />
         <Stack.Screen name="testday" options={{ title: 'Test day' }} />

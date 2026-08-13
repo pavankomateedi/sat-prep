@@ -32,6 +32,8 @@ import {
 import { MathText } from '../src/ui/MathText';
 import { Figure } from '../src/ui/Figure';
 import { TutorPanel } from '../src/ui/TutorPanel';
+import { Calculator, CalculatorButton } from '../src/ui/Calculator';
+import { HighlightableText, ReferenceSheet, ReferenceSheetButton } from '../src/ui/TestTools';
 import { clearTodaysReminder } from '../src/notifications/reminders';
 import { colors, radius, spacing, type as typography } from '../src/ui/theme';
 import { useBootstrap } from '../src/ui/useStudent';
@@ -74,6 +76,8 @@ export default function SessionScreen() {
   const [saving, setSaving] = useState(false);
   const [finished, setFinished] = useState(false);
   const [tally, setTally] = useState({ correct: 0, total: 0 });
+  const [calculatorOpen, setCalculatorOpen] = useState(false);
+  const [referenceOpen, setReferenceOpen] = useState(false);
 
   const shownAt = useRef<number>(Date.now());
   const sessionStart = useRef<number>(Date.now());
@@ -193,13 +197,13 @@ export default function SessionScreen() {
 
         {item.stimulus ? (
           <View style={styles.stimulus}>
-            <MathText>{item.stimulus}</MathText>
+            <HighlightableText>{item.stimulus}</HighlightableText>
           </View>
         ) : null}
 
         {item.stimulusB ? (
           <View style={styles.stimulus}>
-            <MathText>{item.stimulusB}</MathText>
+            <HighlightableText>{item.stimulusB}</HighlightableText>
           </View>
         ) : null}
 
@@ -262,6 +266,16 @@ export default function SessionScreen() {
             <Caption>Fractions and decimals are both accepted.</Caption>
           </View>
         )}
+
+        {/* Math questions get the same calculator and formula sheet as the
+            real test. Offered during practice too, not only in timed tests —
+            the point is to build the habit of reaching for them. */}
+        {item.section === 'math' ? (
+          <View style={styles.toolRow}>
+            <CalculatorButton onPress={() => setCalculatorOpen(true)} />
+            <ReferenceSheetButton onPress={() => setReferenceOpen(true)} />
+          </View>
+        ) : null}
       </Card>
 
       {/* T-08: the explanation is withheld until an answer is committed. */}
@@ -295,6 +309,9 @@ export default function SessionScreen() {
           disabled={saving || response.trim() === ''}
         />
       )}
+
+      <Calculator visible={calculatorOpen} onClose={() => setCalculatorOpen(false)} />
+      <ReferenceSheet visible={referenceOpen} onClose={() => setReferenceOpen(false)} />
     </Screen>
   );
 }
@@ -348,6 +365,7 @@ const styles = StyleSheet.create({
   },
   sprCorrect: { borderColor: colors.correct, backgroundColor: colors.correctSoft },
   sprWrong: { borderColor: colors.incorrect, backgroundColor: colors.incorrectSoft },
+  toolRow: { flexDirection: 'row', gap: spacing.sm, marginTop: spacing.md },
   feedbackGood: { borderColor: colors.correct },
   feedbackBad: { borderColor: colors.incorrect },
   rationale: { marginTop: spacing.sm },

@@ -1,14 +1,18 @@
 /**
- * T-11 / T-18 — Diagnostic and full-length practice tests.
+ * T-11 / T-18 — Diagnostic and full-length practice tests, with the Bluebook
+ * test-taking tools.
  *
- * This is the one place the 30-minute daily cap is deliberately suspended
- * (PRD §2.4), and it is presented as its own event rather than as a longer
- * session, so the daily habit and the occasional checkpoint stay distinct.
+ * The one place the 30-minute daily cap is deliberately suspended (PRD §2.4),
+ * presented as its own event so the daily habit and the occasional checkpoint
+ * stay distinct.
  *
  * The flow mirrors real delivery (PRD §1.2): module 1 is fixed and moderate,
- * then a single routing decision picks a harder or easier module 2. There is no
- * per-question adaptation, because the real test has none — and building it
- * would teach the student to expect something that will not happen.
+ * then a single routing decision picks a harder or easier module 2. No
+ * per-question adaptation, because the real test has none.
+ *
+ * Interaction state lives in src/assessment/moduleState.ts — answers, flags,
+ * eliminated choices, navigation — so it is unit-tested rather than tangled
+ * into this component.
  */
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
@@ -31,6 +35,8 @@ import {
 } from '../src/ui/components';
 import { MathText } from '../src/ui/MathText';
 import { Figure } from '../src/ui/Figure';
+import { Calculator } from '../src/ui/Calculator';
+import { HighlightableText, QuestionNavigator, ReferenceSheet, ToolBar } from '../src/ui/TestTools';
 import { colors, radius, spacing, type as typography } from '../src/ui/theme';
 import { useBootstrap } from '../src/ui/useStudent';
 import {
@@ -46,6 +52,21 @@ import {
   scoreSection,
   type RoutingPath,
 } from '../src/assessment/scoring';
+import { percentileBand } from '../src/assessment/percentiles';
+import {
+  addTime,
+  answer as recordAnswer,
+  createModuleState,
+  currentQuestion,
+  goTo,
+  next as goNext,
+  openReview,
+  previous as goPrevious,
+  progress as moduleProgress,
+  toggleEliminated,
+  toggleMark,
+  type ModuleState,
+} from '../src/assessment/moduleState';
 import { getSection } from '../src/domain/taxonomy';
 import type { AssessmentKind, Item, SectionScore } from '../src/domain/types';
 import { checkAnswer } from '../src/session/answerCheck';
@@ -67,16 +88,19 @@ export default function AssessmentScreen() {
   const [kind, setKind] = useState<AssessmentKind>('diagnostic');
   const [queue, setQueue] = useState<ModuleRun[]>([]);
   const [moduleIndex, setModuleIndex] = useState(0);
-  const [itemIndex, setItemIndex] = useState(0);
-  const [responses, setResponses] = useState<Map<string, string>>(new Map());
-  const [draft, setDraft] = useState('');
+  const [state, setState] = useState<ModuleState>(() => createModuleState([]));
+  const [answers, setAnswers] = useState<Map<string, string>>(new Map());
   const [secondsLeft, setSecondsLeft] = useState(0);
-  const [result, setResult] = useState<Awaited<ReturnType<typeof scoreComposite>> | null>(null);
+  const [showTimer, setShowTimer] = useState(true);
+  const [calculatorOpen, setCalculatorOpen] = useState(false);
+  const [referenceOpen, setReferenceOpen] = useState(false);
+  const [result, setResult] = useState<ReturnType<typeof scoreComposite> | null>(null);
   const [cadence, setCadence] = useState<ReturnType<typeof nextAssessmentDue> | null>(null);
   const [seenCount, setSeenCount] = useState(0);
 
   const allItems = useRef<Item[]>([]);
   const usedIds = useRef<Set<string>>(new Set());
+  const shownAt = useRef<number>(Date.now());
 
   useEffect(() => {
     if (!student) return;
@@ -90,32 +114,38 @@ export default function AssessmentScreen() {
     })();
   }, [student]);
 
-  // Module timer. Expiry advances the module rather than discarding work —
-  // running out of time on the real test does not void the section either.
+  // Module timer. Expiry does not discard work — running out of time on the
+  // real test does not void the section either.
   useEffect(() => {
     if (stage !== 'running') return;
-    const id = setInterval(() => {
-      setSecondsLeft((s) => {
-        if (s <= 1) {
-          clearInterval(id);
-          return 0;
-        }
-        return s - 1;
-      });
-    }, 1000);
+    const id = setInterval(() => setSecondsLeft((s) => (s <= 1 ? 0 : s - 1)), 1000);
     return () => clearInterval(id);
   }, [stage, moduleIndex]);
+
+  const current = queue[moduleIndex];
+  const question = currentQuestion(state);
+  const currentItem = useMemo(
+    () => current?.items.find((i) => i.id === question?.itemId),
+    [current, question]
+  );
+
+  /** Bank the time spent on the question being left, then move. */
+  const withTiming = useCallback((change: (s: ModuleState) => ModuleState) => {
+    setState((s) => {
+      const elapsed = Date.now() - shownAt.current;
+      shownAt.current = Date.now();
+      return change(addTime(s, s.currentIndex, elapsed));
+    });
+  }, []);
 
   const start = useCallback(
     async (selected: AssessmentKind) => {
       if (!student) return;
       const seen = await repo.getFsrsStates(student.id);
-      const seenIds = new Set(seen.keys());
-
       const test = buildTest({
         kind: selected,
         items: allItems.current,
-        seenItemIds: seenIds,
+        seenItemIds: new Set(seen.keys()),
       });
 
       usedIds.current = new Set(test.modules.flatMap((m) => m.itemIds));
@@ -130,80 +160,67 @@ export default function AssessmentScreen() {
       setQueue(runs);
       setSeenCount(test.previouslySeenCount);
       setModuleIndex(0);
-      setItemIndex(0);
-      setResponses(new Map());
-      setDraft('');
+      setState(createModuleState(runs[0]?.module.itemIds ?? []));
+      setAnswers(new Map());
       setSecondsLeft(runs[0]?.module.timeLimitSeconds ?? 0);
+      shownAt.current = Date.now();
       setStage('running');
     },
     [student]
   );
 
-  const current = queue[moduleIndex];
-  const currentItem = current?.items[itemIndex];
-
-  const commit = useCallback(() => {
-    if (!currentItem) return;
-    setResponses((prev) => new Map(prev).set(currentItem.id, draft));
-    setDraft('');
-
-    if (itemIndex + 1 < (current?.items.length ?? 0)) {
-      setItemIndex((i) => i + 1);
-    } else {
-      void advanceModule(new Map(responses).set(currentItem.id, draft));
-    }
-  }, [currentItem, draft, itemIndex, current, responses]);
-
   /**
-   * Move to the next module, inserting the routed second module after module 1
-   * of each section. This is the only adaptive step in the whole test.
+   * Finish a module: fold its answers into the running set, then either insert
+   * the routed second module or move on.
    */
-  const advanceModule = useCallback(
-    async (answers: Map<string, string>) => {
-      if (!current || !student) return;
+  const finishModule = useCallback(async () => {
+    if (!current || !student) return;
 
-      const isModuleOne = current.module.index === 1;
-      const halfLength = kind === 'diagnostic';
+    const merged = new Map(answers);
+    for (const q of state.questions) merged.set(q.itemId, q.response);
+    setAnswers(merged);
 
-      if (isModuleOne && !halfLength) {
-        const correct = current.items.filter(
-          (item) => checkAnswer(item, answers.get(item.id) ?? '').correct
-        ).length;
+    const halfLength = kind === 'diagnostic';
+    if (current.module.index === 1 && !halfLength) {
+      const correct = current.items.filter(
+        (item) => checkAnswer(item, merged.get(item.id) ?? '').correct
+      ).length;
 
-        const second = buildSecondModule({
-          items: allItems.current,
-          section: current.module.section,
-          module1Correct: correct,
-          module1Total: current.items.length,
-          exclude: usedIds.current,
-        });
+      const second = buildSecondModule({
+        items: allItems.current,
+        section: current.module.section,
+        module1Correct: correct,
+        module1Total: current.items.length,
+        exclude: usedIds.current,
+      });
 
-        const items = await repo.getItems(second.itemIds);
-        setQueue((prev) => {
-          const next = [...prev];
-          next.splice(moduleIndex + 1, 0, { module: second, items });
-          return next;
-        });
-        setModuleIndex((m) => m + 1);
-        setItemIndex(0);
-        setSecondsLeft(second.timeLimitSeconds);
-        return;
-      }
+      const items = await repo.getItems(second.itemIds);
+      setQueue((prev) => {
+        const nextQueue = [...prev];
+        nextQueue.splice(moduleIndex + 1, 0, { module: second, items });
+        return nextQueue;
+      });
+      setModuleIndex((m) => m + 1);
+      setState(createModuleState(second.itemIds));
+      setSecondsLeft(second.timeLimitSeconds);
+      shownAt.current = Date.now();
+      return;
+    }
 
-      if (moduleIndex + 1 < queue.length) {
-        setModuleIndex((m) => m + 1);
-        setItemIndex(0);
-        setSecondsLeft(queue[moduleIndex + 1]!.module.timeLimitSeconds);
-        return;
-      }
+    if (moduleIndex + 1 < queue.length) {
+      const nextRun = queue[moduleIndex + 1]!;
+      setModuleIndex((m) => m + 1);
+      setState(createModuleState(nextRun.module.itemIds));
+      setSecondsLeft(nextRun.module.timeLimitSeconds);
+      shownAt.current = Date.now();
+      return;
+    }
 
-      await finish(answers);
-    },
-    [current, student, kind, moduleIndex, queue]
-  );
+    await score(merged);
+  }, [current, student, answers, state, kind, moduleIndex, queue]);
 
-  const finish = useCallback(
-    async (answers: Map<string, string>) => {
+  const score = useCallback(
+    async (finalAnswers: Map<string, string>) => {
       if (!student) return;
 
       const sectionScores: (SectionScore & { halfWidth: number })[] = [];
@@ -216,13 +233,13 @@ export default function AssessmentScreen() {
         const moduleOne = modules.find((m) => m.module.index === 1);
         const moduleTwo = modules.find((m) => m.module.index === 2);
         const count = (run: ModuleRun | undefined) =>
-          run?.items.filter((i) => checkAnswer(i, answers.get(i.id) ?? '').correct).length ?? 0;
+          run?.items.filter((i) => checkAnswer(i, finalAnswers.get(i.id) ?? '').correct).length ?? 0;
 
         for (const run of modules) {
           for (const item of run.items) {
             domainResponses.push({
               domain: item.domain,
-              correct: checkAnswer(item, answers.get(item.id) ?? '').correct,
+              correct: checkAnswer(item, finalAnswers.get(item.id) ?? '').correct,
             });
           }
         }
@@ -235,14 +252,13 @@ export default function AssessmentScreen() {
             module2Correct: count(moduleTwo),
             module2Total: moduleTwo?.items.length ?? 0,
             // A half-length diagnostic has no routing, so it is scored on the
-            // uncapped scale; its wider confidence band carries the uncertainty.
+            // uncapped scale; the wider confidence band carries the uncertainty.
             path: (moduleTwo?.module.path ?? 'harder') as RoutingPath,
           })
         );
       }
 
       const composite = scoreComposite(sectionScores);
-      const domainScores = scoreDomains(domainResponses);
 
       await repo.saveTestResult({
         id: repo.newId(),
@@ -250,7 +266,7 @@ export default function AssessmentScreen() {
         kind,
         takenOn: toLocalDate(),
         sectionScores: composite.sectionScores,
-        domainScores,
+        domainScores: scoreDomains(domainResponses),
         totalScaled: composite.totalScaled,
         confidenceHalfWidth: composite.confidenceHalfWidth,
         attemptIds: [],
@@ -267,12 +283,15 @@ export default function AssessmentScreen() {
 
   // ---------------------------------------------------------------- results
   if (stage === 'scored' && result) {
+    const band = percentileBand(result.totalScaled, result.confidenceHalfWidth);
     return (
       <Screen>
         <Title>Your result</Title>
         <Card>
           <Label>Estimated score</Label>
           <Text style={styles.score}>{result.range}</Text>
+          <Pill text={band.label} />
+          <Body muted>{band.interpretation}</Body>
           <Notice>{SCORING_DISCLAIMER}</Notice>
           <Divider />
           {result.sectionScores.map((s) => (
@@ -287,8 +306,8 @@ export default function AssessmentScreen() {
 
         {seenCount > 0 ? (
           <Notice tone="warn">
-            {seenCount} question{seenCount === 1 ? '' : 's'} on this test had already appeared in
-            daily practice, which nudges the score upward. Worth knowing when reading the number.
+            {seenCount} question{seenCount === 1 ? '' : 's'} had already appeared in daily
+            practice, which nudges this score upward.
           </Notice>
         ) : null}
 
@@ -297,11 +316,31 @@ export default function AssessmentScreen() {
     );
   }
 
+  // -------------------------------------------------------- review screen
+  if (stage === 'running' && current && state.reviewing) {
+    return (
+      <Screen scroll={false}>
+        <QuestionNavigator
+          state={state}
+          onSelect={(index) => withTiming((s) => goTo(s, index))}
+          onSubmit={() => void finishModule()}
+          submitLabel={
+            moduleIndex + 1 >= queue.length && !(current.module.index === 1 && kind !== 'diagnostic')
+              ? 'Finish and score'
+              : 'Next module'
+          }
+        />
+      </Screen>
+    );
+  }
+
   // ---------------------------------------------------------------- running
-  if (stage === 'running' && current && currentItem) {
+  if (stage === 'running' && current && currentItem && question) {
     const minutes = Math.floor(secondsLeft / 60);
     const seconds = secondsLeft % 60;
     const outOfTime = secondsLeft === 0;
+    const isMath = current.module.section === 'math';
+    const summary = moduleProgress(state);
 
     return (
       <Screen>
@@ -309,29 +348,35 @@ export default function AssessmentScreen() {
           <Label>
             {getSection(current.module.section).name} · Module {current.module.index}
           </Label>
-          <Text style={[styles.timer, outOfTime && { color: colors.incorrect }]}>
-            {minutes}:{String(seconds).padStart(2, '0')}
-          </Text>
+          <Pressable
+            onPress={() => setShowTimer((v) => !v)}
+            accessibilityRole="button"
+            accessibilityLabel={showTimer ? 'Hide timer' : 'Show timer'}
+          >
+            <Text style={[styles.timer, outOfTime && { color: colors.incorrect }]}>
+              {showTimer ? `${minutes}:${String(seconds).padStart(2, '0')}` : 'Show time'}
+            </Text>
+          </Pressable>
         </View>
-        <Meter value={(itemIndex + 1) / current.items.length} height={6} />
+        <Meter value={(state.currentIndex + 1) / state.questions.length} height={6} />
 
         {outOfTime ? (
-          <Notice tone="warn">Time is up for this module. Move on when you are ready.</Notice>
+          <Notice tone="warn">Time is up for this module. Finish when you are ready.</Notice>
         ) : null}
 
         <Card>
           <Caption>
-            Question {itemIndex + 1} of {current.items.length}
+            Question {state.currentIndex + 1} of {state.questions.length}
           </Caption>
 
           {currentItem.stimulus ? (
             <View style={styles.stimulus}>
-              <MathText>{currentItem.stimulus}</MathText>
+              <HighlightableText>{currentItem.stimulus}</HighlightableText>
             </View>
           ) : null}
           {currentItem.stimulusB ? (
             <View style={styles.stimulus}>
-              <MathText>{currentItem.stimulusB}</MathText>
+              <HighlightableText>{currentItem.stimulusB}</HighlightableText>
             </View>
           ) : null}
           {currentItem.figure ? <Figure figure={currentItem.figure} /> : null}
@@ -342,38 +387,85 @@ export default function AssessmentScreen() {
 
           {currentItem.itemType === 'mcq' ? (
             <View style={styles.choices}>
-              {(currentItem.choices ?? []).map((choice) => (
-                <Pressable
-                  key={choice.id}
-                  accessibilityRole="radio"
-                  accessibilityState={{ selected: draft === choice.id }}
-                  onPress={() => setDraft(choice.id)}
-                  style={[styles.choice, draft === choice.id && styles.choiceChosen]}
-                >
-                  <Text style={styles.choiceId}>{choice.id}</Text>
-                  <View style={{ flex: 1 }}>
-                    <MathText fontSize={16}>{choice.text}</MathText>
+              {(currentItem.choices ?? []).map((choice) => {
+                const selected = question.response === choice.id;
+                const struck = question.eliminated.includes(choice.id);
+                return (
+                  <View key={choice.id} style={styles.choiceRow}>
+                    <Pressable
+                      accessibilityRole="radio"
+                      accessibilityState={{ selected }}
+                      onPress={() => setState((s) => recordAnswer(s, choice.id))}
+                      style={[
+                        styles.choice,
+                        selected && styles.choiceChosen,
+                        struck && styles.choiceStruck,
+                      ]}
+                    >
+                      <Text style={styles.choiceId}>{choice.id}</Text>
+                      <View style={{ flex: 1 }}>
+                        <MathText fontSize={16} color={struck ? colors.textFaint : colors.text}>
+                          {choice.text}
+                        </MathText>
+                      </View>
+                      {struck ? <View style={styles.strikeLine} /> : null}
+                    </Pressable>
+
+                    {/* The eliminator: cross out what you have ruled out. */}
+                    <Pressable
+                      onPress={() => setState((s) => toggleEliminated(s, choice.id))}
+                      accessibilityRole="button"
+                      accessibilityLabel={`${struck ? 'Restore' : 'Eliminate'} choice ${choice.id}`}
+                      style={styles.eliminate}
+                    >
+                      <Text style={[styles.eliminateText, struck && styles.eliminateActive]}>
+                        {struck ? '↺' : '⊘'}
+                      </Text>
+                    </Pressable>
                   </View>
-                </Pressable>
-              ))}
+                );
+              })}
             </View>
           ) : (
             <TextInput
-              value={draft}
-              onChangeText={setDraft}
+              value={question.response}
+              onChangeText={(text) => setState((s) => recordAnswer(s, text))}
               keyboardType="numbers-and-punctuation"
               placeholder="Your answer"
               placeholderTextColor={colors.textFaint}
               style={styles.input}
             />
           )}
+
+          <ToolBar
+            marked={question.marked}
+            onToggleMark={() => setState(toggleMark)}
+            showMathTools={isMath}
+            onOpenCalculator={() => setCalculatorOpen(true)}
+            onOpenReference={() => setReferenceOpen(true)}
+            onOpenNavigator={() => withTiming(openReview)}
+          />
         </Card>
 
-        {/* No feedback during a test — that is what makes it a measurement. */}
-        <Button
-          title={itemIndex + 1 < current.items.length ? 'Next' : 'Finish module'}
-          onPress={commit}
-        />
+        <View style={styles.navRow}>
+          <Button
+            title="Back"
+            variant="secondary"
+            onPress={() => withTiming(goPrevious)}
+            disabled={state.currentIndex === 0}
+          />
+          <Button
+            title={state.currentIndex + 1 >= state.questions.length ? 'Review' : 'Next'}
+            onPress={() => withTiming(goNext)}
+          />
+        </View>
+        <Caption>
+          {summary.answered} of {summary.total} answered
+          {summary.marked > 0 ? ` · ${summary.marked} flagged` : ''}
+        </Caption>
+
+        <Calculator visible={calculatorOpen} onClose={() => setCalculatorOpen(false)} />
+        <ReferenceSheet visible={referenceOpen} onClose={() => setReferenceOpen(false)} />
       </Screen>
     );
   }
@@ -382,9 +474,7 @@ export default function AssessmentScreen() {
   return (
     <Screen>
       <Title>Practice test</Title>
-      {cadence ? (
-        <Notice tone={cadence.due ? 'warn' : 'neutral'}>{cadence.reason}</Notice>
-      ) : null}
+      {cadence ? <Notice tone={cadence.due ? 'warn' : 'neutral'}>{cadence.reason}</Notice> : null}
 
       <Card>
         <Pill text="About 67 minutes" />
@@ -393,7 +483,7 @@ export default function AssessmentScreen() {
           One module per section. Enough to set a starting point across all eight domains
           without a two-hour sit-down on day one.
         </Body>
-        <Button title="Start diagnostic" onPress={() => start('diagnostic')} />
+        <Button title="Start diagnostic" onPress={() => void start('diagnostic')} />
       </Card>
 
       <Card>
@@ -401,21 +491,21 @@ export default function AssessmentScreen() {
         <Heading>Full-length practice test</Heading>
         <Body muted>
           Two modules per section with real timing, and a second module that routes harder or
-          easier based on how the first one goes — the way the real test works.
+          easier based on how the first goes — the way the real test works.
         </Body>
         <Button
           title="Start full-length test"
           variant="secondary"
-          onPress={() => start('full_length')}
+          onPress={() => void start('full_length')}
         />
       </Card>
 
       <Card>
-        <Heading>Why not more often?</Heading>
+        <Heading>The same tools as the real test</Heading>
         <Body muted>
-          Full-length tests are worth real points on their own, but taking them constantly burns
-          the question bank and works against the thirty-minutes-a-day design. Roughly once a
-          term, plus before each real administration.
+          Flag questions for review, cross out answers you have ruled out, jump between
+          questions, highlight the text, and open the calculator and formula sheet on Math.
+          Practising without these trains a different task from the one you will sit.
         </Body>
       </Card>
     </Screen>
@@ -442,7 +532,9 @@ const styles = StyleSheet.create({
     borderLeftColor: colors.accentSoft,
   },
   choices: { marginTop: spacing.md, gap: spacing.sm },
+  choiceRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
   choice: {
+    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     gap: spacing.sm,
@@ -453,7 +545,24 @@ const styles = StyleSheet.create({
     minHeight: 52,
   },
   choiceChosen: { borderColor: colors.accent, backgroundColor: colors.accentSoft },
+  choiceStruck: { opacity: 0.55, backgroundColor: colors.surfaceAlt },
+  strikeLine: {
+    position: 'absolute',
+    left: spacing.sm,
+    right: spacing.sm,
+    height: 1.5,
+    backgroundColor: colors.textMuted,
+  },
   choiceId: { ...typography.label, color: colors.textMuted, width: 20 },
+  eliminate: {
+    width: 40,
+    height: 40,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 20,
+  },
+  eliminateText: { fontSize: 20, color: colors.textFaint },
+  eliminateActive: { color: colors.accent },
   input: {
     marginTop: spacing.md,
     borderWidth: 1.5,
@@ -464,4 +573,5 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: colors.text,
   },
+  navRow: { flexDirection: 'row', gap: spacing.sm, marginTop: spacing.sm },
 });
