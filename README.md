@@ -13,8 +13,35 @@ npm run typecheck # strict TypeScript, zero errors
 npm start         # Metro; scan the QR code with Expo Go on the iPhone
 ```
 
-The app runs entirely offline with no backend. Supabase is optional and adds only backup and
-the parent's own login — see `docs/SETUP.md`.
+## Does it need an API key?
+
+**No.** The app is fully functional with no keys, no accounts, and no network. Every daily
+session, practice test, drill, score and chart works offline, because the item bank is compiled
+into the app and every model — scheduling, ability, mastery — runs on the device.
+
+Keys only ever unlock *optional extras*, and each one is off until you add it:
+
+| | Needs a key? | What happens without it |
+| --- | --- | --- |
+| Daily sessions, drills, practice tests | no | — |
+| Scoring, mastery, pacing analytics | no | — |
+| Calculator | no | Uses the built-in grapher instead of Desmos |
+| Reference sheet, flags, eliminator, highlighting | no | — |
+| Cloud backup, parent's own device | Supabase (free) | Everything stays on the phone |
+| "Explain this differently" tutor | Anthropic | The button never appears |
+| Generating new questions | Anthropic | You author them by hand |
+
+The last row is the one that matters day to day, and it is worth being precise about: the
+generator is a **script you run on your computer** to write new questions into the repo. It is
+not part of the app and never runs on the phone. Once questions are in the bank they are
+compiled in like all the others.
+
+So: the student can use this for two years having never entered a key. What a key buys you is
+a faster way to grow the question bank, and an optional second explanation when an answer does
+not land.
+
+Supabase is likewise optional and adds only backup and the parent's own login — see
+`docs/SETUP.md`.
 
 ## What it does
 
