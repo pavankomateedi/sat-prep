@@ -7,7 +7,7 @@
  * every paid prep product replicates them for exactly that reason.
  */
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Modal, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { MathText } from './MathText';
 import { NOT_ON_THE_SHEET, REFERENCE_SHEET } from '../domain/referenceSheet';
@@ -243,45 +243,72 @@ export function HighlightableText({
   children: string;
   fontSize?: number;
 }) {
-  const [highlighted, setHighlighted] = useState<Set<number>>(new Set());
+  const [highlighted, setHighlighted] = useState<Set<string>>(new Set());
 
-  // Split on sentence ends, keeping the punctuation with its sentence.
-  const sentences = useMemo(
-    () => children.split(/(?<=[.!?])\s+/).filter((s) => s.length > 0),
+  /**
+   * Paragraphs first, then sentences within each.
+   *
+   * Splitting the whole text on sentence ends and rejoining with a single
+   * space destroys the blank lines that separate an attribution line from the
+   * passage, and the line breaks in a bulleted note list — both of which the
+   * bank relies on.
+   */
+  const paragraphs = useMemo(
+    () =>
+      children
+        .split(/\n{2,}|\n/)
+        .map((block) => block.trim())
+        .filter((block) => block.length > 0)
+        .map((block) => block.split(/(?<=[.!?])\s+/).filter((s) => s.length > 0)),
     [children]
   );
 
-  const toggle = (index: number) =>
+  // Highlights belong to the text that produced them. Without this reset the
+  // Set survives into the next question and marks sentences the student never
+  // touched, because the component keeps its position in the tree.
+  useEffect(() => {
+    setHighlighted(new Set());
+  }, [children]);
+
+  const toggle = (key: string) =>
     setHighlighted((current) => {
       const nextSet = new Set(current);
-      if (nextSet.has(index)) nextSet.delete(index);
-      else nextSet.add(index);
+      if (nextSet.has(key)) nextSet.delete(key);
+      else nextSet.add(key);
       return nextSet;
     });
 
-  // Nothing to highlight in a single short run — render plainly and skip the
-  // interaction entirely rather than making the whole text one tap target.
-  if (sentences.length < 2) return <MathText fontSize={fontSize}>{children}</MathText>;
+  const sentenceCount = paragraphs.reduce((n, block) => n + block.length, 0);
+
+  // A single short run has nothing to pick out — render it plainly rather than
+  // making the whole passage one tap target.
+  if (sentenceCount < 2) return <MathText fontSize={fontSize}>{children}</MathText>;
 
   return (
     <View>
-      <Text style={{ fontSize, lineHeight: fontSize * 1.6 }}>
-        {sentences.map((sentence, index) => (
-          <Text
-            key={index}
-            onPress={() => toggle(index)}
-            style={[
-              { color: colors.text },
-              highlighted.has(index) && styles.highlighted,
-            ]}
-            accessibilityLabel={
-              highlighted.has(index) ? `Highlighted: ${sentence}` : sentence
-            }
-          >
-            {sentence}{' '}
-          </Text>
-        ))}
-      </Text>
+      {paragraphs.map((sentences, blockIndex) => (
+        <View key={`p${blockIndex}`} style={blockIndex > 0 ? styles.paragraphGap : undefined}>
+          {sentences.map((sentence, index) => {
+            const key = `${blockIndex}:${index}`;
+            const isOn = highlighted.has(key);
+            return (
+              <Pressable
+                key={key}
+                onPress={() => toggle(key)}
+                accessibilityRole="button"
+                accessibilityLabel={isOn ? `Highlighted: ${sentence}` : sentence}
+                style={isOn ? styles.highlighted : undefined}
+              >
+                {/* MathText, not raw Text — stimuli can contain $...$, and
+                    rendering it literally was a regression against the plain
+                    MathText these screens used before. */}
+                <MathText fontSize={fontSize}>{sentence}</MathText>
+              </Pressable>
+            );
+          })}
+        </View>
+      ))}
+
       {highlighted.size > 0 ? (
         <Pressable onPress={() => setHighlighted(new Set())} accessibilityRole="button">
           <Text style={styles.clearHighlights}>Clear highlights</Text>
@@ -377,7 +404,8 @@ const styles = StyleSheet.create({
   toolButtonPressed: { opacity: 0.7 },
   toolButtonText: { ...typography.caption, color: colors.accent, fontWeight: '600' },
   toolButtonTextActive: { color: colors.warn },
-  highlighted: { backgroundColor: '#FFF3A8' },
+  paragraphGap: { marginTop: 12 },
+  highlighted: { backgroundColor: '#FFF3A8', borderRadius: 3 },
   clearHighlights: {
     ...typography.caption,
     color: colors.accent,

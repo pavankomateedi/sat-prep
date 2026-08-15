@@ -29,7 +29,12 @@ export function Screen({
   scroll?: boolean;
   style?: StyleProp<ViewStyle>;
 }) {
-  const inner = <View style={[styles.screenInner, style]}>{children}</View>;
+  // Without scroll, the inner View must claim the height itself — otherwise a
+  // child ScrollView has no bound to scroll against and simply overflows,
+  // pushing its last elements off-screen with no way to reach them.
+  const inner = (
+    <View style={[styles.screenInner, !scroll && styles.screenInnerFill, style]}>{children}</View>
+  );
   return (
     <SafeAreaView style={styles.screen} edges={['top', 'left', 'right']}>
       {scroll ? (
@@ -191,6 +196,7 @@ export function Notice({ children, tone = 'neutral' }: { children: ReactNode; to
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.bg },
   screenInner: { paddingHorizontal: spacing.md, paddingBottom: spacing.xl },
+  screenInnerFill: { flex: 1 },
   scrollContent: { flexGrow: 1 },
   card: {
     backgroundColor: colors.surface,

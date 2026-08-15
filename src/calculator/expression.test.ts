@@ -6,7 +6,9 @@ import {
   formatResult,
   parse,
   plot,
+  stripFunctionPrefix,
   tryEvaluate,
+  usesVariable,
 } from './expression';
 
 const ev = (input: string, vars?: Record<string, number>) => tryEvaluate(input, vars);
@@ -181,5 +183,55 @@ describe('display formatting', () => {
   it('labels non-finite results in words rather than showing NaN', () => {
     expect(formatResult(Number.NaN)).toBe('undefined');
     expect(formatResult(Number.POSITIVE_INFINITY)).toBe('∞');
+  });
+});
+
+describe('regressions found in review', () => {
+  it('detects the variable in implicit-product forms', () => {
+    // `/\bx\b/` returns false for all of these: a digit is a word character,
+    // so there is no boundary before the x. They were routed to the scalar
+    // evaluator and reported as unevaluable.
+    for (const input of ['2x', '3x+1', '2x^2 - 4', '2sqrt(x)', '3(x+1)']) {
+      expect(usesVariable(input), input).toBe(true);
+    }
+    for (const input of ['2 + 3', 'sqrt(16)', 'pi * 2']) {
+      expect(usesVariable(input), input).toBe(false);
+    }
+  });
+
+  it('parses scientific notation instead of multiplying by Euler’s constant', () => {
+    // 6.02e23 tokenised as 6.02 * e * 23 and returned ~376 with no error.
+    expect(ev('6.02e23')).toBeCloseTo(6.02e23, -18);
+    expect(ev('1.5e3')).toBe(1500);
+    expect(ev('1.5e+3')).toBe(1500);
+    expect(ev('2e-3')).toBeCloseTo(0.002, 10);
+  });
+
+  it('round-trips its own formatted output', () => {
+    // formatResult emits exponential form, which previously could not be
+    // re-entered into the calculator.
+    for (const value of [1.5e12, 0.0000000123, 42, 1 / 3]) {
+      const rendered = formatResult(value);
+      expect(ev(rendered), rendered).toBeCloseTo(value, 6);
+    }
+  });
+
+  it('still reads a bare e as Euler’s constant', () => {
+    expect(ev('2e')).toBeCloseTo(2 * Math.E, 10);
+    expect(ev('e')).toBeCloseTo(Math.E, 10);
+  });
+
+  it('accepts the y = form the placeholder suggests', () => {
+    expect(stripFunctionPrefix('y = x^2 - 4')).toBe('x^2 - 4');
+    expect(stripFunctionPrefix('f(x) = 2x + 1')).toBe('2x + 1');
+    expect(ev('y = 3 * 4')).toBe(12);
+    expect(plot('y = x^2 - 4', DEFAULT_VIEWPORT).error).toBeNull();
+  });
+
+  it('returns NaN for even roots of negatives, matching sqrt', () => {
+    // nthroot(-16, 2) previously returned -4, contradicting sqrt(-16) = NaN.
+    expect(ev('nthroot(-16, 2)')).toBeNull();
+    expect(ev('nthroot(-8, 3)')).toBeCloseTo(-2, 10);
+    expect(ev('nthroot(16, 2)')).toBeCloseTo(4, 10);
   });
 });

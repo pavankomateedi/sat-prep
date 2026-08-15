@@ -39,6 +39,7 @@ import { buildDrill, DRILL_SIZES, scopeTitle, type Drill, type DrillScope } from
 import { ALL_SKILLS, getSkill, type SkillId } from '../src/domain/taxonomy';
 import type { Item } from '../src/domain/types';
 import { checkAnswer } from '../src/session/answerCheck';
+import { deriveGrade } from '../src/scheduling/fsrs';
 import { buildAttemptSamples } from '../src/analytics/samples';
 import { weakestSkills } from '../src/analytics/pacing';
 import * as repo from '../src/data/repositories';
@@ -55,6 +56,7 @@ export default function DrillsScreen() {
   const [scope, setScope] = useState<DrillScope | null>(null);
   const [size, setSize] = useState<number>(10);
   const [timed, setTimed] = useState(true);
+  const [buildError, setBuildError] = useState<string | null>(null);
 
   const [drill, setDrill] = useState<Drill | null>(null);
   const [drillItems, setDrillItems] = useState<Item[]>([]);
@@ -65,6 +67,7 @@ export default function DrillsScreen() {
   const [calculatorOpen, setCalculatorOpen] = useState(false);
   const [referenceOpen, setReferenceOpen] = useState(false);
   const seenIds = useRef<Set<string>>(new Set());
+  const shownAt = useRef<number>(Date.now());
 
   useEffect(() => {
     if (!student) return;
@@ -101,7 +104,13 @@ export default function DrillsScreen() {
       seenItemIds: seenIds.current,
       timed,
     });
-    if (built.itemIds.length === 0) return;
+    if (built.itemIds.length === 0) {
+      setBuildError(
+        `No questions in the bank for ${scopeTitle(scope)} yet. Try another skill.`
+      );
+      return;
+    }
+    setBuildError(null);
 
     setDrill(built);
     setDrillItems(await repo.getItems(built.itemIds));
@@ -109,18 +118,53 @@ export default function DrillsScreen() {
     setResponse('');
     setAnswers(new Map());
     setSecondsLeft(built.timeLimitSeconds ?? 0);
+    shownAt.current = Date.now();
     setPhase('running');
   }, [scope, size, items, timed]);
 
   const current = drillItems[index];
 
-  const submit = useCallback(() => {
-    if (!current) return;
+  const submit = useCallback(async () => {
+    if (!current || !student) return;
     setAnswers((prev) => new Map(prev).set(current.id, response));
+
+    // Persist the attempt. Without this a student could drill a weak skill
+    // twenty times and still see it recommended forever, because the
+    // recommendations read the attempts table. Drills avoid disturbing the
+    // FSRS *schedule* by drawing on already-seen material, not by throwing
+    // the evidence away.
+    try {
+      await repo.saveAttempt({
+        id: repo.newId(),
+        studentId: student.id,
+        itemId: current.id,
+        sessionId: null,
+        blockKind: null,
+        answeredAt: new Date().toISOString(),
+        response,
+        correct: checkAnswer(current, response).correct,
+        responseTimeMs: Math.max(0, Date.now() - shownAt.current),
+        grade: deriveGrade(
+          checkAnswer(current, response).correct,
+          Math.max(0, Date.now() - shownAt.current),
+          current.estimatedSeconds
+        ),
+        stabilityBefore: null,
+        difficultyBefore: null,
+        retrievabilityBefore: null,
+        elapsedDays: 0,
+        eloBefore: null,
+        synced: false,
+      });
+    } catch {
+      // A logging failure must not interrupt the drill.
+    }
+
     setResponse('');
+    shownAt.current = Date.now();
     if (index + 1 >= drillItems.length) setPhase('done');
     else setIndex((i) => i + 1);
-  }, [current, response, index, drillItems.length]);
+  }, [current, student, response, index, drillItems.length]);
 
   const score = useMemo(() => {
     if (phase !== 'done') return null;
@@ -191,6 +235,13 @@ export default function DrillsScreen() {
           <Notice tone="warn">Time is up — finish the ones you have left.</Notice>
         ) : null}
 
+        {drill.shortfall > 0 ? (
+          <Notice>
+            Only {drillItems.length} questions available for this skill — {drill.shortfall} short
+            of what you asked for. The bank is still growing.
+          </Notice>
+        ) : null}
+
         <Card>
           <Caption>
             Question {index + 1} of {drillItems.length}
@@ -199,6 +250,13 @@ export default function DrillsScreen() {
           {current.stimulus ? (
             <View style={styles.stimulus}>
               <HighlightableText>{current.stimulus}</HighlightableText>
+            </View>
+          ) : null}
+          {/* Cross-text-connections items are unanswerable without the second
+              text, and that skill is selectable from the chip list. */}
+          {current.stimulusB ? (
+            <View style={styles.stimulus}>
+              <HighlightableText>{current.stimulusB}</HighlightableText>
             </View>
           ) : null}
           {current.figure ? <Figure figure={current.figure} /> : null}
@@ -245,7 +303,7 @@ export default function DrillsScreen() {
 
         <Button
           title={index + 1 >= drillItems.length ? 'Finish drill' : 'Next'}
-          onPress={submit}
+          onPress={() => void submit()}
           disabled={response.trim() === ''}
         />
 
@@ -336,6 +394,7 @@ export default function DrillsScreen() {
         ) : null}
       </Card>
 
+      {buildError ? <Notice tone="warn">{buildError}</Notice> : null}
       {scope ? <Pill text={`Ready: ${scopeTitle(scope)}`} /> : null}
       <Button title="Start drill" onPress={() => void start()} disabled={!scope} />
     </Screen>

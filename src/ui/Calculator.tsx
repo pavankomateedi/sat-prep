@@ -34,6 +34,7 @@ import {
   formatResult,
   plot,
   tryEvaluate,
+  usesVariable,
   type Viewport,
 } from '../calculator/expression';
 import { colors, radius, spacing, type as typography } from './theme';
@@ -142,10 +143,13 @@ function OfflineCalculator() {
   const [expression, setExpression] = useState('');
   const [viewport, setViewport] = useState<Viewport>(DEFAULT_VIEWPORT);
 
-  // A bare arithmetic expression evaluates to a number; anything mentioning x
-  // is a curve to draw. Deciding by content means the student does not have to
-  // pick a mode.
-  const isFunction = /\bx\b/.test(expression);
+  // A bare arithmetic expression evaluates to a number; anything referencing x
+  // is a curve to draw. Decided by parsing rather than a regex — see
+  // usesVariable, which exists because `\bx\b` misses `2x` entirely.
+  const isFunction = useMemo(
+    () => expression.trim() !== '' && usesVariable(expression),
+    [expression]
+  );
 
   const value = useMemo(
     () => (isFunction || expression.trim() === '' ? null : tryEvaluate(expression)),
@@ -185,7 +189,7 @@ function OfflineCalculator() {
       <TextInput
         value={expression}
         onChangeText={setExpression}
-        placeholder="2 + 3 * 4   or   y = x^2 - 4  (type x to graph)"
+        placeholder="2 + 3 * 4   or   y = x^2 - 4"
         placeholderTextColor={colors.textFaint}
         style={styles.input}
         autoCapitalize="none"

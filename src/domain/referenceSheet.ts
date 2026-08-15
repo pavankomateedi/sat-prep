@@ -53,10 +53,10 @@ export const REFERENCE_SHEET: readonly ReferenceGroup[] = [
     entries: [
       {
         label: '30-60-90',
-        formula: '$x,\\; x\\sqrt{3},\\; 2x$',
+        formula: '$x, x\\sqrt{3}, 2x$',
         note: 'Shortest side opposite the 30-degree angle.',
       },
-      { label: '45-45-90', formula: '$s,\\; s,\\; s\\sqrt{2}$' },
+      { label: '45-45-90', formula: '$s, s, s\\sqrt{2}$' },
     ],
   },
   {

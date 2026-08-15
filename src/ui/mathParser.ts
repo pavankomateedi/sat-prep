@@ -65,6 +65,20 @@ const STRUCTURAL = new Set(['frac', 'sqrt']);
  */
 export const THIN_SPACE = ' ';
 
+/**
+ * Characters that are legitimately backslash-escaped to render as themselves.
+ * `\%` is how a literal percent sign is written, `\$` a dollar that must not be
+ * read as a math delimiter.
+ */
+const ESCAPED_LITERALS = new Set(['$', '%', '&', '#', '_', '{', '}', '\\']);
+
+/**
+ * LaTeX spacing commands. These are *not* escaped literals — `\;` means a
+ * thick space, never a semicolon — so the parser emits whitespace for them.
+ * Treating them as literals put stray semicolons in the formula sheet.
+ */
+const SPACING_COMMANDS = new Set([';', ',', ':', '!', ' ']);
+
 interface Cursor {
   source: string;
   pos: number;
@@ -115,9 +129,12 @@ function parseNodes(c: Cursor, insideGroup: boolean): MathNode[] {
       const start = c.pos;
       c.pos += 1;
 
-      // Escaped literals such as \$ or \{.
+      // Escaped literals such as \$ or \%, and spacing commands such as \;.
       if (c.pos < c.source.length && !/[a-zA-Z]/.test(c.source[c.pos]!)) {
-        pushText(nodes, c.source[c.pos]!);
+        const ch = c.source[c.pos]!;
+        // A spacing command is whitespace, not the punctuation character —
+        // rendering `\;` as a semicolon put stray marks in the formula sheet.
+        pushText(nodes, SPACING_COMMANDS.has(ch) ? THIN_SPACE : ch);
         c.pos += 1;
         continue;
       }
@@ -239,8 +256,17 @@ export function parseMixed(source: string): Segment[] {
  */
 export function unsupportedCommands(source: string): string[] {
   const found = new Set<string>();
-  for (const match of source.matchAll(/\\([a-zA-Z]+)/g)) {
+  // Matches punctuation commands too, not just letter-named ones. The
+  // letters-only version silently passed spacing commands like `\;` and `\,`,
+  // so the reference sheet shipped rendering stray semicolons while its own
+  // guard test reported zero offenders.
+  for (const match of source.matchAll(/\\([a-zA-Z]+|[^a-zA-Z])/g)) {
     const command = match[1]!;
+    // Escaped literals render as the character itself, which is correct and
+    // intended: `\%` is how you write a literal percent sign, `\$` a dollar.
+    if (ESCAPED_LITERALS.has(command)) continue;
+    // Spacing commands are handled below, in the parser.
+    if (SPACING_COMMANDS.has(command)) continue;
     if (!SYMBOLS[command] && !STRUCTURAL.has(command)) found.add(command);
   }
   return [...found];

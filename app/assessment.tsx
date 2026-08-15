@@ -97,6 +97,9 @@ export default function AssessmentScreen() {
   const [result, setResult] = useState<ReturnType<typeof scoreComposite> | null>(null);
   const [cadence, setCadence] = useState<ReturnType<typeof nextAssessmentDue> | null>(null);
   const [seenCount, setSeenCount] = useState(0);
+  // Guards the async module transition: two taps before repo.getItems
+  // resolves would splice two module-2 runs and skip a module entirely.
+  const [advancing, setAdvancing] = useState(false);
 
   const allItems = useRef<Item[]>([]);
   const usedIds = useRef<Set<string>>(new Set());
@@ -174,7 +177,9 @@ export default function AssessmentScreen() {
    * the routed second module or move on.
    */
   const finishModule = useCallback(async () => {
-    if (!current || !student) return;
+    if (!current || !student || advancing) return;
+    setAdvancing(true);
+    try {
 
     const merged = new Map(answers);
     for (const q of state.questions) merged.set(q.itemId, q.response);
@@ -216,8 +221,11 @@ export default function AssessmentScreen() {
       return;
     }
 
-    await score(merged);
-  }, [current, student, answers, state, kind, moduleIndex, queue]);
+      await score(merged);
+    } finally {
+      setAdvancing(false);
+    }
+  }, [current, student, answers, state, kind, moduleIndex, queue, advancing]);
 
   const score = useCallback(
     async (finalAnswers: Map<string, string>) => {

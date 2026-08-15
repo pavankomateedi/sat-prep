@@ -55,7 +55,17 @@ const BINARY_FUNCTIONS: Record<string, (a: number, b: number) => number> = {
   min: Math.min,
   max: Math.max,
   pow: Math.pow,
-  nthroot: (a, b) => Math.sign(a) * Math.abs(a) ** (1 / b),
+  // Odd roots of negatives are real (cbrt(-8) = -2); even roots are not.
+  // Returning -4 for nthroot(-16, 2) would contradict sqrt(-16) giving NaN and
+  // affirm a value that does not exist on a domain question.
+  nthroot: (a, b) => {
+    if (a < 0) {
+      const isOddInteger = Number.isInteger(b) && Math.abs(b % 2) === 1;
+      if (!isOddInteger) return Number.NaN;
+      return -(Math.abs(a) ** (1 / b));
+    }
+    return a ** (1 / b);
+  },
 };
 
 // ---------------------------------------------------------------------------
@@ -77,6 +87,22 @@ export function tokenize(input: string): Token[] {
     if (/[0-9.]/.test(ch)) {
       let j = i;
       while (j < input.length && /[0-9.]/.test(input[j]!)) j += 1;
+
+      // Scientific notation: consume `e`/`E` only when a digit actually
+      // follows (optionally signed). Without this, `6.02e23` tokenises as
+      // 6.02 * e * 23 via implicit multiplication with Euler's constant and
+      // returns a confidently wrong number — and the calculator's own
+      // formatResult output could not be re-entered. The digit requirement is
+      // what keeps `2e` meaning 2 x Euler's constant.
+      if (j < input.length && /[eE]/.test(input[j]!)) {
+        let k = j + 1;
+        if (k < input.length && /[+-]/.test(input[k]!)) k += 1;
+        if (k < input.length && /[0-9]/.test(input[k]!)) {
+          while (k < input.length && /[0-9]/.test(input[k]!)) k += 1;
+          j = k;
+        }
+      }
+
       const raw = input.slice(i, j);
       const value = Number(raw);
       if (!Number.isFinite(value)) throw new ExpressionError(`Bad number "${raw}"`, i);
@@ -249,13 +275,60 @@ function parsePrimary(s: ParserState): Node {
   throw new ExpressionError('Unexpected symbol');
 }
 
+/**
+ * Strip a leading `y =` or `f(x) =`.
+ *
+ * Students write functions that way, and the calculator's own placeholder
+ * suggests it. `=` is not a token the grammar accepts, so without this the
+ * documented example returns a tokeniser error.
+ */
+export function stripFunctionPrefix(input: string): string {
+  return input.replace(/^\s*(?:y|f\s*\(\s*[a-zA-Z]\s*\))\s*=\s*/i, '');
+}
+
 export function parse(input: string): Node {
-  const trimmed = input.trim();
+  const trimmed = stripFunctionPrefix(input).trim();
   if (trimmed === '') throw new ExpressionError('Empty expression');
   const state: ParserState = { tokens: tokenize(trimmed), pos: 0 };
   const node = parseExpression(state);
   if (state.pos < state.tokens.length) throw new ExpressionError('Unexpected trailing input');
   return node;
+}
+
+/**
+ * Whether an expression actually references a variable.
+ *
+ * Decided by parsing, not by regex. A word-boundary test like `/\bx\b/` fails
+ * on every implicit-product form — `2x`, `3x+1`, `2x^2` — because the
+ * preceding digit is itself a word character, which routed exactly the
+ * expressions this calculator exists to graph into the scalar evaluator.
+ */
+export function usesVariable(input: string, name = 'x'): boolean {
+  let node: Node;
+  try {
+    node = parse(input);
+  } catch {
+    // Unparseable input still counts as a graph attempt if the letter is
+    // present, so the student sees a parse error rather than "cannot evaluate".
+    return new RegExp(`(^|[^a-zA-Z])${name}([^a-zA-Z]|$)`).test(input);
+  }
+
+  const walk = (current: Node): boolean => {
+    switch (current.kind) {
+      case 'variable':
+        return current.name === name;
+      case 'unary':
+        return walk(current.operand);
+      case 'binary':
+        return walk(current.left) || walk(current.right);
+      case 'call':
+        return current.args.some(walk);
+      default:
+        return false;
+    }
+  };
+
+  return walk(node);
 }
 
 // ---------------------------------------------------------------------------
