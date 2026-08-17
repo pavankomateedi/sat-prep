@@ -1,52 +1,123 @@
-# Running and testing on the MacBook
+# Setting up on a brand-new MacBook
 
-The MacBook removes the problem that blocked the iPad. Expo SDK 57 needs **iOS 16.4+**, and
-Apple only lets you install the newest Expo Go on a physical device — so an older iPad is simply
-out of reach. The **iOS Simulator** has no such constraint: it runs whatever iOS version Xcode
-provides, needs no Expo Go, no QR code, and no tunnel.
+Written for a Mac with nothing installed. Every command is copy-pasteable, and each step says
+what you should see when it worked.
 
-Test in the Simulator first. Worry about physical devices afterwards.
+**Total time: about an hour**, most of it Xcode downloading in the background. Start Step 2
+first and do Steps 3-5 while it downloads.
 
----
-
-## Step 1 — Move the code (on Windows)
-
-The project is a git repo with one commit from the template; our work is not committed yet.
-
-```powershell
-cd <path-to>\sat-prep
-
-git status                # sanity check: no .env.local, no node_modules
-git add -A
-git commit -m "SAT prep app: MVP + V1, 271 items, 183 tests"
-```
-
-Create an empty **private** repo on GitHub, then:
-
-```powershell
-git remote add origin https://github.com/<you>/sat-prep.git
-git branch -M main
-git push -u origin main
-```
-
-Private is the right call — nothing here is secret, but it is a minor's study app.
-
-**No GitHub?** Copy the folder to a USB drive, but delete `node_modules` first: it is ~700 MB,
-platform-specific, and `npm install` rebuilds it correctly on macOS anyway.
+Why the Mac matters: the iPad could not run this because Expo SDK 57 requires iOS 16.4+, and
+Apple only allows the newest Expo Go on a physical device. The Mac's **iOS Simulator** has no
+such limit — no Expo Go, no QR codes, no network involved.
 
 ---
 
-## Step 2 — Install the toolchain (on the Mac)
+## Step 1 — Open Terminal
+
+Press **⌘ + Space**, type `Terminal`, press **Return**.
+
+A window opens with a prompt ending in `%`. That is where every command below goes. Paste with
+**⌘ + V**, run with **Return**.
+
+Check which chip you have — it changes one step later:
 
 ```bash
-# Homebrew, if you don't have it
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+uname -m
+```
 
+- `arm64` → Apple Silicon (M-series). Almost certainly you.
+- `x86_64` → Intel.
+
+---
+
+## Step 2 — Start the Xcode download now
+
+Xcode is ~10 GB and can take 30-60 minutes. Start it before anything else and let it run.
+
+1. Open the **App Store** (⌘ + Space, type `App Store`).
+2. Search **Xcode**.
+3. Click **Get** / the cloud icon. Sign in with your Apple ID if asked.
+
+Leave it downloading and carry on with Step 3 in Terminal.
+
+> Xcode is what compiles the iOS app and provides the iPhone Simulator. There is no way around
+> it on a Mac, and it is free.
+
+---
+
+## Step 3 — Command Line Tools
+
+While Xcode downloads:
+
+```bash
+xcode-select --install
+```
+
+A dialog appears — click **Install**, accept the licence. Takes a few minutes.
+
+If you see `command line tools are already installed`, that is fine. Move on.
+
+---
+
+## Step 4 — Homebrew
+
+Homebrew installs developer tools. Paste this exactly:
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+It asks for your **Mac login password** — typing shows nothing, no dots. That is normal. Type
+it and press Return.
+
+### The step people miss
+
+On Apple Silicon, Homebrew installs somewhere the shell does not look by default. **If you skip
+this, the next step fails with `brew: command not found`.**
+
+```bash
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"
+```
+
+On Intel, Homebrew installs to `/usr/local` and is already on the path — skip the two lines
+above.
+
+Confirm:
+
+```bash
+brew --version
+```
+
+You should see `Homebrew 4.x.x`. If you see `command not found`, the two lines above did not
+run — try them again.
+
+---
+
+## Step 5 — Node, Watchman, Git
+
+```bash
 brew install node watchman git
 ```
 
-Then **Xcode from the Mac App Store**. It is a large download — start it before you need it.
-Once installed:
+Takes a few minutes. Confirm:
+
+```bash
+node --version    # v22 or newer
+git --version     # 2.x
+```
+
+`watchman` makes the file-watcher fast on macOS. `git` — macOS ships an old one; this gets a
+current one.
+
+---
+
+## Step 6 — Finish Xcode setup
+
+Only once the App Store shows Xcode as installed.
+
+Open **Xcode** once from Applications. It will offer to install additional components — accept.
+Then quit it and run:
 
 ```bash
 sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
@@ -54,169 +125,223 @@ sudo xcodebuild -license accept
 xcodebuild -runFirstLaunch
 ```
 
-Open Xcode once and let it install the iOS platform support it offers. Then confirm a simulator
-exists:
+`sudo` asks for your Mac password again.
+
+Confirm a simulator exists:
 
 ```bash
 xcrun simctl list devices available | grep iPhone
 ```
 
-If that prints nothing, open Xcode → **Settings → Components** and install an iOS simulator
-runtime.
+You should see lines like `iPhone 16 Pro (...) (Shutdown)`.
+
+**If nothing prints:** open Xcode → menu **Xcode → Settings → Components** → install an iOS
+Simulator runtime → re-run the command.
 
 ---
 
-## Step 3 — Get it running
+## Step 7 — Sign in to GitHub
+
+The repository is **private**, so cloning needs authentication. The GitHub CLI is the least
+painful way.
 
 ```bash
-git clone https://github.com/<you>/sat-prep.git ~/dev/sat-prep
-cd ~/dev/sat-prep
-
-npm install
-npm test          # expect: 183 passed
-npm run typecheck # expect: no output
+brew install gh
+gh auth login
 ```
 
-Clone somewhere **without spaces in the path**. CocoaPods and some Xcode build scripts still
-handle spaces poorly, and `~/dev/...` costs nothing.
+Answer the prompts:
 
-If `npm test` passes, the port is done — the whole engine layer is plain TypeScript with no
-platform dependencies, which is exactly why this move is uneventful.
+- *What account?* → **GitHub.com**
+- *Preferred protocol?* → **HTTPS**
+- *Authenticate Git with your GitHub credentials?* → **Yes**
+- *How would you like to authenticate?* → **Login with a web browser**
 
-### Launch it
+It shows a one-time code, then opens your browser. Paste the code, approve.
+
+Confirm:
+
+```bash
+gh auth status
+```
+
+Should say `Logged in to github.com account pavankomateedi`.
+
+---
+
+## Step 8 — Get the code and run the tests
+
+```bash
+mkdir -p ~/dev
+cd ~/dev
+gh repo clone pavankomateedi/sat-prep
+cd sat-prep
+npm install
+```
+
+`npm install` takes 2-3 minutes and prints warnings about deprecated sub-dependencies. Warnings
+are fine; errors are not.
+
+Now the moment that tells you the whole port worked:
+
+```bash
+npm test
+```
+
+**Expect `Tests  254 passed (254)`.**
+
+The entire learning engine — scheduling, mastery, scoring, the calculator — is plain TypeScript
+with no Apple dependencies. If those 254 pass, everything except the screens is verified on this
+machine.
+
+```bash
+npm run typecheck    # prints nothing = success
+```
+
+> Cloned to `~/dev/sat-prep` deliberately — a path with **no spaces**. Some Xcode build scripts
+> still handle spaces badly, and it costs nothing to avoid.
+
+---
+
+## Step 9 — Launch the app
 
 ```bash
 npm start
-# then press `i`
 ```
 
-That opens the app in the iOS Simulator. First launch takes 30–60 seconds while Metro bundles.
+Wait for the QR code, then press the **`i`** key.
 
-If pressing `i` fails, use the native build path instead — slower the first time, more reliable:
+The iOS Simulator opens and the app builds. **First launch takes 1-2 minutes** — the progress
+bar is Metro compiling. After that it is a few seconds.
+
+You should land on **"Let's set up"**.
+
+**If pressing `i` does nothing:** press **Ctrl + C** to stop, then use the slower but more
+reliable native build:
 
 ```bash
 brew install cocoapods
 npx expo run:ios
 ```
 
----
-
-## Step 4 — Test it
-
-Roughly ten minutes. Each step has a stated expected result, so a failure is unambiguous.
-
-### A. First run
-
-1. App opens on **Let's set up**.
-2. Enter a nickname, grade `9`, leave the date `2028-05-06`. Tap **Start**.
-   - *Expected:* lands on Home, greeting shows your nickname.
-3. Home shows a week strip of seven dots and a card reading **Phase A · Foundation**.
-   - *Expected:* "30 minutes, ready to go" with a question count around 20–25.
-
-### B. The daily session — the core loop
-
-4. Tap **Start session**.
-   - *Expected:* progress bar, a block heading, and the first question.
-5. Answer one question **wrong** on purpose.
-   - *Expected:* your choice turns red, the correct one green, and **the explanation appears only
-     now** — never before you commit. That ordering is the point: showing it earlier turns
-     retrieval into re-reading, which is what destroys the benefit.
-6. Answer one **right**.
-   - *Expected:* green, plus an explanation.
-7. Continue to a **Math** question.
-   - *Expected:* fractions render stacked with a bar, square roots with an overbar — not raw
-     `\frac{}{}`. This is the native renderer, not a WebView.
-8. Find a **student-produced response** item (a text box, no choices). If the answer is `0.28`,
-   try typing `7/25`.
-   - *Expected:* marked **correct**. Equivalent forms are accepted, as on the real test.
-9. Finish the session.
-   - *Expected:* "X of Y correct", then Home shows **Session complete** and today's dot filled.
-
-### C. Progress and honesty rules
-
-10. Home → **Progress**.
-    - *Expected:* eight domains listed. Mastery reads `—` until roughly 10 answers per skill —
-      it refuses to show a number it cannot support.
-11. Home → **Practice test** → **Start diagnostic**.
-    - *Expected:* a timer counting down from 32:00, module label "Reading and Writing · Module 1".
-      You can quit out; the point is that timing is real.
-12. If you complete one, check the score.
-    - *Expected:* a **range** like `1050–1170`, never a single number, plus a percentile band and
-      a disclaimer. PRD §2.6 forbids a bare point estimate.
-
-### D. Parent view and the privacy boundary
-
-13. Home → **For parents**.
-    - *Expected:* days practised, minutes, domain movement.
-    - *Expected:* **no list of missed questions anywhere.** That is enforced in three places —
-      the payload screen, the summary builder, and Postgres RLS — not by hiding UI.
-
-### E. Settings
-
-14. **Settings** → confirm programme details, content count **271**, bank version.
-15. **Daily reminder** → set a time a couple of minutes ahead → **Turn reminder on**.
-    - *Expected:* permission prompt, then confirmation. (Simulator notification delivery is
-      unreliable — verify properly on a real device later.)
-16. **Content sources and licences**.
-    - *Expected:* every item accounted for by licence type.
-
-### F. Offline — the hard requirement
-
-17. Simulator menu → **Device → Network Link Conditioner**, or just turn off the Mac's Wi-Fi.
-18. Force-quit the app, reopen, run a session.
-    - *Expected:* **works identically.** No spinner, no error. The whole design rests on this;
-      if it fails, that is the most serious possible bug.
+First run takes 5-10 minutes as it generates the native project and compiles.
 
 ---
 
-## Step 5 — Onto a real iPhone
+## Step 10 — Test it
+
+About ten minutes. Each step says what should happen.
+
+### Set up
+
+1. Nickname: anything. Grade: `9`. Target date: leave `2028-05-06`. Tap **Start**.
+   - *Expect:* Home screen, greeting with your nickname, a row of seven day-dots.
+
+### The daily loop
+
+2. Tap **Start session** → answer one question **wrong on purpose**.
+   - *Expect:* your choice red, the right one green, and **the explanation appears only now**.
+     Never before you commit — showing it earlier turns recall into re-reading.
+3. Continue to a **Math** question.
+   - *Expect:* fractions stacked with a bar, roots with an overbar. Not raw `\frac{}{}`.
+4. Find a question with a **text box** instead of choices. If the answer is `0.28`, type `7/25`.
+   - *Expect:* **correct** — equivalent forms are accepted, as on the real test.
+5. On a Math question, tap **Calculator**. Type `2x^2 - 4`.
+   - *Expect:* a graph. (This one was broken until last week — `2x` was misread as not
+     containing a variable.)
+6. Tap **Reference**.
+   - *Expect:* formula sheet, plus a list of what the real sheet does **not** give you.
+
+### Practice test
+
+7. Home → **Practice test** → **Start diagnostic**.
+   - *Expect:* a timer counting down from **32:00**.
+8. Tap **☆ Flag**, then the **⊘** beside a choice.
+   - *Expect:* the choice greys out and is struck through. Selecting a struck choice restores it.
+9. Tap **All questions**.
+   - *Expect:* a numbered grid — answered filled, flagged outlined. Tap any number to jump.
+     **Scroll to the bottom: the submit button must be reachable.** (It was not, until last week.)
+
+### Parent view and privacy
+
+10. Home → **For parents**.
+    - *Expect:* days practised, minutes, domain movement.
+    - *Expect:* **no list of missed questions.** Enforced in three places, not by hiding UI.
+
+### The hard requirement
+
+11. Turn off the Mac's **Wi-Fi**. Force-quit the app in the Simulator (**⌘ + Shift + H** twice,
+    swipe up), reopen, run a session.
+    - *Expect:* **works identically.** No spinner, no error. The whole design rests on this — a
+      failure here is the most serious possible bug.
+
+---
+
+## Step 11 — Onto a real iPhone
 
 Only after the Simulator run passes.
+
+### Free, expires after 7 days
 
 ```bash
 npx expo run:ios --device
 ```
 
-Plug the iPhone in via USB and pick it from the list. Xcode will ask for an Apple ID and team; a
-free Apple ID gives 7-day builds on your own device, which is enough to confirm it works.
+Plug the iPhone in by USB, unlock it, tap **Trust This Computer**, and pick it from the list.
+Xcode asks for an Apple ID and team — a free Apple ID works.
 
-For a build that does not expire — and the one used daily — you need the
-\$99/yr Apple Developer account:
+On the phone: **Settings → General → VPN & Device Management → trust the developer profile**.
+
+### Permanent (needs Apple Developer, $99/yr)
 
 ```bash
-eas device:create
+npm install -g eas-cli
+eas login
+eas init
+eas device:create        # follow the link on the iPhone to register it
 eas build --platform ios --profile preview
 ```
 
-A standalone build is also where notifications become reliable, which matters given the daily
-reminder is part of the design.
+The build runs on Expo's servers; you get an install link when it finishes. This is the one
+Vedansh should use daily — notifications are only reliable in a standalone build.
 
----
-
-## If something breaks
-
-| Symptom | Cause | Fix |
-| --- | --- | --- |
-| `npm test` fails on Mac | bad install | `rm -rf node_modules && npm install` |
-| Pressing `i` does nothing | no simulator runtime | Xcode → Settings → Components |
-| Metro cache weirdness | stale cache | `npx expo start --clear` |
-| `expo run:ios` pod errors | CocoaPods missing | `brew install cocoapods` |
-| Blank screen, no error | JS crash before render | check the Metro terminal output |
-
-Note `ios/` and `android/` are gitignored deliberately. Expo regenerates them from `app.json`, so
-they are build output, not source — never hand-edit them.
-
----
-
-## Re-adding keys on the Mac
-
-Neither is in git.
+After that, shipping updates needs no rebuild:
 
 ```bash
-cp .env.example .env.local        # then fill in Supabase values, if using them
-
-echo 'export ANTHROPIC_API_KEY="sk-ant-..."' >> ~/.zshrc && source ~/.zshrc
+eas update --branch preview --message "New questions"
 ```
 
-The **tutor** key needs nothing here — it lives in the phone's keychain, not the project, so it
-is unaffected by changing computers.
+---
+
+## If something goes wrong
+
+| What you see | Why | Fix |
+| --- | --- | --- |
+| `brew: command not found` | Step 4's PATH lines were skipped | Re-run the two `eval` lines |
+| `npm test` fails | bad install | `rm -rf node_modules && npm install` |
+| Pressing `i` does nothing | no Simulator runtime | Xcode → Settings → Components |
+| `xcrun: error: unable to find utility` | Xcode path not set | Re-run Step 6's `xcode-select -s` |
+| Clone asks for a password | not signed in | `gh auth login` (Step 7) |
+| Odd Metro errors | stale cache | `npx expo start --clear` |
+| `pod install` fails | CocoaPods missing | `brew install cocoapods` |
+
+`ios/` and `android/` are gitignored deliberately — Expo regenerates them from `app.json`, so
+they are build output, not source. Never edit them by hand.
+
+---
+
+## Optional extras
+
+**Neither is needed for the app to work.** Skip both unless you want them.
+
+```bash
+# Grow the question bank (runs on this Mac, not on the phone)
+echo 'export ANTHROPIC_API_KEY="sk-ant-..."' >> ~/.zshrc && source ~/.zshrc
+npm run content:generate -- --plan --count 30
+
+# Cloud backup and the parent's own login
+cp .env.example .env.local     # then fill in the two Supabase values
+```
+
+The in-app tutor's key is entered in **Settings** on the phone, not here — it lives in the
+device keychain and is unaffected by changing computers.
