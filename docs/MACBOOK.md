@@ -228,6 +228,60 @@ First run takes 5-10 minutes as it generates the native project and compiles.
 
 ---
 
+## Opening it in Xcode
+
+**A fresh clone has no Xcode project in it.** Looking for a `.xcodeproj` or `.xcworkspace` after
+cloning will find nothing, and that is correct — not a broken download.
+
+This is an Expo project, which uses Continuous Native Generation: the iOS project is *generated*
+from `app.json` rather than checked in. That is why `ios/` and `android/` are in `.gitignore`.
+It keeps the native project from drifting out of sync with the app config, and stops merge
+conflicts in files nobody edits by hand.
+
+To produce the Xcode project:
+
+```bash
+cd ~/dev/sat-prep
+npm install
+npx expo prebuild --platform ios
+```
+
+That creates an `ios/` folder. Then open the **workspace**, not the project:
+
+```bash
+open ios/*.xcworkspace
+```
+
+The wildcard is deliberate — Expo derives the workspace name from the app name in `app.json`,
+so let the shell find it rather than guessing at the spelling.
+
+> Open `.xcworkspace`, never `.xcodeproj`. CocoaPods dependencies are wired into the workspace;
+> opening the bare project gives missing-header build errors.
+
+In Xcode: pick a simulator or your iPhone from the device menu at the top, then press **▶**.
+
+### You usually do not need Xcode at all
+
+For day-to-day work this is faster and does the prebuild for you:
+
+```bash
+npm start          # then press i
+```
+
+Xcode is worth opening when you specifically need to:
+
+- set up code signing for a real device (Signing & Capabilities tab)
+- read a native crash log
+- change app icons or launch screens beyond what `app.json` covers
+
+### After a prebuild, remember
+
+`ios/` is build output. If you change anything in `app.json` — app name, bundle identifier,
+plugins — re-run `npx expo prebuild --platform ios --clean` to regenerate it. Hand-edits inside
+`ios/` are wiped when that runs, so make configuration changes in `app.json` instead.
+
+---
+
 ## Step 10 — Test it
 
 About ten minutes. Each step says what should happen.
