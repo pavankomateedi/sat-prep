@@ -36,11 +36,13 @@ import { HighlightableText, ReferenceSheet, ReferenceSheetButton } from '../src/
 import { colors, radius, spacing, type as typography } from '../src/ui/theme';
 import { useBootstrap } from '../src/ui/useStudent';
 import { buildDrill, DRILL_SIZES, scopeTitle, type Drill, type DrillScope } from '../src/session/drills';
-import { ALL_SKILLS, getSkill, type SkillId } from '../src/domain/taxonomy';
+import { ALL_SKILLS, getSkill, getSection, sectionOfSkill, type SkillId } from '../src/domain/taxonomy';
+import type { SectionId } from '../src/domain/taxonomy';
 import type { Item } from '../src/domain/types';
 import { checkAnswer } from '../src/session/answerCheck';
 import { deriveGrade } from '../src/scheduling/fsrs';
 import { buildAttemptSamples } from '../src/analytics/samples';
+import type { AttemptSample } from '../src/analytics/pacing';
 import { weakestSkills } from '../src/analytics/pacing';
 import * as repo from '../src/data/repositories';
 
@@ -52,7 +54,12 @@ export default function DrillsScreen() {
 
   const [phase, setPhase] = useState<Phase>('choose');
   const [items, setItems] = useState<Item[]>([]);
-  const [suggested, setSuggested] = useState<{ skill: SkillId; label: string; accuracy: number }[]>([]);
+  const [samples, setSamples] = useState<AttemptSample[]>([]);
+  // Math and Reading & Writing are picked separately, not browsed as one flat
+  // list of 30 skills — the weakest-skill suggestion below is scoped to
+  // whichever one is chosen, since "your weakest skill" only means something
+  // relative to a subject you're about to sit down and drill.
+  const [subject, setSubject] = useState<SectionId | null>(null);
   const [scope, setScope] = useState<DrillScope | null>(null);
   const [size, setSize] = useState<number>(10);
   const [timed, setTimed] = useState(true);
@@ -79,15 +86,39 @@ export default function DrillsScreen() {
       ]);
       setItems(allItems);
       seenIds.current = new Set(fsrs.keys());
-      setSuggested(
-        weakestSkills(samples, (skill) => getSkill(skill).name).map((row) => ({
-          skill: row.key as SkillId,
-          label: row.label,
-          accuracy: row.accuracy,
-        }))
-      );
+      setSamples(samples);
     })();
   }, [student]);
+
+  const suggested = useMemo(() => {
+    if (!subject) return [];
+    return weakestSkills(
+      samples.filter((s) => s.section === subject),
+      (skill) => getSkill(skill).name
+    ).map((row) => ({ skill: row.key as SkillId, label: row.label, accuracy: row.accuracy }));
+  }, [samples, subject]);
+
+  // Picking a subject auto-selects its weakest skill, so "practice Math" is a
+  // single tap rather than subject-then-scan-the-chip-list-yourself. Still
+  // freely overridable below — this is a default, not a lock-in.
+  const chooseSubject = useCallback(
+    (next: SectionId) => {
+      setSubject(next);
+      setBuildError(null);
+      const weakest = weakestSkills(
+        samples.filter((s) => s.section === next),
+        (skill) => getSkill(skill).name,
+        1
+      )[0];
+      setScope(weakest ? { kind: 'skill', skill: weakest.key as SkillId } : null);
+    },
+    [samples]
+  );
+
+  const skillsInSubject = useMemo(
+    () => (subject ? ALL_SKILLS.filter((s) => sectionOfSkill(s.id) === subject) : []),
+    [subject]
+  );
 
   useEffect(() => {
     if (phase !== 'running' || !drill?.timed) return;
@@ -322,51 +353,76 @@ export default function DrillsScreen() {
         review schedule.
       </Body>
 
-      {suggested.length > 0 ? (
-        <Card>
-          <Heading>Suggested for you</Heading>
-          <Caption>Based on where your accuracy is lowest, with enough attempts to be sure.</Caption>
-          <View style={styles.chips}>
-            {suggested.map((s) => (
-              <Pressable
-                key={s.skill}
-                onPress={() => setScope({ kind: 'skill', skill: s.skill })}
-                style={[
-                  styles.chip,
-                  scope?.kind === 'skill' && scope.skill === s.skill && styles.chipActive,
-                ]}
-              >
-                <Text style={styles.chipText}>
-                  {s.label} · {Math.round(s.accuracy * 100)}%
-                </Text>
-              </Pressable>
-            ))}
-          </View>
-        </Card>
-      ) : (
-        <Notice>
-          No suggestions yet — those appear once there are enough answers per skill to tell weak
-          from unlucky. Pick any skill below in the meantime.
-        </Notice>
-      )}
-
       <Card>
-        <Heading>Or choose a skill</Heading>
-        <View style={styles.chips}>
-          {ALL_SKILLS.map((skill) => (
-            <Pressable
-              key={skill.id}
-              onPress={() => setScope({ kind: 'skill', skill: skill.id })}
-              style={[
-                styles.chip,
-                scope?.kind === 'skill' && scope.skill === skill.id && styles.chipActive,
-              ]}
-            >
-              <Text style={styles.chipText}>{skill.name}</Text>
-            </Pressable>
-          ))}
+        <Heading>Math or Reading &amp; Writing?</Heading>
+        <View style={styles.subjectRow}>
+          <View style={{ flex: 1 }}>
+            <Button
+              title={getSection('math').name}
+              variant={subject === 'math' ? 'primary' : 'secondary'}
+              onPress={() => chooseSubject('math')}
+            />
+          </View>
+          <View style={{ flex: 1 }}>
+            <Button
+              title={getSection('rw').name}
+              variant={subject === 'rw' ? 'primary' : 'secondary'}
+              onPress={() => chooseSubject('rw')}
+            />
+          </View>
         </View>
       </Card>
+
+      {subject ? (
+        <>
+          {suggested.length > 0 ? (
+            <Card>
+              <Heading>Suggested for you</Heading>
+              <Caption>Your weakest skill in this subject, with enough attempts to be sure.</Caption>
+              <View style={styles.chips}>
+                {suggested.map((s) => (
+                  <Pressable
+                    key={s.skill}
+                    onPress={() => setScope({ kind: 'skill', skill: s.skill })}
+                    style={[
+                      styles.chip,
+                      scope?.kind === 'skill' && scope.skill === s.skill && styles.chipActive,
+                    ]}
+                  >
+                    <Text style={styles.chipText}>
+                      {s.label} · {Math.round(s.accuracy * 100)}%
+                    </Text>
+                  </Pressable>
+                ))}
+              </View>
+            </Card>
+          ) : (
+            <Notice>
+              No suggestion yet for {getSection(subject).name} — that appears once there are
+              enough answers per skill to tell weak from unlucky. Pick any skill below in the
+              meantime.
+            </Notice>
+          )}
+
+          <Card>
+            <Heading>Or choose a skill</Heading>
+            <View style={styles.chips}>
+              {skillsInSubject.map((skill) => (
+                <Pressable
+                  key={skill.id}
+                  onPress={() => setScope({ kind: 'skill', skill: skill.id })}
+                  style={[
+                    styles.chip,
+                    scope?.kind === 'skill' && scope.skill === skill.id && styles.chipActive,
+                  ]}
+                >
+                  <Text style={styles.chipText}>{skill.name}</Text>
+                </Pressable>
+              ))}
+            </View>
+          </Card>
+        </>
+      ) : null}
 
       <Card>
         <Heading>How many, and how</Heading>
@@ -442,6 +498,7 @@ const styles = StyleSheet.create({
     color: colors.text,
   },
   toolRow: { flexDirection: 'row', gap: spacing.sm, marginTop: spacing.md },
+  subjectRow: { flexDirection: 'row', gap: spacing.sm, marginTop: spacing.sm },
   chips: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm, marginTop: spacing.sm },
   chip: {
     paddingHorizontal: spacing.md,
