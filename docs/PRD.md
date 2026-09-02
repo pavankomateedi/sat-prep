@@ -4,6 +4,10 @@
 > app was built from, reproduced as delivered on 31 July 2026. The only edit is the title, which
 > carried a personal name.
 >
+> A PDF of the same document is alongside this file as `docs/PRD.pdf`. Note that the PDF still
+> contains the original personal name in its binary — unlike this markdown, it cannot be edited
+> cleanly, so treat it as the unredacted original.
+>
 > It is a **historical record, not a live spec.** Where the build knowingly departs from it —
 > Bluebook test-tool fidelity (§2.1), push notifications (§2.8) — see `docs/TICKETS.md`, which
 > tracks what was actually built and why.
