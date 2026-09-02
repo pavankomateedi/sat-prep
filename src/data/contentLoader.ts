@@ -12,7 +12,7 @@
 
 import { CONTENT_VERSION, ITEMS, PASSAGES } from '../../content';
 import type { Item, Passage } from '../domain/types';
-import { getDb, getMeta, META_KEYS, setMeta } from './db';
+import { getDb, getMeta, META_KEYS, setMeta, withTransaction } from './db';
 
 export async function isContentLoaded(): Promise<boolean> {
   return (await getMeta(META_KEYS.contentVersion)) === CONTENT_VERSION;
@@ -32,7 +32,7 @@ export async function loadContentIfNeeded(force = false): Promise<{ loaded: bool
 
   const db = await getDb();
 
-  await db.withExclusiveTransactionAsync(async (txn) => {
+  await withTransaction(db, async (txn) => {
     for (const passage of PASSAGES as Passage[]) {
       await txn.runAsync(
         `INSERT INTO passages (id, title, body, body_b, source_json, source_b_json, word_count)

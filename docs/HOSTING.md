@@ -10,9 +10,16 @@ move down as you need to.
 | EAS Build | n/a — installed app | yes | Apple Developer, \$99/yr | The real thing |
 
 A note on what "hosting" can mean here: this is a React Native app, so there is no website to
-host. What gets hosted is the **JavaScript bundle**, which the Expo Go app downloads and runs.
-The web target is not a usable option — the app depends on SQLite, SecureStore, and local
-notifications, none of which work properly in a browser.
+host in the traditional sense — what the sections below cover is the **JavaScript bundle**,
+which the Expo Go app downloads and runs.
+
+There is also a genuine web target (`npm run web`) — `react-native-web` plus a
+`withExclusiveTransactionAsync`-on-web fix make SQLite work via `expo-sqlite`'s WASM build, so
+the core experience (sessions, scoring, everything backed by the database) runs in a browser,
+which is what actually matters for a Windows PC with no iPhone. Two real gaps: **local
+notifications don't fire on web** (the daily reminder is iOS/Android-only), and the tutor's API
+key falls back to `localStorage` there instead of the OS keychain — weaker, but functional. This
+is not something to route a phone through; it is the answer for "runs on a Dell/Windows machine."
 
 ---
 

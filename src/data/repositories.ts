@@ -24,7 +24,7 @@ import type {
 } from '../domain/types';
 import type { SkillId } from '../domain/taxonomy';
 import type { LocalDate } from '../lib/dates';
-import { getDb } from './db';
+import { getDb, withTransaction } from './db';
 import type { ErrorQueueEntry } from '../session/composer';
 
 export function newId(): string {
@@ -544,6 +544,36 @@ export async function getReviewHistory(studentId: string): Promise<
   }));
 }
 
+/**
+ * Every attempt already recorded for one session, oldest first.
+ *
+ * Lets the session screen resume where it left off after a fresh mount —
+ * closing and reopening the tab (or the app being killed rather than just
+ * backgrounded) loses all local component state, but the attempts already
+ * written to SQLite are the durable record of how far into today's steps
+ * the student actually got.
+ */
+export async function getAttemptsForSession(
+  sessionId: string
+): Promise<{ itemId: string; response: string; correct: boolean; answeredAt: string }[]> {
+  const db = await getDb();
+  const rows = await db.getAllAsync<{
+    item_id: string;
+    response: string;
+    correct: number;
+    answered_at: string;
+  }>(
+    'SELECT item_id, response, correct, answered_at FROM attempts WHERE session_id = ? ORDER BY answered_at ASC',
+    sessionId
+  );
+  return rows.map((r) => ({
+    itemId: r.item_id,
+    response: r.response,
+    correct: r.correct === 1,
+    answeredAt: r.answered_at,
+  }));
+}
+
 export async function getAttemptCount(studentId: string): Promise<number> {
   const db = await getDb();
   const row = await db.getFirstAsync<{ n: number }>(
@@ -713,7 +743,7 @@ export async function saveMasterySnapshot(
   const db = await getDb();
   const now = new Date().toISOString();
 
-  await db.withExclusiveTransactionAsync(async (txn) => {
+  await withTransaction(db, async (txn) => {
     for (const [domain, mastery] of masteryByDomain) {
       await txn.runAsync(
         `INSERT INTO mastery_snapshots (student_id, week_start, domain, mastery, created_at)

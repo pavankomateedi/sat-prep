@@ -76,6 +76,27 @@ where the interface *is* the thing being rehearsed.
 | Weekly mastery snapshots (makes parent trends real) | `src/data/migrations.ts` v2 |
 | Per-student minute-budget tuning (V2 from §2.8) | `src/domain/budgetTuning.ts` |
 
+### Platform reach
+
+PRD §2.5 named iOS as primary "with a responsive web fallback" — the fallback never actually
+worked. Fixed: `react-native-web` installed, `metro.config.js` added for expo-sqlite's `.wasm`
+worker asset, and a `withTransaction()` helper (`src/data/db.ts`) that falls back to an ordinary
+transaction on web, since `withExclusiveTransactionAsync` throws unconditionally there. `npm run
+web` now bundles and runs — SQLite included — covering Windows and any other non-Apple machine.
+Two real gaps: local notifications don't fire on web, and the tutor's API key falls back to
+`localStorage` there instead of the OS keychain. See `docs/HOSTING.md`.
+
+Doing this surfaced a real bug it had been masking: the daily session's position within today's
+questions lived only in React state, never in the database, so a fresh mount — reliably triggered
+by a tab close on web, never noticed on native because backgrounding doesn't kill JS memory —
+always restarted at question 1 even with attempts already recorded. Fixed by reconstructing
+position, history, and tally from `getAttemptsForSession()` (new, in `src/data/repositories.ts`)
+on mount, rather than trusting local state to have survived.
+
+iPad and Android are configured (`supportsTablet: true`; an Android package, icons, and
+permissions are all in `app.json`) but neither has actually been run once — both are genuinely
+untested, not confirmed working.
+
 ### Deliberate departures from the PRD
 
 | PRD says | Build does | Why |

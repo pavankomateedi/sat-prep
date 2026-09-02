@@ -35,6 +35,7 @@ import { TutorPanel } from '../src/ui/TutorPanel';
 import { Calculator, CalculatorButton } from '../src/ui/Calculator';
 import { HighlightableText, ReferenceSheet, ReferenceSheetButton } from '../src/ui/TestTools';
 import { clearTodaysReminder } from '../src/notifications/reminders';
+import * as repo from '../src/data/repositories';
 import { colors, radius, spacing, type as typography } from '../src/ui/theme';
 import { useBootstrap } from '../src/ui/useStudent';
 import {
@@ -102,6 +103,66 @@ export default function SessionScreen() {
     void (async () => {
       const loaded = await getOrCreateTodaySession(student.id);
       setToday(loaded);
+
+      // Resume from what's actually in the database, not from local state —
+      // that's the only thing that survives a fresh mount. Closing and
+      // reopening the app (or, on web, the tab) loses every piece of React
+      // state, but the attempts already submitted for this session didn't
+      // go anywhere. Reconstruct `steps` the same way the `steps` useMemo
+      // does below — that memo hasn't recomputed for this `today` yet.
+      const byId = new Map(loaded.items.map((i) => [i.id, i]));
+      const loadedSteps = loaded.session.blocks.flatMap((block) =>
+        block.itemIds
+          .map((id) => byId.get(id))
+          .filter((item): item is Item => item !== undefined)
+      );
+
+      const attempts = await repo.getAttemptsForSession(loaded.session.id);
+      const attemptByItemId = new Map(attempts.map((a) => [a.itemId, a]));
+
+      const restoredHistory = new Map<
+        number,
+        { response: string; correct: boolean; rationale: string }
+      >();
+      let correct = 0;
+      let resumeIndex = 0;
+      for (const item of loadedSteps) {
+        const attempt = attemptByItemId.get(item.id);
+        if (!attempt) break; // First never-answered step — this is where we resume.
+        restoredHistory.set(resumeIndex, {
+          response: attempt.response,
+          correct: attempt.correct,
+          rationale: item.rationale,
+        });
+        if (attempt.correct) correct += 1;
+        resumeIndex += 1;
+      }
+
+      if (restoredHistory.size > 0) {
+        setHistory(restoredHistory);
+        setTally({ correct, total: restoredHistory.size });
+      }
+
+      if (loadedSteps.length > 0 && resumeIndex >= loadedSteps.length) {
+        // Every step already has an attempt — this session was already
+        // finished in an earlier visit. Land on the summary, not question 1.
+        //
+        // If the student answered the last question but closed the tab
+        // before tapping "Finish", completeSession() never ran — completedAt
+        // never got set, no mastery snapshot was saved for the week, and the
+        // parent summary's adherence count would be permanently short one
+        // day. Finish it properly now rather than just faking the UI state.
+        if (!loaded.session.completedAt) {
+          const completed = await completeSession(loaded.session, loaded.session.actualSeconds);
+          void runScheduledMaintenance(student);
+          void clearTodaysReminder();
+          setToday({ ...loaded, session: completed });
+        }
+        setFinished(true);
+      } else {
+        setIndex(resumeIndex);
+      }
+
       sessionStart.current = Date.now();
       shownAt.current = Date.now();
     })();

@@ -5,6 +5,7 @@
  * and writes goes here first; Supabase sync is downstream and best-effort.
  */
 
+import { Platform } from 'react-native';
 import * as SQLite from 'expo-sqlite';
 import { migrate } from './migrations';
 
@@ -43,6 +44,23 @@ export async function closeDb(): Promise<void> {
     await handle.closeAsync();
     handle = null;
   }
+}
+
+/**
+ * Run a write transaction, using the exclusive variant where it's supported.
+ *
+ * `withExclusiveTransactionAsync` throws on web (no separate connection there),
+ * so web falls back to the ordinary transaction and runs queries on `db` itself.
+ */
+export async function withTransaction(
+  db: SQLite.SQLiteDatabase,
+  task: (txn: SQLite.SQLiteDatabase) => Promise<void>
+): Promise<void> {
+  if (Platform.OS === 'web') {
+    await db.withTransactionAsync(() => task(db));
+    return;
+  }
+  await db.withExclusiveTransactionAsync(task);
 }
 
 // ---------------------------------------------------------------------------
