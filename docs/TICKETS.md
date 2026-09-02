@@ -5,7 +5,7 @@ Live status of the backlog in `docs/PRD.md` Part 3, plus everything built beyond
 The PRD is a historical record of what was planned. This file records what exists, where it
 lives, and where the build knowingly departs from the plan.
 
-Last updated: 2 September 2026 · 258 tests passing · 271 questions in the bank
+Last updated: 2 September 2026 · 258 tests passing · 274 questions in the bank
 
 ---
 
@@ -96,7 +96,7 @@ where the interface *is* the thing being rehearsed.
 
 | | Questions | Runway |
 | --- | --- | --- |
-| Now | 271 | ~49 days |
+| Now | 274 | ~49 days |
 | 6 months | ~1,000 | 180 days |
 | Full 2 years | ~3,838 | 730 days |
 

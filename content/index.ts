@@ -22,6 +22,7 @@ import mathAlgebra2 from './items/math-algebra-2.json';
 import mathAdvanced from './items/math-advanced-math.json';
 import mathProblemSolving from './items/math-problem-solving-data-analysis.json';
 import mathGeometry from './items/math-geometry-and-trigonometry.json';
+import mathAdvancedGenerated from './generated/math-advanced-math.json';
 
 const FILES = [
   rwCraftAndStructure,
@@ -35,6 +36,7 @@ const FILES = [
   mathAdvanced,
   mathProblemSolving,
   mathGeometry,
+  mathAdvancedGenerated,
 ];
 
 export const ITEMS: Item[] = FILES.flatMap((f) => f.items as unknown as Item[]);

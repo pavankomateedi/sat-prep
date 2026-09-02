@@ -31,7 +31,7 @@ describe('item-bank sizing (PRD §4.1 gap)', () => {
     // genuinely new material. Content expansion is a dependency, not a V2
     // nicety. Update these pins whenever the bank grows — docs/CONTENT.md
     // quotes them.
-    expect(ITEMS.length).toBe(271);
+    expect(ITEMS.length).toBe(274);
     expect(runwayDays(ITEMS.length)).toBe(49);
   });
 

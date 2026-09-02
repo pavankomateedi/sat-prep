@@ -72,11 +72,11 @@ export default function HomeScreen() {
     }, [load])
   );
 
-  if (loading) return <Screen><Loading label="Opening your workbook" /></Screen>;
+  if (loading) return <Screen edges={['top', 'left', 'right', 'bottom']}><Loading label="Opening your workbook" /></Screen>;
 
   if (error) {
     return (
-      <Screen>
+      <Screen edges={['top', 'left', 'right', 'bottom']}>
         <Title>Something went wrong</Title>
         <Body muted>{error}</Body>
         <Button title="Try again" onPress={reload} />
@@ -92,7 +92,7 @@ export default function HomeScreen() {
   const budget = today ? budgetFor(today.phase) : null;
 
   return (
-    <Screen>
+    <Screen edges={['top', 'left', 'right', 'bottom']}>
       <View style={styles.header}>
         <View style={{ flex: 1 }}>
           <Label>{formatToday(date)}</Label>

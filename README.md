@@ -113,7 +113,7 @@ the plan.
 
 ## Known limits
 
-- **The item bank is a seed, not a supply.** 271 items covers every skill at the launch bar but
+- **The item bank is a seed, not a supply.** 274 items covers every skill at the launch bar but
   amounts to roughly 49 days of genuinely new material. The sizing model puts the two-year
   requirement near 3,800 items. This is the binding constraint on the programme — run
   `npm run content:generate` to close it; see `docs/CONTENT.md`.

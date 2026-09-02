@@ -46,7 +46,7 @@
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit",
     "content:validate": "vitest run src/content src/ui/mathParser.test.ts",
-    "content:generate": "tsx scripts/generate-items.ts",
+    "content:generate": "tsx --env-file-if-exists=.env.local scripts/generate-items.ts",
     "content:promote": "tsx scripts/promote-items.ts",
     "qr": "node scripts/show-qr.mjs",
     "deploy:validate": "node scripts/validate-deployment.mjs"

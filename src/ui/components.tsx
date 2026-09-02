@@ -24,10 +24,31 @@ export function Screen({
   children,
   scroll = true,
   style,
+  footer,
+  edges,
 }: {
   children: ReactNode;
   scroll?: boolean;
   style?: StyleProp<ViewStyle>;
+  /**
+   * Rendered outside the ScrollView, pinned to the bottom of the screen.
+   *
+   * A "Submit"/"Next" button placed inline at the end of scrollable content
+   * is genuinely reachable (scrolling gets you there) but not genuinely
+   * discoverable — nothing signals there's more below a passage-and-choices
+   * screen taller than the viewport, and a student can be left looking at a
+   * fully-answered question with no visible way forward. `footer` is for
+   * exactly that class of primary action.
+   */
+  footer?: ReactNode;
+  /**
+   * Defaults to leaving out 'top' — every screen except the header-less home
+   * screen sits under a native Stack header, which already insets its content
+   * area for the status bar/notch. Reserving it again here stacked a second,
+   * pointless gap above every screen's content. Pass `['top', 'left', 'right']`
+   * explicitly for a screen with `headerShown: false`.
+   */
+  edges?: ('top' | 'right' | 'bottom' | 'left')[];
 }) {
   // Without scroll, the inner View must claim the height itself — otherwise a
   // child ScrollView has no bound to scroll against and simply overflows,
@@ -36,7 +57,7 @@ export function Screen({
     <View style={[styles.screenInner, !scroll && styles.screenInnerFill, style]}>{children}</View>
   );
   return (
-    <SafeAreaView style={styles.screen} edges={['top', 'left', 'right']}>
+    <SafeAreaView style={styles.screen} edges={edges ?? ['left', 'right', 'bottom']}>
       {scroll ? (
         <ScrollView
           contentContainerStyle={styles.scrollContent}
@@ -47,6 +68,7 @@ export function Screen({
       ) : (
         inner
       )}
+      {footer ? <View style={styles.footer}>{footer}</View> : null}
     </SafeAreaView>
   );
 }
@@ -198,6 +220,14 @@ const styles = StyleSheet.create({
   screenInner: { paddingHorizontal: spacing.md, paddingBottom: spacing.xl },
   screenInnerFill: { flex: 1 },
   scrollContent: { flexGrow: 1 },
+  footer: {
+    paddingHorizontal: spacing.md,
+    paddingTop: spacing.sm,
+    paddingBottom: spacing.sm,
+    borderTopWidth: 1,
+    borderTopColor: colors.border,
+    backgroundColor: colors.bg,
+  },
   card: {
     backgroundColor: colors.surface,
     borderRadius: radius.lg,

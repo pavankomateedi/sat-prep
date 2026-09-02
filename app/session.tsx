@@ -177,7 +177,19 @@ export default function SessionScreen() {
     index === 0 || steps[index - 1]?.blockKind !== blockKind;
 
   return (
-    <Screen>
+    <Screen
+      footer={
+        submitted ? (
+          <Button title={index + 1 >= steps.length ? 'Finish' : 'Next'} onPress={next} />
+        ) : (
+          <Button
+            title={saving ? 'Saving…' : 'Submit'}
+            onPress={submit}
+            disabled={saving || response.trim() === ''}
+          />
+        )
+      }
+    >
       <View style={styles.progressRow}>
         <Meter value={(index + (submitted ? 1 : 0)) / steps.length} height={6} />
         <Caption>
@@ -299,16 +311,6 @@ export default function SessionScreen() {
           ) : null}
         </Card>
       ) : null}
-
-      {submitted ? (
-        <Button title={index + 1 >= steps.length ? 'Finish' : 'Next'} onPress={next} />
-      ) : (
-        <Button
-          title={saving ? 'Saving…' : 'Submit'}
-          onPress={submit}
-          disabled={saving || response.trim() === ''}
-        />
-      )}
 
       <Calculator visible={calculatorOpen} onClose={() => setCalculatorOpen(false)} />
       <ReferenceSheet visible={referenceOpen} onClose={() => setReferenceOpen(false)} />

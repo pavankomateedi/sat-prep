@@ -1,0 +1,112 @@
+{
+  "items": [
+    {
+      "id": "m-gen-nonfun-001",
+      "section": "math",
+      "domain": "advanced_math",
+      "skills": [
+        "nonlinear_functions"
+      ],
+      "itemType": "mcq",
+      "difficulty": "easy",
+      "stem": "The graph of a quadratic function $h$ in the $xy$-plane has $x$-intercepts at $x = -2$ and $x = 4$. What is the $x$-coordinate of the vertex of the graph of $h$?",
+      "choices": [
+        {
+          "id": "A",
+          "text": "$-2$"
+        },
+        {
+          "id": "B",
+          "text": "$0$"
+        },
+        {
+          "id": "C",
+          "text": "$1$"
+        },
+        {
+          "id": "D",
+          "text": "$2$"
+        }
+      ],
+      "answer": "C",
+      "rationale": "The vertex of a parabola lies on the axis of symmetry, which passes through the midpoint of the two $x$-intercepts: $\\frac{-2 + 4}{2} = 1$. Choice (D) mistakenly averages the intercepts' absolute values instead of their signed values, and (B) incorrectly assumes the vertex is always at $x = 0$.",
+      "source": {
+        "kind": "original"
+      },
+      "estimatedSeconds": 55,
+      "version": 1
+    },
+    {
+      "id": "m-gen-nonfun-002",
+      "section": "math",
+      "domain": "advanced_math",
+      "skills": [
+        "nonlinear_functions"
+      ],
+      "itemType": "mcq",
+      "difficulty": "medium",
+      "stem": "A ball is thrown from a rooftop, and its height above the ground, in meters, is modeled by $h(t) = -5t^2 + 20t + 60$, where $t$ is the time in seconds after it is thrown. What does the value $t = 2$ represent in this context?",
+      "choices": [
+        {
+          "id": "A",
+          "text": "The time at which the ball reaches its maximum height"
+        },
+        {
+          "id": "B",
+          "text": "The time at which the ball hits the ground"
+        },
+        {
+          "id": "C",
+          "text": "The maximum height the ball reaches"
+        },
+        {
+          "id": "D",
+          "text": "The height of the rooftop"
+        }
+      ],
+      "answer": "A",
+      "rationale": "The vertex of a downward-opening parabola $h(t) = -5t^2 + 20t + 60$ occurs at $t = -\\frac{20}{2(-5)} = 2$, which is the time of maximum height, not the height itself. Choice (C) confuses the input $t$ with the output $h(t)$: the actual maximum height is $h(2) = -20+40+60 = 80$ meters, not 2. Choice (B) mistakes the vertex time for when the ball lands (which happens later, when $h(t)=0$), and (D) is the value $h(0)=60$, unrelated to $t=2$.",
+      "source": {
+        "kind": "original"
+      },
+      "estimatedSeconds": 85,
+      "version": 1
+    },
+    {
+      "id": "m-gen-nonfun-003",
+      "section": "math",
+      "domain": "advanced_math",
+      "skills": [
+        "nonlinear_functions"
+      ],
+      "itemType": "mcq",
+      "difficulty": "hard",
+      "stem": "A quadratic function $f$ has zeros at $x = -3$ and $x = 7$, and its graph passes through the point $(9, 24)$. What is the value of $f(0)$?",
+      "choices": [
+        {
+          "id": "A",
+          "text": "$-9$"
+        },
+        {
+          "id": "B",
+          "text": "$-21$"
+        },
+        {
+          "id": "C",
+          "text": "$21$"
+        },
+        {
+          "id": "D",
+          "text": "$-63$"
+        }
+      ],
+      "answer": "B",
+      "rationale": "Since the zeros are $-3$ and $7$, write $f(x) = a(x+3)(x-7)$. Using $(9,24)$: $24 = a(12)(2) = 24a$, so $a = 1$. Then $f(0) = 1(3)(-7) = -21$. Choice (D) mistakenly uses $a=1$ but computes $(0+3)(0-7)$ with the wrong sign convention (treating zeros as $3$ and $-7$), and choice (A) forgets to multiply by $a$ correctly after solving for it, mixing up which factor goes with which zero.",
+      "source": {
+        "kind": "original"
+      },
+      "estimatedSeconds": 110,
+      "version": 1
+    }
+  ]
+}

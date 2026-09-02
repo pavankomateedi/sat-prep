@@ -6,7 +6,7 @@
 
 | | |
 |---|---|
-| Items today | 271 |
+| Items today | 274 |
 | Two-year requirement (modelled) | ~3,838 |
 | Runway of the current bank | ~49 days of genuinely new material |
 
@@ -19,6 +19,8 @@ V2 milestone.
 ## Growing the bank
 
 ```bash
+# Either export it in your shell, or drop ANTHROPIC_API_KEY=sk-ant-... into
+# .env.local — content:generate loads that file automatically (--env-file-if-exists).
 export ANTHROPIC_API_KEY=sk-ant-...
 
 npm run content:generate                             # gap report, no API calls

@@ -377,7 +377,28 @@ export default function AssessmentScreen() {
     const summary = moduleProgress(state);
 
     return (
-      <Screen>
+      <Screen
+        footer={
+          <>
+            <View style={styles.navRow}>
+              <Button
+                title="Back"
+                variant="secondary"
+                onPress={() => withTiming(goPrevious)}
+                disabled={state.currentIndex === 0}
+              />
+              <Button
+                title={state.currentIndex + 1 >= state.questions.length ? 'Review' : 'Next'}
+                onPress={() => withTiming(goNext)}
+              />
+            </View>
+            <Caption>
+              {summary.answered} of {summary.total} answered
+              {summary.marked > 0 ? ` · ${summary.marked} flagged` : ''}
+            </Caption>
+          </>
+        }
+      >
         <View style={styles.timerRow}>
           <Label>
             {getSection(current.module.section).name} · Module {current.module.index}
@@ -480,23 +501,6 @@ export default function AssessmentScreen() {
             onOpenNavigator={() => withTiming(openReview)}
           />
         </Card>
-
-        <View style={styles.navRow}>
-          <Button
-            title="Back"
-            variant="secondary"
-            onPress={() => withTiming(goPrevious)}
-            disabled={state.currentIndex === 0}
-          />
-          <Button
-            title={state.currentIndex + 1 >= state.questions.length ? 'Review' : 'Next'}
-            onPress={() => withTiming(goNext)}
-          />
-        </View>
-        <Caption>
-          {summary.answered} of {summary.total} answered
-          {summary.marked > 0 ? ` · ${summary.marked} flagged` : ''}
-        </Caption>
 
         <Calculator visible={calculatorOpen} onClose={() => setCalculatorOpen(false)} />
         <ReferenceSheet visible={referenceOpen} onClose={() => setReferenceOpen(false)} />
