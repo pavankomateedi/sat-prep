@@ -79,6 +79,21 @@ export default function SessionScreen() {
   const [calculatorOpen, setCalculatorOpen] = useState(false);
   const [referenceOpen, setReferenceOpen] = useState(false);
 
+  /**
+   * Every already-submitted step, keyed by index — lets Back/Next page back
+   * through what you've answered and review it (your response, right/wrong,
+   * the rationale) rather than only ever moving forward.
+   *
+   * Deliberately read-only: re-answering a past step would mean undoing the
+   * FSRS/Elo/BKT update and the attempt record `submit()` already made for
+   * it, which the app has no safe way to reverse. So a step already in this
+   * map is never re-submittable — the choice/input controls are disabled the
+   * same way they are immediately after submitting the first time.
+   */
+  const [history, setHistory] = useState<
+    Map<number, { response: string; correct: boolean; rationale: string }>
+  >(new Map());
+
   const shownAt = useRef<number>(Date.now());
   const sessionStart = useRef<number>(Date.now());
 
@@ -120,15 +135,35 @@ export default function SessionScreen() {
       });
       setSubmitted({ correct: outcome.correct, rationale: outcome.rationale });
       setTally((t) => ({ correct: t.correct + (outcome.correct ? 1 : 0), total: t.total + 1 }));
+      setHistory((h) => new Map(h).set(index, { response, correct: outcome.correct, rationale: outcome.rationale }));
     } finally {
       setSaving(false);
     }
-  }, [student, today, step, submitted, response]);
+  }, [student, today, step, submitted, response, index]);
+
+  /** Land on a step: replay it read-only if it's already answered, else fresh. */
+  const goToStep = useCallback(
+    (target: number) => {
+      const past = history.get(target);
+      if (past) {
+        setResponse(past.response);
+        setSubmitted({ correct: past.correct, rationale: past.rationale });
+      } else {
+        setResponse('');
+        setSubmitted(null);
+        shownAt.current = Date.now();
+      }
+      setIndex(target);
+    },
+    [history]
+  );
+
+  const goBack = useCallback(() => {
+    if (index === 0 || saving) return;
+    goToStep(index - 1);
+  }, [index, saving, goToStep]);
 
   const next = useCallback(async () => {
-    setSubmitted(null);
-    setResponse('');
-
     if (index + 1 >= steps.length) {
       if (student && today) {
         const seconds = Math.round((Date.now() - sessionStart.current) / 1000);
@@ -142,9 +177,8 @@ export default function SessionScreen() {
       return;
     }
 
-    setIndex((i) => i + 1);
-    shownAt.current = Date.now();
-  }, [index, steps.length, student, today]);
+    goToStep(index + 1);
+  }, [index, steps.length, student, today, goToStep]);
 
   if (loading || !today) return <Screen><Loading label="Building today's session" /></Screen>;
 
@@ -176,25 +210,47 @@ export default function SessionScreen() {
   const isFirstOfBlock =
     index === 0 || steps[index - 1]?.blockKind !== blockKind;
 
+  // The next question that's never been answered — where Back/forward
+  // navigation should return you to resume. `history` is filled strictly in
+  // order (submit() only ever writes the current step before advancing), so
+  // its size is exactly that index.
+  const pendingIndex = history.size;
+  const isReviewingPast = pendingIndex < steps.length && index !== pendingIndex;
+
   return (
     <Screen
       footer={
-        submitted ? (
-          <Button title={index + 1 >= steps.length ? 'Finish' : 'Next'} onPress={next} />
-        ) : (
-          <Button
-            title={saving ? 'Saving…' : 'Submit'}
-            onPress={submit}
-            disabled={saving || response.trim() === ''}
-          />
-        )
+        <View style={styles.navRow}>
+          <Button title="Back" variant="secondary" onPress={goBack} disabled={index === 0 || saving} />
+          {submitted ? (
+            <Button title={index + 1 >= steps.length ? 'Finish' : 'Next'} onPress={next} />
+          ) : (
+            <Button
+              title={saving ? 'Saving…' : 'Submit'}
+              onPress={submit}
+              disabled={saving || response.trim() === ''}
+            />
+          )}
+        </View>
       }
     >
       <View style={styles.progressRow}>
         <Meter value={(index + (submitted ? 1 : 0)) / steps.length} height={6} />
-        <Caption>
-          {index + 1} of {steps.length}
-        </Caption>
+        <View style={styles.progressLabelRow}>
+          <Text style={styles.questionNumber}>
+            Question {index + 1} of {steps.length}
+          </Text>
+          {isReviewingPast ? (
+            <Pressable
+              onPress={() => goToStep(pendingIndex)}
+              accessibilityRole="button"
+              accessibilityLabel={`Resume at question ${pendingIndex + 1}`}
+              hitSlop={8}
+            >
+              <Text style={styles.pendingLink}>Resume Q{pendingIndex + 1} →</Text>
+            </Pressable>
+          ) : null}
+        </View>
       </View>
 
       {isFirstOfBlock ? (
@@ -320,6 +376,14 @@ export default function SessionScreen() {
 
 const styles = StyleSheet.create({
   progressRow: { marginTop: spacing.md, gap: spacing.xs },
+  progressLabelRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  questionNumber: { ...typography.label, color: colors.textMuted },
+  pendingLink: { ...typography.label, color: colors.accent, fontWeight: '600' },
+  navRow: { flexDirection: 'row', gap: spacing.sm },
   blockIntro: { marginTop: spacing.lg },
   stimulus: {
     marginTop: spacing.md,
