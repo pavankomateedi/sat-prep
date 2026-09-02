@@ -60,6 +60,20 @@ const DIFFICULTY_MIX: Record<string, Record<Difficulty, number>> = {
   module2_easier: { easy: 0.55, medium: 0.35, hard: 0.1 },
 };
 
+/**
+ * Deliberate departure from the PRD (§1.2's "module, then branch" intuition
+ * goal; T-18's original acceptance criterion was "enforces real section/
+ * module timing"). These are practice tests for a student still learning the
+ * material, not the proctored exam — a few extra minutes per module means the
+ * clock doesn't punish someone before the underlying skill is there yet.
+ *
+ * Deliberately NOT applied to `section.minutes` / `minutesPerModule`
+ * themselves — `src/analytics/pacing.ts` reads those directly to compare the
+ * student's actual pace against the *real* test's pace, and that comparison
+ * has to stay honest even while the practice clock is generous.
+ */
+export const PRACTICE_TIME_BUFFER_MINUTES = 5;
+
 function makeRandom(seed: number): () => number {
   let s = seed >>> 0 || 1;
   return () => {
@@ -209,7 +223,7 @@ export function buildTest(options: BuildTestOptions): BuiltTest {
       section: section.id,
       index: 1,
       itemIds,
-      timeLimitSeconds: section.minutesPerModule * 60,
+      timeLimitSeconds: (section.minutesPerModule + PRACTICE_TIME_BUFFER_MINUTES) * 60,
     });
   }
 
@@ -258,7 +272,7 @@ export function buildSecondModule(options: {
     index: 2,
     path,
     itemIds,
-    timeLimitSeconds: sectionSpec.minutesPerModule * 60,
+    timeLimitSeconds: (sectionSpec.minutesPerModule + PRACTICE_TIME_BUFFER_MINUTES) * 60,
     seenUsed,
   };
 }

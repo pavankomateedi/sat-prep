@@ -201,11 +201,77 @@ export interface AnswerOutcome {
 }
 
 /**
- * Record one answer and advance every model that depends on it.
+ * Shared core of "grade one response and advance every model that depends on
+ * it" — FSRS, Elo, BKT, and the attempt log. `recordAnswer` (a daily-session
+ * question) and `recordTestAttempt` (a full-length-test question) are both
+ * thin wrappers over this, differing only in whether a session/blockKind
+ * exists to attach.
  *
  * Order matters: the FSRS snapshot must be captured before the state advances,
  * because it records the model's prediction *at the moment of test* — the only
  * version that is any use for calibration or for the T-17 optimiser.
+ */
+async function gradeAndPersist(params: {
+  student: Student;
+  item: Item;
+  response: string;
+  responseTimeMs: number;
+  phase: ProgramPhase;
+  sessionId: string | null;
+  blockKind: BlockKind | null;
+  now: Date;
+}): Promise<{ correct: boolean; attemptId: string; nextDue: string }> {
+  const { student, item, response, responseTimeMs, phase, sessionId, blockKind, now } = params;
+  const { correct } = checkAnswer(item, response);
+  const grade = deriveGrade(correct, responseTimeMs, item.estimatedSeconds);
+
+  const scheduler = createScheduler({
+    desiredRetention: budgetFor(phase).desiredRetention,
+    weights: (await repo.getFsrsParams(student.id))?.weights,
+  });
+
+  const fsrsStates = await repo.getFsrsStates(student.id);
+  const currentFsrs = fsrsStates.get(item.id) ?? emptyState(student.id, item.id, now);
+
+  const { next, snapshot } = review(scheduler, currentFsrs, grade, now);
+  await repo.saveFsrsState(next);
+
+  const primarySkill = item.skills[0]!;
+
+  const eloStates = await repo.getEloStates(student.id);
+  const currentElo = eloStates.get(primarySkill) ?? initialEloState(student.id, primarySkill, now);
+  const eloUpdate = updateElo(currentElo, item.difficulty, correct, now);
+  await repo.saveEloState(eloUpdate.next);
+
+  const bktStates = await repo.getBktStates(student.id);
+  const currentBkt = bktStates.get(primarySkill) ?? initialBktState(student.id, primarySkill, now);
+  await repo.saveBktState(updateBkt(currentBkt, correct, now));
+
+  const attempt: Attempt = {
+    id: repo.newId(),
+    studentId: student.id,
+    itemId: item.id,
+    sessionId,
+    blockKind,
+    answeredAt: now.toISOString(),
+    response,
+    correct,
+    responseTimeMs,
+    grade,
+    stabilityBefore: snapshot.stabilityBefore,
+    difficultyBefore: snapshot.difficultyBefore,
+    retrievabilityBefore: snapshot.retrievabilityBefore,
+    elapsedDays: snapshot.elapsedDays,
+    eloBefore: eloUpdate.before,
+    synced: false,
+  };
+  await repo.saveAttempt(attempt);
+
+  return { correct, attemptId: attempt.id, nextDue: next.due };
+}
+
+/**
+ * Record one daily-session answer and advance every model that depends on it.
  */
 export async function recordAnswer(params: {
   student: Student;
@@ -218,53 +284,60 @@ export async function recordAnswer(params: {
   now?: Date;
 }): Promise<AnswerOutcome> {
   const now = params.now ?? new Date();
-  const { correct } = checkAnswer(params.item, params.response);
-  const grade = deriveGrade(correct, params.responseTimeMs, params.item.estimatedSeconds);
-
-  const scheduler = createScheduler({
-    desiredRetention: budgetFor(params.phase).desiredRetention,
-    weights: (await repo.getFsrsParams(params.student.id))?.weights,
-  });
-
-  const fsrsStates = await repo.getFsrsStates(params.student.id);
-  const currentFsrs =
-    fsrsStates.get(params.item.id) ?? emptyState(params.student.id, params.item.id, now);
-
-  const { next, snapshot } = review(scheduler, currentFsrs, grade, now);
-  await repo.saveFsrsState(next);
-
-  const primarySkill = params.item.skills[0]!;
-
-  const eloStates = await repo.getEloStates(params.student.id);
-  const currentElo = eloStates.get(primarySkill) ?? initialEloState(params.student.id, primarySkill, now);
-  const eloUpdate = updateElo(currentElo, params.item.difficulty, correct, now);
-  await repo.saveEloState(eloUpdate.next);
-
-  const bktStates = await repo.getBktStates(params.student.id);
-  const currentBkt = bktStates.get(primarySkill) ?? initialBktState(params.student.id, primarySkill, now);
-  await repo.saveBktState(updateBkt(currentBkt, correct, now));
-
-  const attempt: Attempt = {
-    id: repo.newId(),
-    studentId: params.student.id,
-    itemId: params.item.id,
+  const { correct, nextDue } = await gradeAndPersist({
+    student: params.student,
+    item: params.item,
+    response: params.response,
+    responseTimeMs: params.responseTimeMs,
+    phase: params.phase,
     sessionId: params.session.id,
     blockKind: params.blockKind,
-    answeredAt: now.toISOString(),
-    response: params.response,
-    correct,
-    responseTimeMs: params.responseTimeMs,
-    grade,
-    stabilityBefore: snapshot.stabilityBefore,
-    difficultyBefore: snapshot.difficultyBefore,
-    retrievabilityBefore: snapshot.retrievabilityBefore,
-    elapsedDays: snapshot.elapsedDays,
-    eloBefore: eloUpdate.before,
-    synced: false,
-  };
-  await repo.saveAttempt(attempt);
+    now,
+  });
+  return { correct, rationale: params.item.rationale, nextDue };
+}
 
-  return { correct, rationale: params.item.rationale, nextDue: next.due };
+export interface TestAttemptOutcome {
+  correct: boolean;
+  attemptId: string;
+}
+
+/**
+ * Record one full-length/diagnostic-test answer, feeding it into the same
+ * FSRS/Elo/BKT models a daily-session answer would.
+ *
+ * Previously these were computed and discarded (docs/TICKETS.md, "Decisions
+ * needed"). Decided in favour of persisting: the PRD's own §2.4 calls a
+ * checkpoint "one of the few moments where the app gets a broad, simultaneous
+ * read across all domains at once, valuable for recalibrating the daily mix"
+ * — and `testBuilder.ts` already prefers items the student hasn't met in daily
+ * practice, so this is mostly fresh exposure, not double-counted signal. A
+ * missed question on a test is exactly the kind of thing the error-review
+ * block (T-08) exists to resurface.
+ *
+ * `sessionId`/`blockKind` are null, per the `Attempt` schema's own documented
+ * case for attempts made inside a full-length test rather than a session.
+ */
+export async function recordTestAttempt(params: {
+  student: Student;
+  item: Item;
+  response: string;
+  responseTimeMs: number;
+  phase: ProgramPhase;
+  now?: Date;
+}): Promise<TestAttemptOutcome> {
+  const now = params.now ?? new Date();
+  const { correct, attemptId } = await gradeAndPersist({
+    student: params.student,
+    item: params.item,
+    response: params.response,
+    responseTimeMs: params.responseTimeMs,
+    phase: params.phase,
+    sessionId: null,
+    blockKind: null,
+    now,
+  });
+  return { correct, attemptId };
 }
 
 export async function startSession(session: Session, now = new Date()): Promise<Session> {

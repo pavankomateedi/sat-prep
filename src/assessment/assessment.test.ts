@@ -13,6 +13,7 @@ import {
   scoreSection,
 } from './scoring';
 import {
+  PRACTICE_TIME_BUFFER_MINUTES,
   buildSecondModule,
   buildTest,
   nextAssessmentDue,
@@ -143,24 +144,29 @@ describe('test assembly (T-18)', () => {
       const spec = getSection(module.section);
       expect(module.index).toBe(1);
       expect(module.itemIds).toHaveLength(spec.questionsPerModule);
-      expect(module.timeLimitSeconds).toBe(spec.minutesPerModule * 60);
+      expect(module.timeLimitSeconds).toBe((spec.minutesPerModule + PRACTICE_TIME_BUFFER_MINUTES) * 60);
     }
     expect(test.shortfall).toEqual([]);
   });
 
-  it('enforces real module timing from PRD §1.1', () => {
+  it('gives a few extra minutes per module beyond real PRD §1.1 timing, for learning', () => {
+    // Deliberate departure — see PRACTICE_TIME_BUFFER_MINUTES in testBuilder.ts.
+    // Pacing analytics (src/analytics/pacing.ts) still compares against the
+    // real, unbuffered timing, so this clock being generous never distorts
+    // the "how are you pacing against the actual test" signal.
     const test = buildTest({ kind: 'full_length', items: ITEMS, seed: 1 });
     const rw = test.modules.find((m) => m.section === 'rw')!;
     const math = test.modules.find((m) => m.section === 'math')!;
-    expect(rw.timeLimitSeconds).toBe(32 * 60);
-    expect(math.timeLimitSeconds).toBe(35 * 60);
-    // Full-length: 4 modules total.
-    expect(test.totalMinutes).toBe(134);
+    expect(rw.timeLimitSeconds).toBe((32 + PRACTICE_TIME_BUFFER_MINUTES) * 60);
+    expect(math.timeLimitSeconds).toBe((35 + PRACTICE_TIME_BUFFER_MINUTES) * 60);
+    // Full-length: 4 modules total, real 134 min + 4 × buffer.
+    expect(test.totalMinutes).toBe(134 + 4 * PRACTICE_TIME_BUFFER_MINUTES);
   });
 
   it('defaults a diagnostic to half length', () => {
     const diagnostic = buildTest({ kind: 'diagnostic', items: ITEMS, seed: 1 });
-    expect(diagnostic.totalMinutes).toBe(67);
+    // Real half-length is 67 min (2 modules); plus buffer on each module.
+    expect(diagnostic.totalMinutes).toBe(67 + 2 * PRACTICE_TIME_BUFFER_MINUTES);
   });
 
   it('never repeats an item across modules of the same test', () => {

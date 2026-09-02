@@ -70,6 +70,8 @@ import {
 import { getSection } from '../src/domain/taxonomy';
 import type { AssessmentKind, Item, SectionScore } from '../src/domain/types';
 import { checkAnswer } from '../src/session/answerCheck';
+import { recordTestAttempt } from '../src/session/service';
+import { decidePhase } from '../src/domain/phases';
 import * as repo from '../src/data/repositories';
 import { toLocalDate } from '../src/lib/dates';
 
@@ -90,6 +92,7 @@ export default function AssessmentScreen() {
   const [moduleIndex, setModuleIndex] = useState(0);
   const [state, setState] = useState<ModuleState>(() => createModuleState([]));
   const [answers, setAnswers] = useState<Map<string, string>>(new Map());
+  const [questionTimesMs, setQuestionTimesMs] = useState<Map<string, number>>(new Map());
   const [secondsLeft, setSecondsLeft] = useState(0);
   const [showTimer, setShowTimer] = useState(true);
   const [calculatorOpen, setCalculatorOpen] = useState(false);
@@ -182,8 +185,13 @@ export default function AssessmentScreen() {
     try {
 
     const merged = new Map(answers);
-    for (const q of state.questions) merged.set(q.itemId, q.response);
+    const mergedTimes = new Map(questionTimesMs);
+    for (const q of state.questions) {
+      merged.set(q.itemId, q.response);
+      mergedTimes.set(q.itemId, q.timeSpentMs);
+    }
     setAnswers(merged);
+    setQuestionTimesMs(mergedTimes);
 
     const halfLength = kind === 'diagnostic';
     if (current.module.index === 1 && !halfLength) {
@@ -221,14 +229,14 @@ export default function AssessmentScreen() {
       return;
     }
 
-      await score(merged);
+      await score(merged, mergedTimes);
     } finally {
       setAdvancing(false);
     }
-  }, [current, student, answers, state, kind, moduleIndex, queue, advancing]);
+  }, [current, student, answers, questionTimesMs, state, kind, moduleIndex, queue, advancing]);
 
   const score = useCallback(
-    async (finalAnswers: Map<string, string>) => {
+    async (finalAnswers: Map<string, string>, finalTimesMs: Map<string, number>) => {
       if (!student) return;
 
       const sectionScores: (SectionScore & { halfWidth: number })[] = [];
@@ -268,6 +276,24 @@ export default function AssessmentScreen() {
 
       const composite = scoreComposite(sectionScores);
 
+      // Persist every test question as an attempt, feeding the same FSRS/Elo/
+      // BKT models a daily-session answer would — see recordTestAttempt in
+      // src/session/service.ts for why. Previously computed and discarded.
+      const phase = decidePhase(student, 0, toLocalDate()).phase;
+      const attemptIds: string[] = [];
+      for (const run of queue) {
+        for (const item of run.items) {
+          const outcome = await recordTestAttempt({
+            student,
+            item,
+            response: finalAnswers.get(item.id) ?? '',
+            responseTimeMs: finalTimesMs.get(item.id) ?? 0,
+            phase,
+          });
+          attemptIds.push(outcome.attemptId);
+        }
+      }
+
       await repo.saveTestResult({
         id: repo.newId(),
         studentId: student.id,
@@ -277,7 +303,7 @@ export default function AssessmentScreen() {
         domainScores: scoreDomains(domainResponses),
         totalScaled: composite.totalScaled,
         confidenceHalfWidth: composite.confidenceHalfWidth,
-        attemptIds: [],
+        attemptIds,
         synced: false,
       });
 

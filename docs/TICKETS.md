@@ -5,7 +5,7 @@ Live status of the backlog in `docs/PRD.md` Part 3, plus everything built beyond
 The PRD is a historical record of what was planned. This file records what exists, where it
 lives, and where the build knowingly departs from the plan.
 
-Last updated: 2 September 2026 · 254 tests passing · 271 questions in the bank
+Last updated: 2 September 2026 · 258 tests passing · 271 questions in the bank
 
 ---
 
@@ -84,6 +84,7 @@ where the interface *is* the thing being rehearsed.
 | §2.8 no push notifications | One silent daily reminder | Over two years, one quiet cue is the highest-leverage adherence tool. Constrained by §2.6: one a day, no streak language, cleared once practised |
 | §2.5 KaTeX for math | Native renderer | KaTeX needs a WebView per expression — slow in lists, breaks offline, unreadable by screen readers. The bank uses 15 LaTeX commands; a test keeps it inside that subset |
 | Header "2026–2028" vs "spring 11th grade" | Spring 2028 | The two statements are ~9 months apart. Resolved in favour of the stated window |
+| §1.2 / T-18: practice tests enforce real section/module timing | +5 min per module (`PRACTICE_TIME_BUFFER_MINUTES` in `src/assessment/testBuilder.ts`) | These are practice tests for a student still learning the material, not the proctored exam — the clock shouldn't punish him before the skill is there. Pacing analytics (`src/analytics/pacing.ts`) still reads the real, unbuffered `section.minutes`, so the "how do you pace against the actual test" signal stays honest even while the practice clock is generous |
 
 ---
 
@@ -105,12 +106,17 @@ and has never been run; it needs `ANTHROPIC_API_KEY`. Roughly \$15–30 for six 
 
 This is the only item standing between a working app and a two-year course.
 
-### Decisions needed
+### Decisions made
 
-- **Test attempts are not persisted.** A timed practice test contributes nothing to the pacing
-  report — the one context where pacing matters most. Persisting them would put test answers
-  into the error queue and the FSRS history, which may or may not be wanted. Needs a call.
-- **Per-question timing in tests is computed and discarded.** Same decision.
+- **Test attempts are now persisted** (`recordTestAttempt` in `src/session/service.ts`, called
+  from `app/assessment.tsx`'s `score()`). Decided in favour, per PRD §2.4's own framing of a
+  checkpoint as "valuable for recalibrating the daily mix" — and `testBuilder.ts` already
+  prefers items unseen in daily practice, so this is mostly fresh signal, not double-counted.
+  Feeds the same FSRS/Elo/BKT models and the error-review queue a daily-session answer would.
+  `sessionId`/`blockKind` are null, per the `Attempt` schema's own documented case for this.
+- **Per-question timing in tests is now persisted** alongside the attempt (`responseTimeMs`,
+  sourced from `moduleState.ts`'s existing `timeSpentMs` tracking, previously computed and
+  thrown away). Now reaches `src/analytics/pacing.ts`, the one place pacing matters most.
 
 ### Awaiting the real world
 
