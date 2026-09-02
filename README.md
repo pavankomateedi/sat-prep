@@ -1,14 +1,14 @@
 # SAT Prep
 
 A private, single-family Digital SAT prep app. One student, thirty minutes a day, for about
-two years. Built from the research and product plan in the parent directory, covering the full
-MVP and V1 backlog (T-01 through T-21).
+two years. Built from the research and product plan in `docs/PRD.md`, covering the full MVP and V1
+backlog (T-01 through T-21) plus the gaps that plan flagged but never ticketed.
 
 ## Quick start
 
 ```bash
 npm install
-npm test          # 183 tests across the engine layer
+npm test          # 254 tests across the engine layer
 npm run typecheck # strict TypeScript, zero errors
 npm start         # Metro; scan the QR code with Expo Go on the iPhone
 ```
@@ -82,6 +82,17 @@ docs/           architecture, content pipeline, setup
 `src/` is deliberately free of React Native imports below `ui/`, so the entire learning engine
 runs and is tested in plain Node.
 
+## Where things are written down
+
+| Document | What it is |
+| --- | --- |
+| `docs/PRD.md` | The original research report and product plan. A historical record of what was planned, not a live spec. |
+| `docs/TICKETS.md` | What was actually built, where it lives, and where the build departs from the PRD. **Start here.** |
+| `docs/ARCHITECTURE.md` | Why the engine/UI split, the three-model stack, and local-first storage |
+| `docs/CONTENT.md` | The item bank, its licensing rules, and how to grow it |
+| `docs/MACBOOK.md` | Setting up on a Mac with nothing installed |
+| `docs/SETUP.md` · `docs/HOSTING.md` · `docs/DEPLOY.md` | Running, sharing, and shipping it |
+
 ## Ticket coverage
 
 | Epic | Tickets | Status |
@@ -94,9 +105,11 @@ runs and is tested in plain Node.
 | E6 Platform & offline | T-09, T-10 | done |
 | E7 Privacy | T-13 | done |
 
-Three gaps the PRD itself flagged in §4.1 as *not on the roadmap anywhere* are also closed:
-the content-freshness process (`src/content/freshness.ts`), the score-confidence band
-(`src/assessment/scoring.ts`), and the item-bank sizing model (`src/content/sizing.ts`).
+Every gap the PRD flagged in §4.1 as *not on the roadmap anywhere* is also closed — content
+freshness, score-confidence bands, item-bank sizing, percentile context, test-day logistics —
+along with full Bluebook test-tool parity, a calculator, pacing analytics and timed drills.
+`docs/TICKETS.md` has the full picture, including where the build deliberately departs from
+the plan.
 
 ## Known limits
 
