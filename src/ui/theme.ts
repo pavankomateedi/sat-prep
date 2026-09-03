@@ -6,17 +6,32 @@
  * grating by month three. PRD §2.6 also warns against gamification that "reads
  * as juvenile for an 11th grader", and that applies to the palette as much as
  * to badges and streak counters.
+ *
+ * "Polished," here, means depth and confidence, not more color or louder
+ * accents: real elevation on cards and the primary action, a slightly deeper
+ * accent, marginally friendlier corners. The calm-palette rule above still
+ * holds — this raises the finish, not the volume.
  */
 
 export const colors = {
-  bg: '#FBFBFD',
+  bg: '#FAFAFD',
   surface: '#FFFFFF',
-  surfaceAlt: '#F3F4F8',
-  border: '#E3E5EC',
-  text: '#14161C',
-  textMuted: '#5C6172',
-  textFaint: '#8E93A3',
-  accent: '#2E5BFF',
+  surfaceAlt: '#F2F3F8',
+  border: '#E2E4ED',
+  // `border` is 1.27:1 against white — fine for a card's own outline (the
+  // shadow now does the real separating work) but nowhere near enough when
+  // it's the *only* cue that a text input exists on a white card. 3.19:1
+  // clears WCAG 1.4.11's 3:1 bar for a UI component boundary.
+  borderStrong: '#8C8FA3',
+  text: '#13151C',
+  textMuted: '#5B5F72',
+  // Was #8C90A3 (3.0-3.2:1 against bg/surface) — fails WCAG AA's 4.5:1 for
+  // normal text. Used in the shared Label component (every screen's section
+  // headers and field labels run through it) and chart axis labels, so this
+  // wasn't a cosmetic nit — real text was genuinely hard to read.
+  textFaint: '#6A6E80',
+  accent: '#2952E3',
+  accentDeep: '#1E3FB8',
   accentSoft: '#EAEFFF',
   correct: '#1B7F5A',
   correctSoft: '#E4F4ED',
@@ -36,10 +51,33 @@ export const spacing = {
 } as const;
 
 export const radius = {
-  sm: 8,
-  md: 12,
-  lg: 16,
+  sm: 10,
+  md: 14,
+  lg: 18,
   pill: 999,
+} as const;
+
+/**
+ * Elevation, not color, is what reads as "polished." Two tiers: `card` for
+ * resting surfaces, `raised` for the one primary action per screen. Kept
+ * subtle deliberately — a heavy drop shadow is the fastest way to make a
+ * calm app look like it's trying too hard.
+ */
+export const shadow = {
+  card: {
+    shadowColor: '#0B1030',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.06,
+    shadowRadius: 3,
+    elevation: 1,
+  },
+  raised: {
+    shadowColor: '#0B1030',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.16,
+    shadowRadius: 10,
+    elevation: 3,
+  },
 } as const;
 
 export const type = {

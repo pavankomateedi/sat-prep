@@ -604,12 +604,13 @@ const styles = StyleSheet.create({
   input: {
     marginTop: spacing.md,
     borderWidth: 1.5,
-    borderColor: colors.border,
+    borderColor: colors.borderStrong,
     borderRadius: radius.md,
     paddingHorizontal: spacing.md,
     minHeight: 52,
     fontSize: 18,
     color: colors.text,
+    backgroundColor: colors.surfaceAlt,
   },
   navRow: { flexDirection: 'row', gap: spacing.sm, marginTop: spacing.sm },
 });

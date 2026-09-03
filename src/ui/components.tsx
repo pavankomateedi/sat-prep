@@ -18,7 +18,7 @@ import {
   type ViewStyle,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { colors, radius, spacing, type as typography } from './theme';
+import { colors, radius, shadow, spacing, type as typography } from './theme';
 
 export function Screen({
   children,
@@ -224,9 +224,16 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.md,
     paddingTop: spacing.sm,
     paddingBottom: spacing.sm,
-    borderTopWidth: 1,
+    borderTopWidth: StyleSheet.hairlineWidth,
     borderTopColor: colors.border,
     backgroundColor: colors.bg,
+    // Casts upward — separates the sticky action bar from scrolled content
+    // behind it, rather than relying on the hairline border alone.
+    shadowColor: '#0B1030',
+    shadowOffset: { width: 0, height: -2 },
+    shadowOpacity: 0.05,
+    shadowRadius: 6,
+    elevation: 4,
   },
   card: {
     backgroundColor: colors.surface,
@@ -235,6 +242,7 @@ const styles = StyleSheet.create({
     borderColor: colors.border,
     padding: spacing.md,
     marginTop: spacing.md,
+    ...shadow.card,
   },
   title: { ...typography.title, color: colors.text, marginTop: spacing.lg },
   heading: { ...typography.heading, color: colors.text, marginBottom: spacing.xs },
@@ -255,7 +263,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.lg,
     marginTop: spacing.sm,
   },
-  buttonPrimary: { backgroundColor: colors.accent },
+  buttonPrimary: { backgroundColor: colors.accent, ...shadow.raised },
   buttonSecondary: {
     backgroundColor: colors.surface,
     borderWidth: StyleSheet.hairlineWidth,

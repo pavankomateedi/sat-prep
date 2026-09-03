@@ -327,7 +327,7 @@ const styles = StyleSheet.create({
   },
   timeInput: {
     borderWidth: 1.5,
-    borderColor: colors.border,
+    borderColor: colors.borderStrong,
     borderRadius: radius.md,
     paddingHorizontal: spacing.md,
     minHeight: 44,
@@ -335,14 +335,16 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 17,
     color: colors.text,
+    backgroundColor: colors.surfaceAlt,
   },
   keyInput: {
     borderWidth: 1.5,
-    borderColor: colors.border,
+    borderColor: colors.borderStrong,
     borderRadius: radius.md,
     paddingHorizontal: spacing.md,
     minHeight: 48,
     fontSize: 15,
     color: colors.text,
+    backgroundColor: colors.surfaceAlt,
   },
 });

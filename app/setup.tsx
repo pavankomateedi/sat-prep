@@ -114,13 +114,13 @@ export default function SetupScreen() {
 const styles = StyleSheet.create({
   input: {
     borderWidth: 1.5,
-    borderColor: colors.border,
+    borderColor: colors.borderStrong,
     borderRadius: radius.md,
     paddingHorizontal: spacing.md,
     minHeight: 50,
     fontSize: 17,
     color: colors.text,
-    backgroundColor: colors.surface,
+    backgroundColor: colors.surfaceAlt,
     marginBottom: spacing.xs,
   },
   gap: { height: spacing.md },
