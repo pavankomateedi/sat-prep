@@ -390,7 +390,7 @@ export default function SessionScreen() {
         </View>
       </Card>
 
-      <Card>
+      <Card style={styles.answerCard}>
         <Label>Your answer</Label>
         {item.itemType === 'mcq' ? (
           <View style={styles.choices}>
@@ -519,6 +519,11 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: colors.questionBorder,
   },
+  answerCard: {
+    backgroundColor: colors.surfaceAlt,
+    borderWidth: 2,
+    borderColor: colors.answerBorder,
+  },
   stimulus: {
     marginTop: spacing.md,
     paddingLeft: spacing.md,
@@ -561,7 +566,10 @@ const styles = StyleSheet.create({
     minHeight: 52,
     fontSize: 18,
     color: colors.text,
-    backgroundColor: colors.surfaceAlt,
+    // White, not surfaceAlt — the answer card itself is surfaceAlt now, and
+    // the input needs to stand out from its own card the same way the MCQ
+    // choice buttons do (also white-on-surfaceAlt).
+    backgroundColor: colors.surface,
   },
   sprCorrect: { borderColor: colors.correct, backgroundColor: colors.correctSoft },
   sprWrong: { borderColor: colors.incorrect, backgroundColor: colors.incorrectSoft },

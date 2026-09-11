@@ -40,6 +40,10 @@ export const colors = {
   // the page background — clears WCAG 1.4.11's 3:1 UI-boundary bar either
   // way, rather than being decorative-only.
   questionBorder: '#5E7BE0',
+  // Same idea for the answer card, in the neutral family rather than blue —
+  // keeps "question" and "answer" visually distinct spaces (blue vs. neutral)
+  // instead of both cards reading as the same box. 3.3-3.7:1.
+  answerBorder: '#82859A',
   // A second, distinct hue reserved for time-tracking UI only (the daily
   // session's elapsed-time bar, test/drill timers) — one deliberate spot
   // of visual variety against the otherwise blue-and-neutral palette, not
