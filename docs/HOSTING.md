@@ -21,6 +21,21 @@ notifications don't fire on web** (the daily reminder is iOS/Android-only), and 
 key falls back to `localStorage` there instead of the OS keychain — weaker, but functional. This
 is not something to route a phone through; it is the answer for "runs on a Dell/Windows machine."
 
+### Deploying the web target
+
+`scripts/deploy-web.sh` builds and deploys it to Vercel — real HTTPS on a public URL, which the
+`localhost`-only secure-context requirement for the SQLite WASM database actually needs. Gated
+by a shared HTTP Basic Auth password (Vercel's own native password protection is a Pro-plan
+feature; this is the free equivalent, via a hand-written Edge Middleware deployed alongside the
+static export using Vercel's Build Output API v3). Set `WEB_ACCESS_PASSWORD` in `.env.local`
+before running it — omit it and the deploy goes out with no gate at all, silently.
+
+Two non-obvious things the script works around, documented in its own header: every exported
+asset lands under a path containing a `node_modules` segment, which Vercel silently excludes
+from deployments by default; and macOS's shipped `/bin/bash` (3.2, frozen there for over a
+decade) doesn't reliably propagate variables set via `source` of a process substitution, which
+is why the password is read with a plain `grep | cut` rather than the more obvious `source <(...)`.
+
 ---
 
 ## 1. Tunnel — public link, running now
