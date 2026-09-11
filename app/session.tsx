@@ -47,6 +47,13 @@ import {
 } from '../src/session/service';
 import type { BlockKind, Item } from '../src/domain/types';
 import { getSkill } from '../src/domain/taxonomy';
+import { SESSION_MINUTES } from '../src/domain/phases';
+
+function formatClock(totalSeconds: number): string {
+  const m = Math.floor(totalSeconds / 60);
+  const s = totalSeconds % 60;
+  return `${m}:${String(s).padStart(2, '0')}`;
+}
 
 const BLOCK_LABEL: Record<BlockKind, string> = {
   warmup: 'Warm-up review',
@@ -97,6 +104,24 @@ export default function SessionScreen() {
 
   const shownAt = useRef<number>(Date.now());
   const sessionStart = useRef<number>(Date.now());
+
+  /**
+   * Time-on-screen, visible. Counting up, no limit, no countdown — daily
+   * practice is deliberately untimed (it's about learning, not exam
+   * pressure; only Practice Test/Drills enforce a real clock). This is
+   * purely informational: how long this question has taken, and roughly
+   * how the whole session compares to the nominal 30-minute daily target.
+   */
+  const [questionSeconds, setQuestionSeconds] = useState(0);
+  const [sessionSeconds, setSessionSeconds] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setQuestionSeconds(Math.floor((Date.now() - shownAt.current) / 1000));
+      setSessionSeconds(Math.floor((Date.now() - sessionStart.current) / 1000));
+    }, 1000);
+    return () => clearInterval(id);
+  }, []);
 
   useEffect(() => {
     if (!student) return;
@@ -165,6 +190,8 @@ export default function SessionScreen() {
 
       sessionStart.current = Date.now();
       shownAt.current = Date.now();
+      setQuestionSeconds(0);
+      setSessionSeconds(0);
     })();
   }, [student]);
 
@@ -213,6 +240,7 @@ export default function SessionScreen() {
         setResponse('');
         setSubmitted(null);
         shownAt.current = Date.now();
+        setQuestionSeconds(0);
       }
       setIndex(target);
     },
@@ -314,6 +342,27 @@ export default function SessionScreen() {
         </View>
       </View>
 
+      {/* Informational only — counts up, no limit. Daily practice stays
+          deliberately untimed (no countdown, nothing cuts off); this just
+          answers "how long has this taken", the way a student would
+          otherwise have to guess. */}
+      <View style={styles.timerBar}>
+        <View style={styles.timerItem}>
+          <Text style={styles.timerLabel}>This question</Text>
+          <Text style={styles.timerValue}>
+            {submitted ? '—' : formatClock(questionSeconds)}
+          </Text>
+        </View>
+        <View style={styles.timerDivider} />
+        <View style={styles.timerItem}>
+          <Text style={styles.timerLabel}>Today's session</Text>
+          <Text style={styles.timerValue}>
+            {formatClock(sessionSeconds)}
+            <Text style={styles.timerMuted}> / ~{SESSION_MINUTES} min</Text>
+          </Text>
+        </View>
+      </View>
+
       {isFirstOfBlock ? (
         <View style={styles.blockIntro}>
           <Label>{BLOCK_LABEL[blockKind]}</Label>
@@ -321,7 +370,7 @@ export default function SessionScreen() {
         </View>
       ) : null}
 
-      <Card>
+      <Card style={styles.questionCard}>
         <Caption>{skill.name}</Caption>
 
         {item.stimulus ? (
@@ -341,7 +390,10 @@ export default function SessionScreen() {
         <View style={styles.stem}>
           <MathText>{item.stem}</MathText>
         </View>
+      </Card>
 
+      <Card>
+        <Label>Your answer</Label>
         {item.itemType === 'mcq' ? (
           <View style={styles.choices}>
             {(item.choices ?? []).map((choice) => {
@@ -377,7 +429,6 @@ export default function SessionScreen() {
           </View>
         ) : (
           <View style={styles.sprWrap}>
-            <Label>Your answer</Label>
             <TextInput
               value={response}
               onChangeText={setResponse}
@@ -445,7 +496,26 @@ const styles = StyleSheet.create({
   questionNumber: { ...typography.label, color: colors.textMuted },
   pendingLink: { ...typography.label, color: colors.accent, fontWeight: '600' },
   navRow: { flexDirection: 'row', gap: spacing.sm },
+  timerBar: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: spacing.md,
+    backgroundColor: colors.timerSoft,
+    borderRadius: radius.md,
+    paddingVertical: spacing.sm,
+    paddingHorizontal: spacing.md,
+  },
+  timerItem: { flex: 1, gap: 2 },
+  timerDivider: { width: StyleSheet.hairlineWidth, backgroundColor: colors.timer, opacity: 0.25, height: '100%' },
+  timerLabel: { ...typography.caption, color: colors.timer, opacity: 0.8 },
+  timerValue: {
+    ...typography.heading,
+    color: colors.timer,
+    fontVariant: ['tabular-nums'],
+  },
+  timerMuted: { ...typography.caption, color: colors.timer, opacity: 0.6 },
   blockIntro: { marginTop: spacing.lg },
+  questionCard: { marginBottom: 0 },
   stimulus: {
     marginTop: spacing.md,
     paddingLeft: spacing.md,

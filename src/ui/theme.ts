@@ -33,6 +33,12 @@ export const colors = {
   accent: '#2952E3',
   accentDeep: '#1E3FB8',
   accentSoft: '#EAEFFF',
+  // A second, distinct hue reserved for time-tracking UI only (the daily
+  // session's elapsed-time bar, test/drill timers) — one deliberate spot
+  // of visual variety against the otherwise blue-and-neutral palette, not
+  // a general-purpose color. 6.4:1 either direction.
+  timer: '#6D3FD1',
+  timerSoft: '#F1EBFB',
   correct: '#1B7F5A',
   correctSoft: '#E4F4ED',
   incorrect: '#B3261E',
