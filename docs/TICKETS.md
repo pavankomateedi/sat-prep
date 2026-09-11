@@ -5,7 +5,8 @@ Live status of the backlog in `docs/PRD.md` Part 3, plus everything built beyond
 The PRD is a historical record of what was planned. This file records what exists, where it
 lives, and where the build knowingly departs from the plan.
 
-Last updated: 2 September 2026 · 258 tests passing · 274 questions in the bank
+Last updated: 11 September 2026 · 258 tests passing · 274 questions in the bank · live at
+https://dist-gamma-mocha-37.vercel.app
 
 ---
 
@@ -147,10 +148,32 @@ This is the only item standing between a working app and a two-year course.
 
 ### Never validated
 
-- **No student has completed a session.** Every claim rests on 254 tests and clean builds.
-  The PRD's own riskiest assumption — will a fixed 4-block structure hold a teenager for two
-  years — is answerable only by him using it for a fortnight.
-- **Not installed on a phone.** The daily habit needs the app on the device with the reminder on.
+- **No sustained daily use yet.** Family testing (simulator + the Vercel web deploy) has
+  exercised real sessions, but the PRD's own riskiest assumption — will a fixed 4-block
+  structure hold a teenager for two years, not just a test session — is answerable only by
+  actual daily use over a fortnight or more.
+- **Not installed on a phone as a standalone build.** The daily reminder needs a real EAS Build
+  ($99/yr Apple Developer) — it doesn't fire reliably in Expo Go or the web deploy.
+
+### Deliberately deferred — pick back up after family testing
+
+Explicitly paused, not forgotten. Next in priority order once daily use with the family
+confirms the core loop is worth extending:
+
+1. **Grow the content bank** — still the single biggest lever (see "Blocking the goal" above).
+   Unchanged since it was last flagged.
+2. **iPad** — `supportsTablet: true` is set, an iPad Simulator boots fine, but nothing has
+   actually been tapped through past the "Open in Expo Go" system dialog. Layout at iPad width
+   is completely unverified.
+3. **Android** — no SDK/emulator on the dev machine; needs either a large one-time Android
+   Studio install, or testing on a real Android phone via Expo Go (no install needed on the dev
+   machine for that path). Nothing Android-specific has been run once.
+4. **Multi-family / paid access** — floated as a direction (share with other students, charge
+   for access later). Real open questions before any of it should be built: informal vs. a real
+   product with billing; payment handled manually or built into the app; how much privacy/
+   compliance work to do up front given the current single-family COPPA/FERPA-exempt design
+   doesn't hold once this is commercial and multi-tenant. Needs actual decisions, not code, as
+   the next step whenever this is picked back up.
 
 ---
 
