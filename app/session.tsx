@@ -46,7 +46,6 @@ import {
   type TodaySession,
 } from '../src/session/service';
 import type { BlockKind, Item } from '../src/domain/types';
-import { getSkill } from '../src/domain/taxonomy';
 import { SESSION_MINUTES } from '../src/domain/phases';
 
 function formatClock(totalSeconds: number): string {
@@ -295,7 +294,6 @@ export default function SessionScreen() {
   if (!step) return <Screen><Loading /></Screen>;
 
   const { item, blockKind } = step;
-  const skill = getSkill(item.skills[0]!);
   const isFirstOfBlock =
     index === 0 || steps[index - 1]?.blockKind !== blockKind;
 
@@ -371,7 +369,7 @@ export default function SessionScreen() {
       ) : null}
 
       <Card style={styles.questionCard}>
-        <Caption>{skill.name}</Caption>
+        <Caption>Q{index + 1}</Caption>
 
         {item.stimulus ? (
           <View style={styles.stimulus}>
@@ -515,7 +513,12 @@ const styles = StyleSheet.create({
   },
   timerMuted: { ...typography.caption, color: colors.timer, opacity: 0.6 },
   blockIntro: { marginTop: spacing.lg },
-  questionCard: { marginBottom: 0 },
+  questionCard: {
+    marginBottom: 0,
+    backgroundColor: colors.accentSoft,
+    borderWidth: 2,
+    borderColor: colors.questionBorder,
+  },
   stimulus: {
     marginTop: spacing.md,
     paddingLeft: spacing.md,

@@ -33,6 +33,13 @@ export const colors = {
   accent: '#2952E3',
   accentDeep: '#1E3FB8',
   accentSoft: '#EAEFFF',
+  // A real, visible border for the question card specifically — distinct
+  // from the near-invisible hairline every other card uses, so "this is
+  // the question" reads as its own defined space rather than blending
+  // into the page. 3.4:1 against its own accentSoft fill, 3.7:1 against
+  // the page background — clears WCAG 1.4.11's 3:1 UI-boundary bar either
+  // way, rather than being decorative-only.
+  questionBorder: '#5E7BE0',
   // A second, distinct hue reserved for time-tracking UI only (the daily
   // session's elapsed-time bar, test/drill timers) — one deliberate spot
   // of visual variety against the otherwise blue-and-neutral palette, not
